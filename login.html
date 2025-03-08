@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://www.imooc.com/static/lib/jquery/1.9.1/jquery.js"></script>
+    <title>Document</title>
+    <style type="text/css">
+        * {
+            margin: 0 0;
+            padding: 0 0;
+        }
+
+        .top {
+            display: block;
+            height: 60px;
+            background-color: #282c34;
+
+        }
+
+        .top>a {
+
+            text-decoration: none;
+            float: right;
+            margin-right: 20px;
+            margin-top: 20px;
+
+        }
+
+        .top>a>svg {
+            width: 30px;
+            height: 30px;
+
+
+        }
+
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: start;
+            background-image: url("https://momoyu.cc/assets/lang-CViquoc8.png");
+            background-color: #282c34;
+            background-repeat: no-repeat;
+            /* background-position: -150px 250px; */
+            background-position-y: 650px;
+            background-position-x: -850px;
+        }
+
+        .main>#content {
+            width: 300px;
+            margin-top: 50px;
+            padding-top: 40px;
+            padding-left: 50px;
+            padding-right: 50px;
+            background-color: rgb(255, 255, 255);
+            border-radius: 20px 20px;
+            color: rgb(179, 183, 186)
+        }
+
+        .main>#content>.contentTop {
+            float: left;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 147px;
+            height: 40px;
+            font-size: 20px;
+            margin-bottom: 30px;
+
+        }
+
+        .span {
+            color: black;
+            border-bottom: 2px solid blue;
+        }
+
+        .input {
+            margin-bottom: 20px;
+            width: 100%;
+            height: 30px;
+            border-top-width: 0;
+            border-left-width: 0;
+            border-right-width: 0;
+            border-bottom-color: rgb(179, 183, 186);
+            outline: none;
+        }
+
+        .input::placeholder {
+            opacity: 0;
+        }
+
+        .input:focus::placeholder {
+            opacity: 1;
+            color: rgb(179, 183, 186);
+        }
+
+
+        form {
+            font-size: 17px;
+            margin-bottom: 50px;
+        }
+
+        #formtwo {
+            display: none;
+        }
+
+        .submit {
+            width: 100%;
+            background-color: #56ccbc;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            height: 30px;
+            border: none;
+            border-radius: 5px 5px;
+            color: aliceblue;
+        }
+
+        .submit:hover {
+            box-shadow: 0 0 10px #56ccbc;
+        }
+
+        .register {
+            background-color: #5983ce;
+        }
+
+        .wjmm {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .wjmm>a {
+            text-decoration: none;
+            color: #282c34;
+        }
+    </style>
+    <script type="text/javascript">
+        $(window).on('load', function () {
+            var all = $(".contentTop>span");
+            var url = window.location.href.split("=")[1];
+           if(url!="login"){
+            $("#formtwo").css('display', 'block')
+            $("#formone").css('display', 'none')
+            if (!$(this).hasClass("span")) {
+                    all.each(function (index, value) {
+                        $(all[index]).toggleClass("span")
+                    })}
+           }
+
+            var timerone
+            timerone = setInterval(function () {
+                if (parseFloat($(".main").css("background-position-x")) < -150) {
+                    $(".main").css("background-position-x", parseFloat($(".main").css("background-position-x")) + 20 + "px")
+                    if (parseFloat($(".main").css("background-position-y")) > 250) {
+                        $(".main").css("background-position-y", parseFloat($(".main").css("background-position-y")) - 10 + "px")
+                    } else {
+                        clearTimeout(timertwo)
+                    }
+                } else {
+                    clearTimeout(timerone)
+                }
+            }, 30)
+
+            var height = document.documentElement ? document.documentElement.clientHeight : document.body.clientHeight
+            $(".main").css({
+                'height': height - parseFloat($(".top").css('height')) + "px"
+            })
+            
+            all.on('click', function () {
+                if ($(this).text() == "登陆") {
+                    $("#formone").css('display', 'block')
+                    $("#formtwo").css('display', 'none')
+                } else {
+                    $("#formtwo").css('display', 'block')
+                    $("#formone").css('display', 'none')
+                }
+                if (!$(this).hasClass("span")) {
+                    all.each(function (index, value) {
+                        $(all[index]).toggleClass("span")
+                    })
+
+                }
+
+            })
+
+
+        })
+    </script>
+</head>
+
+<body>
+    <div class="top"><a href="mmyzj.html"><svg t="1741179270154" class="icon"
+                viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2629" width="200"
+                height="200">
+                <path d="M0 0h1024v1024H0z" fill="#ffffff" fill-opacity="0" p-id="2630"></path>
+                <path
+                    d="M240.448 168l2.346667 2.154667 289.92 289.941333 279.253333-279.253333a42.666667 42.666667 0 0 1 62.506667 58.026666l-2.133334 2.346667-279.296 279.210667 279.274667 279.253333a42.666667 42.666667 0 0 1-58.005333 62.528l-2.346667-2.176-279.253333-279.253333-289.92 289.962666a42.666667 42.666667 0 0 1-62.506667-58.005333l2.154667-2.346667 289.941333-289.962666-289.92-289.92a42.666667 42.666667 0 0 1 57.984-62.506667z"
+                    fill="#ffffff" p-id="2631"></path>
+            </svg></a></div>
+    <div class="main">
+        <div id="content">
+            <div id="login" class="contentTop "><span class="span">登陆</span></div>
+            <div id="register" class="contentTop"><span>注册</span></div>
+            <form id="formone" action="">
+                <label for="email">邮箱</label><br>
+                <input type="email" name="email" class="input" id="" placeholder="请输入用于登陆的邮箱"><br>
+                <label for="password">密码</label><br>
+                <input type="password" name="password" class="input" id="" placeholder="请输入密码"><br>
+                <label for="imgnumber">图片验证码</label><br>
+                <input type="text" name="imgnumber" class="input" id="" placeholder="验证码不区分大小写"><br>
+                <input type="submit" class="submit" value="登陆">
+                <span class="wjmm"><a href="">忘记密码</a></span>
+            </form>
+            <form id="formtwo" action="">
+                <label for="email">邮箱</label><br>
+                <input type="email" name="email" class="input" id="" placeholder="请输入用于注册的邮箱"><br>
+                <label for="password">密码</label><br>
+                <input type="password" name="password" class="input" id="" placeholder="请输入密码"><br>
+                <label for="imgnumber">图片验证码</label><br>
+                <input type="text" name="imgnumber" class="input" id="" placeholder="验证码不区分大小写"><br>
+                <label for="emailnumber">邮箱验证码</label><br>
+                <input type="text" name="emailnumber" class="input" id=""><br>
+                <input type="submit" class="submit register" value="注册">
+            </form>
+
+        </div>
+
+    </div>
+</body>
+
+</html>
