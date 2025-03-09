@@ -3,6 +3,18 @@
     padding: 0 0;
 }
 
+#cover{
+    background: #000;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    filter: alpha(opacity=30);
+    opacity: 0.3;
+    display: none;
+    z-index: 2;
+}
+
 .setscreen {
     display: none;
     width: 560px;
@@ -235,7 +247,8 @@ aside>#top>#topsvg>div>img {
 aside>#top>#topsvg>div {
     position: absolute;
     color: #18191e;
-    display: none;
+    /*display: none;*/
+
 }
 
 aside>#top>#topsvg>div>div {
