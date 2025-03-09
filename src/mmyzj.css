@@ -247,7 +247,7 @@ aside>#top>#topsvg>div>img {
 aside>#top>#topsvg>div {
     position: absolute;
     color: #18191e;
-    /*display: none;*/
+    display: none;
 
 }
 
