@@ -17,50 +17,75 @@ function middle(){
         }
     }, [size]);
 
-    // const [opacity, setOpacity] = useState(0);
-    // const [display, setDisplay] = useState('none');
-    // const [top, setTop] = useState(-260);
-    // const [intervalId, setIntervalId] = useState(null);
+    const [opacity, setOpacity] = useState(0);
+    const [display, setDisplay] = useState('none');
+    const [top, setTop] = useState(-260);
+    const [intervalId, setIntervalId] = useState(null);
 
     // 鼠标移入时启动上移和淡入动画
-    // const handleMouseEnter = () => {
-        // setDisplay("block");
-        // if (intervalId) clearInterval(intervalId); // 清除之前的定时器
-        // const id = setInterval(() => {
-        //     setOpacity((prev) => (prev < 1 ? prev + 0.03 : 1)); // 每次增加0.03
-        //     setTop((prev) => (prev > -300 ? prev - 2 : -300)); // 每次减少2px
-        // }, 10); // 每10ms更新一次
-        // setIntervalId(id);
-    // };
+    const handleMouseEnter = () => {
+        setDisplay("block");
+        console.log(8)
+        if (intervalId) clearInterval(intervalId); // 清除之前的定时器
+        console.log(7)
+        const id = setInterval(() => {
+            console.log(6)
+            setOpacity((prev) => (prev < 1 ? prev + 0.03 : 1)); // 每次增加0.03
+            setTop((prev) => (prev > -300 ? prev - 2 : -300)); // 每次减少2px
+        }, 10); // 每10ms更新一次
+        setIntervalId(id);
+    };
 
     // 鼠标移出时启动下移和淡出动画
-    // const handleMouseLeave = () => {
-        // setDisplay("none");
-        // if (intervalId) clearInterval(intervalId); // 清除之前的定时器
-        // const id = setInterval(() => {
-        //     setOpacity((prev) => (prev > 0 ? prev - 0.03 : 0)); // 每次减少0.03
-        //     setTop((prev) => (prev < -260 ? prev + 2 : -260)); // 每次增加2px
-        // }, 10); // 每10ms更新一次
-        // setIntervalId(id);
-    // };
+    const handleMouseLeave = () => {
 
-    // // 当动画达到目标状态时清除定时器
+        if (intervalId) clearInterval(intervalId); // 清除之前的定时器
+        const id = setInterval(() => {
+            setOpacity((prev) => (prev > 0 ? prev - 0.03 : 0)); // 每次减少0.03
+            setTop((prev) => (prev < -260 ? prev + 2 : -260)); // 每次增加2px
+
+        }, 10); // 每10ms更新一次
+        setIntervalId(id);
+        // if(top>=-260){
+        //     setDisplay("none");
+        // }
+    };
+    useEffect(() => {
+        if(top>=-260){
+            setDisplay("none");
+        }
+    }, [top]);
+
+    // 当动画达到目标状态时清除定时器
     // useEffect(() => {
-    //     if ((opacity >= 1 && top <= -300) || (opacity <= 0 && top >= -260)) {
-    //         clearInterval(intervalId);
-    //         setIntervalId(null);
-    //         if (opacity <= 0) {
-    //             setDisplay("none");
-    //         }
-    //     }
-    // }, [opacity, top, intervalId]);
-    //
-    // // 组件卸载时清除定时器
-    // useEffect(() => {
-    //     return () => {
-    //         if (intervalId) clearInterval(intervalId);
-    //     };
-    // }, [intervalId]);
+        // if ((opacity >= 1 && top <= -300) || (opacity <= 0 && top >= -260)) {
+        //     clearInterval(intervalId);
+        //     setIntervalId(null);
+            // if (opacity <= 0) {
+            //     setDisplay("none");
+
+            // }
+        // }
+        // 私自
+        // if (( top <= -300) || (top >= -260)) {
+        //         clearInterval(intervalId);
+        //         setIntervalId(null);
+        // }
+        // if(top>=-260){
+        //
+        //             setDisplay("none");
+                // }
+    //     结束
+    // }, [
+        // opacity,
+        // top, intervalId]);
+
+    // 组件卸载时清除定时器
+    useEffect(() => {
+        return () => {
+            if (intervalId) clearInterval(intervalId);
+        };
+    }, [intervalId]);
 
 
 
@@ -396,7 +421,7 @@ const itemshtml=items.map( item =>
                     <div id="toptexttwo">
                         实时<span>摸鱼</span>人数: &nbsp;<span>421</span>
                     </div>
-                    <div id="topsvg">
+                    <div id="topsvg" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                         <a title="设置" className="topIcon set" href="">
                             <svg t="1741080105706" className="icon"
                                  viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -435,7 +460,13 @@ const itemshtml=items.map( item =>
                             </svg>
                         </a>
 
-                        <div id="weixin">
+                        <div id="weixin"
+                        style={{
+                            display:display,
+                            top:`${top}px`,
+                            opacity:opacity
+                        }}
+                        >
                             <img src="https://momoyu.cc/assets/qq-EN_yH9uA.png" alt="" />
                             <div>群号：607942298
                                 <span>验证：摸鱼</span>
