@@ -3,18 +3,6 @@
     padding: 0 0;
 }
 
-#cover{
-    background: #000;
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    width: 100%;
-    filter: alpha(opacity=30);
-    opacity: 0.3;
-    display: none;
-    z-index: 2;
-}
-
 .setscreen {
     display: none;
     width: 560px;
@@ -140,7 +128,7 @@
     background-color: #1f2025;
     padding: 5px 14px 5px 20px;
     position: relative;
-    ;
+;
 }
 
 #content>header>img {
@@ -242,14 +230,15 @@ aside>#top>#topsvg>div>img {
     left: 10px;
     width: 200px;
     height: 220px;
-
 }
 
 aside>#top>#topsvg>div {
     position: absolute;
     color: #18191e;
-    /*display: none;*/
-
+    display: none;
+    /* top:-295px */
+    top:-260px;
+    opacity: 0;
 }
 
 aside>#top>#topsvg>div>div {
@@ -373,15 +362,17 @@ main>.item>ul>li>span {
 
 main>.item>ul>li>.spanone {
     float: left;
-    ;
+;
     font-size: 13px;
 }
 
 main>.item>ul>li>.spantwo {
     float: left;
-
     font-size: 13px;
     width: 250px;
+
+
+
 }
 
 main>.item>ul>li>.spanthree {
@@ -426,7 +417,11 @@ aside>#buttom>#redpackage>img {
 }
 
 aside>#buttom>#redpackage {
+    position: relative;
+    top: -10px;
     display: none;
+    opacity: 0;
+
 }
 
 aside>#buttom>#redpackage>.bb {
@@ -592,6 +587,14 @@ footer>.svg>div>#wx>img {
 
 footer>.svg {
     position: relative;
+
+}
+footer>.svg>div {
+    position: relative;
+    top: -10px;
+    /* top: -40px; */
+    left: -12px;
+    display: none;
 }
 
 footer>.svg>div>#wx {
@@ -603,8 +606,10 @@ footer>.svg>div>#wx {
 }
 
 footer>.svg>div {
-    display: none;
+    /* opacity: 1; */
+    opacity: 0;
 }
+
 
 .rotating {
     animation-name: rotating;
@@ -691,20 +696,11 @@ footer>.svg>div {
     color: aliceblue;
 }
 
-.empty {
-    position: absolute;
-    display: inline-block;
-    left: 40px;
-    width: 40px;
-    height: 20px;
-    background-color: aliceblue;
-}
-
 .true {
     line-height: 20px;
     text-align: center;
     position: absolute;
-    left: 0;
+    left: -40px;
     display: inline-block;
     width: 40px;
     height: 20px;
@@ -712,14 +708,33 @@ footer>.svg>div {
     border-radius: 10px 0px 0px 10px;
 }
 
+.empty {
+    position: absolute;
+    display: inline-block;
+    left: 0px;
+    width: 40px;
+    height: 20px;
+    background-color: aliceblue;
+}
 .close {
     line-height: 20px;
     text-align: center;
-    left: 80px;
+    left: 40px;
     position: absolute;
     display: inline-block;
     width: 40px;
     height: 20px;
     background-color: #1f2025;
     border-radius: 0 10px 10px 0;
+}
+
+.contentOne>ul>li:nth-child(5) .true {
+    left: 0px;
+}
+
+.contentOne>ul>li:nth-child(5) .empty {
+    left: 40px;
+}
+.contentOne>ul>li:nth-child(5) .close {
+    left: 80px;
 }

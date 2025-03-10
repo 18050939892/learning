@@ -1,6 +1,40 @@
+import {useEffect, useState} from "react";
 
 
 function footer(){
+
+    const [footeropacity, setFooteropacity] = useState(0);
+    const [footerdisplay, setFooterdisplay] = useState('none');
+    const [footertop, setFootertop] = useState(-10);
+    const [footerintervalId, setFooterintervalId] = useState(null);
+    const footerhandleMouseEnter = () => {
+        setFooterdisplay("block");
+        if (footerintervalId) clearInterval(footerintervalId);
+        const footerid = setInterval(() => {
+            setFooteropacity((prev) => (prev < 1 ? prev + 0.03 : 1)); // 每次增加0.03
+            setFootertop((prev) => (prev > -40 ? prev - 1 : -40)); // 每次减少2px
+        }, 10);
+        setFooterintervalId(footerid);
+
+    };
+    const footerhandleMouseLeave = () => {
+        if (footerintervalId) clearInterval(footerintervalId); // 清除之前的定时器
+        const footerid = setInterval(() => {
+            setFooteropacity((prev) => (prev > 0 ? prev - 0.03 : 0)); // 每次减少0.03
+            setFootertop((prev) => (prev < -10 ? prev + 1 : -10)); // 每次增加2px
+        }, 10);
+        setFooterintervalId(footerid);
+
+    };
+    useEffect(() => {
+        if (footeropacity==0&&footertop>=-10) {
+            // console.log(6)
+            setFooterdisplay("none");
+            clearInterval(footerintervalId);
+        }else if(footeropacity==1&&footertop<=-40){
+            clearInterval(footerintervalId)
+        }
+    }, [footertop,footeropacity]);
 
 
     return (
@@ -16,9 +50,11 @@ function footer(){
                         p-id="30434" fill="#bfbfbf"></path>
                 </svg>
             </div>
-            <div className="svg"  >
+            <div className="svg"  onMouseLeave={footerhandleMouseLeave} onMouseEnter={footerhandleMouseEnter}>
 
-                    <div>
+                    <div style={{ display:footerdisplay,
+                    top:footertop+"px",
+                    opacity:footeropacity}}>
                     <div id="wx">
                         <img src="https://momoyu.cc/assets/gzhss-E7ztoHaG.png" alt=""/>
                         <div className="wx"></div>
@@ -27,7 +63,7 @@ function footer(){
                 </div>
 
                 <svg t="1741099043772" className="icon" viewBox="0 0 1024 1024" version="1.1"
-                     xmlns="http://www.w3.org/2000/svg" p-id="29073" width="200" height="200">
+                     xmlns="http://www.w3.org/2000/svg" p-id="29073" width="200" height="200" >
                     <path
                         d="M669.3 369.4c9.8 0 19.6 0 29.4 1.6C671 245.2 536.9 152 383.2 152 211.6 152 71 269.7 71 416.8c0 85 45.8 156.9 124.2 210.9l-31.1 93.2L273.6 667c39.2 8.2 70.3 16.3 109.5 16.3 9.8 0 19.6 0 31.1-1.6-6.5-21.3-9.8-42.5-9.8-65.4 0.1-135.7 116.2-246.9 264.9-246.9z m-168.4-85c24.5 0 39.2 16.3 39.2 39.2 0 22.9-16.3 39.2-39.2 39.2-24.5 0-47.4-16.4-47.4-39.2 0-24.5 24.6-39.2 47.4-39.2z m-216.3 73.1c-24.7 0-47.8-16.2-47.8-38.8 0-24.3 24.7-38.8 47.8-38.8s39.5 16.2 39.5 38.8c0.1 22.7-16.4 38.8-39.5 38.8z"
                         fill="#bfbfbf" p-id="29074"></path>
