@@ -25,62 +25,38 @@ function middle(){
     // 鼠标移入时启动上移和淡入动画
     const handleMouseEnter = () => {
         setDisplay("block");
-        console.log(8)
-        if (intervalId) clearInterval(intervalId); // 清除之前的定时器
-        console.log(7)
+        if (intervalId) clearInterval(intervalId);
         const id = setInterval(() => {
-            console.log(6)
             setOpacity((prev) => (prev < 1 ? prev + 0.03 : 1)); // 每次增加0.03
             setTop((prev) => (prev > -300 ? prev - 2 : -300)); // 每次减少2px
-        }, 10); // 每10ms更新一次
+        }, 10);
         setIntervalId(id);
+
     };
+
 
     // 鼠标移出时启动下移和淡出动画
     const handleMouseLeave = () => {
-
         if (intervalId) clearInterval(intervalId); // 清除之前的定时器
         const id = setInterval(() => {
             setOpacity((prev) => (prev > 0 ? prev - 0.03 : 0)); // 每次减少0.03
             setTop((prev) => (prev < -260 ? prev + 2 : -260)); // 每次增加2px
-
-        }, 10); // 每10ms更新一次
+        }, 10);
         setIntervalId(id);
-        // if(top>=-260){
-        //     setDisplay("none");
-        // }
+
     };
+
     useEffect(() => {
-        if(top>=-260){
+        if (opacity==0&&top>=-260) {
+            // console.log(6)
             setDisplay("none");
+            clearInterval(intervalId);
+        }else if(opacity==1&&top<=-300){
+            clearInterval(intervalId)
         }
-    }, [top]);
+    }, [opacity,top]);
 
-    // 当动画达到目标状态时清除定时器
-    // useEffect(() => {
-        // if ((opacity >= 1 && top <= -300) || (opacity <= 0 && top >= -260)) {
-        //     clearInterval(intervalId);
-        //     setIntervalId(null);
-            // if (opacity <= 0) {
-            //     setDisplay("none");
-
-            // }
-        // }
-        // 私自
-        // if (( top <= -300) || (top >= -260)) {
-        //         clearInterval(intervalId);
-        //         setIntervalId(null);
-        // }
-        // if(top>=-260){
-        //
-        //             setDisplay("none");
-                // }
-    //     结束
-    // }, [
-        // opacity,
-        // top, intervalId]);
-
-    // 组件卸载时清除定时器
+    // // 组件卸载时清除定时器
     useEffect(() => {
         return () => {
             if (intervalId) clearInterval(intervalId);
@@ -421,7 +397,7 @@ const itemshtml=items.map( item =>
                     <div id="toptexttwo">
                         实时<span>摸鱼</span>人数: &nbsp;<span>421</span>
                     </div>
-                    <div id="topsvg" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+                    <div id="topsvg">
                         <a title="设置" className="topIcon set" href="">
                             <svg t="1741080105706" className="icon"
                                  viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -447,7 +423,7 @@ const itemshtml=items.map( item =>
                                     fill="#4C4C4C" opacity=".99" p-id="4694"></path>
                             </svg>
                         </a>
-                        <a className="topIcon" href="">
+                        <a className="topIcon" href="" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                             <svg t="1741080280281" className="icon" viewBox="0 0 1418 1024"
                                  version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5706" width="200"
                                  height="200">
@@ -466,6 +442,7 @@ const itemshtml=items.map( item =>
                             top:`${top}px`,
                             opacity:opacity
                         }}
+                             onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}
                         >
                             <img src="https://momoyu.cc/assets/qq-EN_yH9uA.png" alt="" />
                             <div>群号：607942298
