@@ -1,8 +1,9 @@
 import {useEffect, useState} from "react";
-
+import {StyleContext} from "../content.tsx";
+import {useContext} from "react";
 
 function footer(){
-
+    const {style}=useContext(StyleContext);
     const [footeropacity, setFooteropacity] = useState(0);
     const [footerdisplay, setFooterdisplay] = useState('none');
     const [footertop, setFootertop] = useState(-10);
@@ -38,7 +39,7 @@ function footer(){
 
 
     return (
-        <footer>
+        <footer style={{backgroundColor:style.backgroundColor}}>
             <div className="svg">
                 <svg t="1741101025160" className="icon" viewBox="0 0 1024 1024" version="1.1"
                      xmlns="http://www.w3.org/2000/svg" p-id="30432" width="200" height="200">
@@ -72,16 +73,16 @@ function footer(){
                         fill="#bfbfbf" p-id="29075"></path>
                 </svg>
             </div>
-            <div id="footerText">
+            <div id="footerText" style={{color:style.color}}>
                 <ul>
-                    <li><a href="https://momoyu.cc/" target="_blank">首页</a></li>
-                    <li><a href="https://nav.momoyu.cc/" target="_blank">导航</a></li>
-                    <li><a href="https://support.qq.com/products/313868?" target="_blank">反馈</a></li>
-                    <li><a href="https://momoyu.cc/login" target="_blank">反馈RSS订阅</a></li>
+                    <li><a href="https://momoyu.cc/" target="_blank"  style={{color:style.color}}> 首页</a></li>
+                    <li><a href="https://nav.momoyu.cc/" target="_blank"  style={{color:style.color}}>导航</a></li>
+                    <li><a href="https://support.qq.com/products/313868?" target="_blank"  style={{color:style.color}}>反馈</a></li>
+                    <li><a href="https://momoyu.cc/login" target="_blank"  style={{color:style.color}}>反馈RSS订阅</a></li>
                 </ul>
-                <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank">© 2021 momoyu.cc
+                <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank"  style={{color:style.color}}>© 2021 momoyu.cc
                     粤ICP备2020133024号</a>
-                <a href="https://beian.mps.gov.cn/#/query/webSearch" target="_blank">粤公网安备
+                <a href="https://beian.mps.gov.cn/#/query/webSearch" target="_blank"  style={{color:style.color}}>粤公网安备
                     44011202001391号</a>
             </div>
         </footer>

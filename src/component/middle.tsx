@@ -27,6 +27,12 @@ function middle(){
     const [redtop, setRedtop] = useState(-10);
     const [redintervalId, setRedintervalId] = useState(null);
 
+    const {setSetscrstyle,style}=useContext(StyleContext)
+    // setSetscrstyle({top:"10px"})
+    const handleOnclick=(event)=>{
+        setSetscrstyle({display:"block",height:document.documentElement.scrollHeight+"px"})
+        event.preventDefault()
+    }
     // 鼠标移入时启动上移和淡入动画
     const handleMouseEnter = () => {
         displayref.current="block"
@@ -124,9 +130,9 @@ const news=[
 ];
 const newslists=news.map( newvalue =>
     <li>
-        <span className="spanone" >{newvalue.id}</span>
-        <span className="spantwo">{newvalue.title}</span>
-        <span className="spanthree">{newvalue.number}</span>
+        <span className="spanone" style={{color:style.color}}>{newvalue.id}</span>
+        <span className="spantwo" style={{color:style.color}}>{newvalue.title}</span>
+        <span className="spanthree" style={{color:style.color}}>{newvalue.number}</span>
     </li>
 )
 
@@ -420,14 +426,14 @@ const items=[
     },
 ]
 const itemshtml=items.map( item =>
-    <div className="item itemmain">
+    <div className="item itemmain"  style={{backgroundColor:style.backgroundColor}}>
         <a href="#" className="title">
             {item.svg}
             <h4>{item.title}</h4>&nbsp;
             <h6>{item.nowtime}</h6>
         </a>
         {item.svg2}
-        <ul>
+        <ul >
             {newslists}
         </ul>
     </div>
@@ -454,12 +460,11 @@ const itemshtml=items.map( item =>
 
 
 
-const {setSetscrstyle}=useContext(StyleContext)
-    // setSetscrstyle({top:"10px"})
-    const handleOnclick=(event)=>{
-       setSetscrstyle({display:"block",height:document.documentElement.clientHeight+"px"})
-        event.preventDefault()
-    }
+
+
+
+
+
 
 
 
@@ -471,14 +476,14 @@ const {setSetscrstyle}=useContext(StyleContext)
                 {itemshtml}
             </main>
             <aside ref={asideRef} style={{top:scrolltop+"px"}}>
-                <div id="top">
+                <div id="top"  style={{backgroundColor:style.backgroundColor}}>
                     <div id="topImg">
                         <span>无名</span>
                     </div>
-                    <div id="toptextone">
+                    <div id="toptextone" style={{color:style.color}}>
                         登录后可使用自定义订阅功能
                     </div>
-                    <div id="toptexttwo">
+                    <div id="toptexttwo" style={{color:style.color}}>
                         实时<span>摸鱼</span>人数: &nbsp;<span>421</span>
                     </div>
                     <div id="topsvg">

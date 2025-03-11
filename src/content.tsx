@@ -11,22 +11,28 @@ function content() {
 
     // const [count, setCount] = useState(0)
     const [setscrstyle,setSetscrstyle]=useState({display:"none",height:"0px"})
-    return (
-<div>
+    const [style,setStyle]=useState({backgroundColor:'#1f2025',color:'rgb(176, 179, 181)',svg:''})
+        return (
+<div >
     <StyleContext.Provider value={{setscrstyle}}>
         <Cover />
     </StyleContext.Provider>
 
         <div id="content">
-            <Header />
-            <StyleContext.Provider value={{setSetscrstyle}}>
-                <Middle />
-            </StyleContext.Provider>
-            <StyleContext.Provider value={{setscrstyle,setSetscrstyle}}>
-                <Setscreen />
+            <StyleContext.Provider value={{style}}>
+                <Header />
             </StyleContext.Provider>
 
-           <Footer />
+            <StyleContext.Provider value={{setSetscrstyle,style}}>
+                <Middle />
+            </StyleContext.Provider>
+            <StyleContext.Provider value={{setscrstyle,setSetscrstyle,style,setStyle}}>
+                <Setscreen />
+            </StyleContext.Provider>
+            <StyleContext.Provider value={{style}}>
+                <Footer />
+            </StyleContext.Provider>
+
         </div>
 </div>
     )
