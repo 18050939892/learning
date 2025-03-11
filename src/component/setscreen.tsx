@@ -1,9 +1,20 @@
 
-
+import {useContext} from "react";
+import {StyleContext} from '../content.tsx'
 function setscreen(){
 
+
+    const {setscrstyle,setSetscrstyle}=useContext(StyleContext)
+    // console.log(setscrstyle.display)
+    // setSetscrstyle({top:"10px"})
+    const handleOnclick=(event)=>{
+        setSetscrstyle({display:"none",height:"0px"})
+        event.preventDefault()
+    }
+
+
     return (
-        <div className="setscreen " id="set">
+        <div className="setscreen " id="set" style={{display:setscrstyle.display}}>
             <div className="settop">
                 <span><svg t="1741252551468" className="icon" viewBox="0 0 1024 1024" version="1.1"
                            xmlns="http://www.w3.org/2000/svg" p-id="2996" width="200" height="200">
@@ -12,7 +23,7 @@ function setscreen(){
                             p-id="2997" fill="#bfbfbf"></path>
                     </svg>设置</span>
                 <svg t="1741179270154" className="icon" viewBox="0 0 1024 1024" version="1.1"
-                     xmlns="http://www.w3.org/2000/svg" p-id="2629" width="200" height="200">
+                     xmlns="http://www.w3.org/2000/svg" p-id="2629" width="200" height="200" onClick={handleOnclick}>
                     <path d="M0 0h1024v1024H0z" fill="#ffffff" fill-opacity="0" p-id="2630"></path>
                     <path
                         d="M240.448 168l2.346667 2.154667 289.92 289.941333 279.253333-279.253333a42.666667 42.666667 0 0 1 62.506667 58.026666l-2.133334 2.346667-279.296 279.210667 279.274667 279.253333a42.666667 42.666667 0 0 1-58.005333 62.528l-2.346667-2.176-279.253333-279.253333-289.92 289.962666a42.666667 42.666667 0 0 1-62.506667-58.005333l2.154667-2.346667 289.941333-289.962666-289.92-289.92a42.666667 42.666667 0 0 1 57.984-62.506667z"
@@ -78,7 +89,7 @@ function setscreen(){
 
             </div>
             <div className="contentTwo">略</div>
-            <div className="setbuttom"><a href="#">开摸!</a></div>
+            <div className="setbuttom"  onClick={handleOnclick}><a href="#">开摸!</a></div>
         </div>
     )
 }

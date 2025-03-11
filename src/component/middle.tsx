@@ -1,6 +1,7 @@
 import useWindowSize from '../hooks/useWindowSize.ts';
 import { useState, useRef, useEffect, useCallback } from 'react';
-
+import {useContext} from "react";
+import {StyleContext} from '../content.tsx'
 function middle(){
     const mainRef = useRef<HTMLElement>(null);
     const middleRef = useRef<HTMLDivElement>(null);
@@ -432,12 +433,44 @@ const itemshtml=items.map( item =>
     </div>
 )
 
+    const [scrolltop, setScrolltop] = useState(85);
+    const handleScroll =useCallback(
+        () => {
+        if(document.documentElement.scrollTop>=100){
+            setScrolltop(30)
+        }else{
+            setScrolltop(85)
+        }
+    },[scrolltop]
+    )
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [document.documentElement.scrollTop]);
+
+
+
+
+const {setSetscrstyle}=useContext(StyleContext)
+    // setSetscrstyle({top:"10px"})
+    const handleOnclick=(event)=>{
+       setSetscrstyle({display:"block",height:document.documentElement.clientHeight+"px"})
+        event.preventDefault()
+    }
+
+
+
+
+
     return (
         <div ref={middleRef} id="middle">
             <main ref={mainRef}>
                 {itemshtml}
             </main>
-            <aside ref={asideRef}>
+            <aside ref={asideRef} style={{top:scrolltop+"px"}}>
                 <div id="top">
                     <div id="topImg">
                         <span>无名</span>
@@ -449,7 +482,7 @@ const itemshtml=items.map( item =>
                         实时<span>摸鱼</span>人数: &nbsp;<span>421</span>
                     </div>
                     <div id="topsvg">
-                        <a title="设置" className="topIcon set" href="">
+                        <a title="设置" className="topIcon set" href="" onClick={handleOnclick}>
                             <svg t="1741080105706" className="icon"
                                  viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
                                  p-id="2627"
