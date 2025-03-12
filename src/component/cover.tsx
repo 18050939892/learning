@@ -1,13 +1,14 @@
-import {useContext} from "react";
-import {StyleContext} from "../content.tsx";
+import { useContext } from 'react'
+import { StyleContext } from '../content.tsx'
 
 
 function cover() {
-
-    const {setscrstyle}=useContext(StyleContext)
+    
+    const {setscrstyle} = useContext(StyleContext)
     return (
-        <div id="cover" style={{display:setscrstyle.display,height:setscrstyle.height}}>
-    </div>
+        <div id="cover" style={{display: setscrstyle.display, height: setscrstyle.height}}>
+        </div>
     )
 }
+
 export default cover
