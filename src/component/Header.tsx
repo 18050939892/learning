@@ -1,4 +1,4 @@
-import { StyleContext } from '../content.tsx'
+import { StyleContext } from '../Content.tsx'
 import { useContext } from 'react'
 
 function header() {

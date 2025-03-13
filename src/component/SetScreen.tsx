@@ -1,10 +1,10 @@
 import { useContext } from 'react'
-import { StyleContext } from '../content.tsx'
+import { StyleContext } from '../Content.tsx'
 import { useState, useCallback } from 'react'
 
 type Theme = '暗夜' | '护眼' | '极客';
 
-function setscreen() {
+function setScreen() {
     const {
         setscrstyle,
         setSetscrstyle,
@@ -313,4 +313,4 @@ function setscreen() {
     )
 }
 
-export default setscreen
+export default setScreen

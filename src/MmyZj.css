@@ -215,6 +215,24 @@ main {
 
 }
 
+@keyframes rotating {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+main>.item>svg:active {
+
+        animation-name: rotating;
+        animation-duration: 0.3s;
+        animation-iteration-count: 1;
+}
+
+
+
 aside {
     display: block;
     position: fixed;
@@ -224,17 +242,44 @@ aside {
 }
 
 aside > #top > #topsvg > div {
-    display: block;
+    /*display: block;*/
     width: 200px;
     height: 250px;
     background-color: rgb(255, 255, 255);
     position: absolute;
     z-index: 1;
-    top: -280px;
+    /*top: -280px;*/
     left: 95px;
     padding: 10px 10px;
+    /*position: absolute;*/
+    color: #18191e;
+    /*display: none;*/
+    /* top:-295px */
+    visibility: hidden;
+    top: -260px;
+    opacity: 0;
+    /*transition-delay:0.1s ;*/
+    transition: top 0.5s linear, opacity 0.5s linear, visibility 0.5s ease;
+
 
 }
+
+
+aside > #top > #topsvg > .topIcon:nth-child(3):hover ~ div {
+    /*display: block;*/
+    visibility: visible;
+    opacity: 1;
+    top: -300px;
+}
+
+aside > #top > #topsvg > div:hover {
+    /*display: block;*/
+    visibility: visible;
+    opacity: 1;
+    top: -300px
+
+}
+
 
 aside > #top > #topsvg > div > img {
     position: absolute;
@@ -243,14 +288,6 @@ aside > #top > #topsvg > div > img {
     height: 220px;
 }
 
-aside > #top > #topsvg > div {
-    position: absolute;
-    color: #18191e;
-    display: none;
-    /* top:-295px */
-    top: -260px;
-    opacity: 0;
-}
 
 aside > #top > #topsvg > div > div {
     position: absolute;
@@ -426,10 +463,27 @@ aside > #buttom > #redpackage > img {
 aside > #buttom > #redpackage {
     position: relative;
     top: -10px;
-    display: none;
+    visibility: hidden;
     opacity: 0;
+    transition: top 0.5s linear, opacity 0.5s linear, visibility 0.5s ease;
 
 }
+
+aside > #buttom > #redpackage:hover {
+
+    top: -40px;
+    visibility: visible;
+    opacity: 1;
+}
+
+aside > #buttom > .showrp:hover ~ #redpackage {
+    top: -40px;
+    visibility: visible;
+    opacity: 1;
+
+
+}
+
 
 aside > #buttom > #redpackage > .bb {
 
@@ -602,8 +656,18 @@ footer > .svg > div {
     top: -10px;
     /* top: -40px; */
     left: -12px;
-    display: none;
+    /*display: none;*/
+    opacity: 0;
+    visibility: hidden;
+    transition: top 0.5s linear, opacity 0.5s linear, visibility 0.5s ease;
 }
+footer>.svg:hover >div{
+    visibility: visible;
+    opacity: 1;
+    top: -40px;
+}
+
+
 
 footer > .svg > div > #wx {
 
@@ -619,21 +683,21 @@ footer > .svg > div {
 }
 
 
-.rotating {
-    animation-name: rotating;
-    animation-duration: 1s;
-    animation-iteration-count: 1;
-}
+/*.rotating {*/
+/*    animation-name: rotating;*/
+/*    animation-duration: 1s;*/
+/*    animation-iteration-count: 1;*/
+/*}*/
 
-@keyframes rotating {
-    from {
-        transform: rotate(0deg);
-    }
+/*@keyframes rotating {*/
+/*    from {*/
+/*        transform: rotate(0deg);*/
+/*    }*/
 
-    to {
-        transform: rotate(-360deg);
-    }
-}
+/*    to {*/
+/*        transform: rotate(-360deg);*/
+/*    }*/
+/*}*/
 
 .wxthree {
     position: absolute;

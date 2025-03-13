@@ -1,41 +1,41 @@
 import { useEffect, useState } from 'react'
-import { StyleContext } from '../content.tsx'
+import { StyleContext } from '../Content.tsx'
 import { useContext } from 'react'
 
 function footer() {
     const {style, fontsize} = useContext(StyleContext)
-    const [footeropacity, setFooteropacity] = useState(0)
-    const [footerdisplay, setFooterdisplay] = useState('none')
-    const [footertop, setFootertop] = useState(-10)
-    const [footerintervalId, setFooterintervalId] = useState(null)
-    const footerhandleMouseEnter = () => {
-        setFooterdisplay('block')
-        if (footerintervalId) clearInterval(footerintervalId)
-        const footerid = setInterval(() => {
-            setFooteropacity((prev) => (prev < 1 ? prev + 0.03 : 1)) // 每次增加0.03
-            setFootertop((prev) => (prev > -40 ? prev - 1 : -40)) // 每次减少2px
-        }, 10)
-        setFooterintervalId(footerid)
-        
-    }
-    const footerhandleMouseLeave = () => {
-        if (footerintervalId) clearInterval(footerintervalId) // 清除之前的定时器
-        const footerid = setInterval(() => {
-            setFooteropacity((prev) => (prev > 0 ? prev - 0.03 : 0)) // 每次减少0.03
-            setFootertop((prev) => (prev < -10 ? prev + 1 : -10)) // 每次增加2px
-        }, 10)
-        setFooterintervalId(footerid)
-        
-    }
-    useEffect(() => {
-        if (footeropacity == 0 && footertop >= -10) {
-            // console.log(6)
-            setFooterdisplay('none')
-            clearInterval(footerintervalId)
-        } else if (footeropacity == 1 && footertop <= -40) {
-            clearInterval(footerintervalId)
-        }
-    }, [footertop, footeropacity])
+    // const [footeropacity, setFooteropacity] = useState(0)
+    // const [footerdisplay, setFooterdisplay] = useState('none')
+    // const [footertop, setFootertop] = useState(-10)
+    // const [footerintervalId, setFooterintervalId] = useState(null)
+    // const footerhandleMouseEnter = () => {
+    //     setFooterdisplay('block')
+    //     if (footerintervalId) clearInterval(footerintervalId)
+    //     const footerid = setInterval(() => {
+    //         setFooteropacity((prev) => (prev < 1 ? prev + 0.03 : 1)) // 每次增加0.03
+    //         setFootertop((prev) => (prev > -40 ? prev - 1 : -40)) // 每次减少2px
+    //     }, 10)
+    //     setFooterintervalId(footerid)
+    //
+    // }
+    // const footerhandleMouseLeave = () => {
+    //     if (footerintervalId) clearInterval(footerintervalId) // 清除之前的定时器
+    //     const footerid = setInterval(() => {
+    //         setFooteropacity((prev) => (prev > 0 ? prev - 0.03 : 0)) // 每次减少0.03
+    //         setFootertop((prev) => (prev < -10 ? prev + 1 : -10)) // 每次增加2px
+    //     }, 10)
+    //     setFooterintervalId(footerid)
+    //
+    // }
+    // useEffect(() => {
+    //     if (footeropacity == 0 && footertop >= -10) {
+    //         // console.log(6)
+    //         setFooterdisplay('none')
+    //         clearInterval(footerintervalId)
+    //     } else if (footeropacity == 1 && footertop <= -40) {
+    //         clearInterval(footerintervalId)
+    //     }
+    // }, [footertop, footeropacity])
     
     
     return (
@@ -55,14 +55,16 @@ function footer() {
                     ></path>
                 </svg>
             </div>
-            <div className="svg" onMouseLeave={footerhandleMouseLeave} onMouseEnter={footerhandleMouseEnter}>
+            <div className="svg"
+                // onMouseLeave={footerhandleMouseLeave} onMouseEnter={footerhandleMouseEnter}
+            >
                 
                 <div
-                    style={{
-                        display: footerdisplay,
-                        top: footertop + 'px',
-                        opacity: footeropacity
-                    }}
+                    // style={{
+                    //     display: footerdisplay,
+                    //     top: footertop + 'px',
+                    //     opacity: footeropacity
+                    // }}
                 >
                     <div id="wx">
                         <img src="https://momoyu.cc/assets/gzhss-E7ztoHaG.png" alt="" />

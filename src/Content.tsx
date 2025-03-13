@@ -1,10 +1,10 @@
 // import { useState } from 'react'
-import './mmyzj.css'
-import Header from './component/header.tsx'
-import Middle from './component/middle.tsx'
-import Setscreen from './component/setscreen.tsx'
-import Footer from './component/footer.tsx'
-import Cover from './component/cover.tsx'
+import './MmyZj.css'
+import Header from './component/Header.tsx'
+import Middle from './component/Middle.tsx'
+import SetScreen from './component/SetScreen.tsx'
+import Footer from './component/Footer.tsx'
+import Cover from './component/Cover.tsx'
 import { useState, createContext } from 'react'
 
 export const StyleContext = createContext()
@@ -70,7 +70,7 @@ function content() {
                         setFirstshow,
                     }}
                 >
-                    <Setscreen />
+                    <SetScreen />
                 </StyleContext.Provider>
                 <StyleContext.Provider value={{style, fontsize}}>
                     <Footer />

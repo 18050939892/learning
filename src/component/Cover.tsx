@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { StyleContext } from '../content.tsx'
+import { StyleContext } from '../Content.tsx'
 
 
 function cover() {
