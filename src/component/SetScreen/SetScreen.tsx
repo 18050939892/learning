@@ -1,26 +1,38 @@
-import { useContext } from 'react'
-import { StyleContext } from '../Content.tsx'
+// import { useContext } from 'react'
+// import { StyleContext } from '../Content/Content.tsx'
 import { useState, useCallback } from 'react'
+import './SetScreen.less'
 
 type Theme = '暗夜' | '护眼' | '极客';
+import { useAtom } from 'jotai'
+import { Firstshow, Logoshow, Overhidden, Checkwork, Fontsize, Style, Setscrstyle } from '../../jotai/Store.ts'
 
 function setScreen() {
-    const {
-        setscrstyle,
-        setSetscrstyle,
-        style,
-        setStyle,
-        setFontsize,
-        fontsize,
-        checkwork,
-        setCheckwork,
-        setOverhidden,
-        overhidden,
-        logoshow,
-        setLogoshow,
-        setFirstshow,
-        firstshow,
-    } = useContext(StyleContext)
+    const [firstshow, setFirstshow] = useAtom(Firstshow)
+    const [logoshow, setLogoshow] = useAtom(Logoshow)
+    const [overhidden, setOverhidden] = useAtom(Overhidden)
+    const [checkwork, setCheckwork] = useAtom(Checkwork)
+    const [fontsize, setFontsize] = useAtom(Fontsize)
+    const [style, setStyle] = useAtom(Style)
+    const [setscrstyle, setSetscrstyle] = useAtom(Setscrstyle)
+    
+    
+    // const {
+    //     setscrstyle,
+    //     setSetscrstyle,
+    // style,
+    // setStyle,
+    // setFontsize,
+    // fontsize,
+    // checkwork,
+    // setCheckwork,
+    // setOverhidden,
+    // overhidden,
+    // logoshow,
+    // setLogoshow,
+    // setFirstshow,
+    // firstshow,
+    // } = useContext(StyleContext)
     const handleOnclick = (event) => {
         setSetscrstyle({display: 'none', height: '0px'})
         event.preventDefault()

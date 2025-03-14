@@ -1,5 +1,5 @@
 // import { useState } from 'react'
-import Context from './content.tsx'
+import Context from './component/Content/Content.tsx'
 
 function App() {
     // const [count, setCount] = useState(0)

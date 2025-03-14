@@ -1,13 +1,17 @@
-import { StyleContext } from '../Content.tsx'
-import { useContext } from 'react'
+// import { StyleContext } from '../Content/Content.tsx'
+// import { useContext } from 'react'
+import './Header.less'
+import { useAtom } from 'jotai'
+import { Style } from '../../jotai/Store.ts'
 
 function header() {
-    const {style} = useContext(StyleContext)
+    // const {style} = useContext(StyleContext)
+    const [style, setStyle] = useAtom(Style)
     const handleonclick = (event) => {
         if (event.target.id == 'login') {
-            window.location.href = '../../login.html?name=login'
+            window.location.href = '../../../login.html'
         } else {
-            window.location.href = '../../login.html'
+            window.location.href = '../../../login.html'
         }
         
     }

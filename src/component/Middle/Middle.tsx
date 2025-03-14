@@ -1,7 +1,20 @@
-import useWindowSize from '../hooks/UseWindowSize.ts'
+import useWindowSize from '../../hooks/UseWindowSize.ts'
 import { useState, useRef, useEffect, useCallback, createElement } from 'react'
-import { useContext } from 'react'
-import { StyleContext } from '../Content.tsx'
+// import { useContext } from 'react'
+// import { StyleContext } from '../Content/Content.tsx'
+import './Middle.less'
+import {
+    Firstshow,
+    Logoshow,
+    Overhidden,
+    Checkwork,
+    Fontsize,
+    Style,
+    Workarr,
+    Unworkarr,
+    Setscrstyle
+} from '../../jotai/Store.ts'
+import { useAtom } from 'jotai'
 
 function middle() {
     const mainRef = useRef<HTMLElement>(null)
@@ -28,18 +41,27 @@ function middle() {
     // const [redtop, setRedtop] = useState(-10)
     // const [redintervalId, setRedintervalId] = useState(null)
     
+    const [firstshow, setFirstshow] = useAtom(Firstshow)
+    const [logoshow, setLogoshow] = useAtom(Logoshow)
+    const [overhidden, setOverhidden] = useAtom(Overhidden)
+    const [checkwork, setCheckwork] = useAtom(Checkwork)
+    const [fontsize, setFontsize] = useAtom(Fontsize)
+    const [style, setStyle] = useAtom(Style)
+    const [workarr, setWorkarr] = useAtom(Workarr)
+    const [unworkarr, setUnworkarr] = useAtom(Unworkarr)
+    const [setscrstyle, setSetscrstyle] = useAtom(Setscrstyle)
     
-    const {
-        setSetscrstyle,
-        style,
-        fontsize,
-        workarr,
-        unworkarr,
-        checkwork,
-        overhidden,
-        logoshow,
-        firstshow
-    } = useContext(StyleContext)
+    // const {
+    // setSetscrstyle,
+    // style,
+    // fontsize,
+    // workarr,
+    // unworkarr,
+    // checkwork,
+    // overhidden,
+    // logoshow,
+    // firstshow
+    // } = useContext(StyleContext)
     // setSetscrstyle({top:"10px"})
     const handleOnclick = (event) => {
         setSetscrstyle({display: 'block', height: document.documentElement.scrollHeight + 'px'})
@@ -122,9 +144,7 @@ function middle() {
     //         clearInterval(redintervalId)
     //     }
     // }, [redtop, redopacity])
-   
-   
-   
+    
     
     // const xzintervalId = useRef(null)
     // const handleMouseup = (event) => {
@@ -142,13 +162,6 @@ function middle() {
     //     }, 1000)
     //     xzintervalId.current = xzid
     // }
-   
-    
-    
-    
-    
-    
-    
     
     
     const news = [

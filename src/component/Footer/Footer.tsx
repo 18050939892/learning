@@ -1,9 +1,17 @@
 import { useEffect, useState } from 'react'
-import { StyleContext } from '../Content.tsx'
-import { useContext } from 'react'
+// import { StyleContext } from '../Content/Content.tsx'
+// import { useContext } from 'react'
+import './Footer.less'
+import { useAtom } from 'jotai'
+import { Fontsize, Style } from '../../jotai/Store.ts'
 
 function footer() {
-    const {style, fontsize} = useContext(StyleContext)
+    const [fontsize, setFontsize] = useAtom(Fontsize)
+    const [style, setStyle] = useAtom(Style)
+    // const {
+    // style,
+    // fontsize
+    // } = useContext(StyleContext)
     // const [footeropacity, setFooteropacity] = useState(0)
     // const [footerdisplay, setFooterdisplay] = useState('none')
     // const [footertop, setFootertop] = useState(-10)
@@ -55,7 +63,8 @@ function footer() {
                     ></path>
                 </svg>
             </div>
-            <div className="svg"
+            <div
+                className="svg"
                 // onMouseLeave={footerhandleMouseLeave} onMouseEnter={footerhandleMouseEnter}
             >
                 
