@@ -1,8 +1,7 @@
-// import { useState } from 'react'
-import Context from './component/Content/Content.tsx'
+import Context from './component/Content'
 
 function App() {
-    // const [count, setCount] = useState(0)
+  
     
     return (
         <>

@@ -1,53 +1,14 @@
-import { useEffect, useState } from 'react'
-// import { StyleContext } from '../Content/Content.tsx'
-// import { useContext } from 'react'
 import './Footer.less'
 import { useAtom } from 'jotai'
-import { Fontsize, Style } from '../../jotai/Store.ts'
+import { FontSize, Style } from '../../jotai/Store.ts'
 
-function footer() {
-    const [fontsize, setFontsize] = useAtom(Fontsize)
-    const [style, setStyle] = useAtom(Style)
-    // const {
-    // style,
-    // fontsize
-    // } = useContext(StyleContext)
-    // const [footeropacity, setFooteropacity] = useState(0)
-    // const [footerdisplay, setFooterdisplay] = useState('none')
-    // const [footertop, setFootertop] = useState(-10)
-    // const [footerintervalId, setFooterintervalId] = useState(null)
-    // const footerhandleMouseEnter = () => {
-    //     setFooterdisplay('block')
-    //     if (footerintervalId) clearInterval(footerintervalId)
-    //     const footerid = setInterval(() => {
-    //         setFooteropacity((prev) => (prev < 1 ? prev + 0.03 : 1)) // 每次增加0.03
-    //         setFootertop((prev) => (prev > -40 ? prev - 1 : -40)) // 每次减少2px
-    //     }, 10)
-    //     setFooterintervalId(footerid)
-    //
-    // }
-    // const footerhandleMouseLeave = () => {
-    //     if (footerintervalId) clearInterval(footerintervalId) // 清除之前的定时器
-    //     const footerid = setInterval(() => {
-    //         setFooteropacity((prev) => (prev > 0 ? prev - 0.03 : 0)) // 每次减少0.03
-    //         setFootertop((prev) => (prev < -10 ? prev + 1 : -10)) // 每次增加2px
-    //     }, 10)
-    //     setFooterintervalId(footerid)
-    //
-    // }
-    // useEffect(() => {
-    //     if (footeropacity == 0 && footertop >= -10) {
-    //         // console.log(6)
-    //         setFooterdisplay('none')
-    //         clearInterval(footerintervalId)
-    //     } else if (footeropacity == 1 && footertop <= -40) {
-    //         clearInterval(footerintervalId)
-    //     }
-    // }, [footertop, footeropacity])
+function index() {
+    const [FontObj, setFontsObj] = useAtom(FontSize)
+    const [StyleObj, setStyleObj] = useAtom(Style)
     
     
     return (
-        <footer style={{backgroundColor: style.backgroundColor}}>
+        <footer style={{backgroundColor: StyleObj.backgroundColor}}>
             <div className="svg">
                 <svg
                     t="1741101025160" className="icon" viewBox="0 0 1024 1024" version="1.1"
@@ -65,15 +26,11 @@ function footer() {
             </div>
             <div
                 className="svg"
-                // onMouseLeave={footerhandleMouseLeave} onMouseEnter={footerhandleMouseEnter}
+            
             >
                 
                 <div
-                    // style={{
-                    //     display: footerdisplay,
-                    //     top: footertop + 'px',
-                    //     opacity: footeropacity
-                    // }}
+                
                 >
                     <div id="wx">
                         <img src="https://momoyu.cc/assets/gzhss-E7ztoHaG.png" alt="" />
@@ -96,33 +53,33 @@ function footer() {
                     ></path>
                 </svg>
             </div>
-            <div id="footerText" style={{color: style.color}}>
+            <div id="footerText" style={{color: StyleObj.color}}>
                 <ul>
                     <li><a
                         href="https://momoyu.cc/" target="_blank"
-                        style={{color: style.color, fontSize: fontsize + 'px'}}
+                        style={{color: StyleObj.color, fontSize: FontObj + 'px'}}
                     > 首页</a></li>
                     <li><a
                         href="https://nav.momoyu.cc/" target="_blank"
-                        style={{color: style.color, fontSize: fontsize + 'px'}}
+                        style={{color: StyleObj.color, fontSize: FontObj + 'px'}}
                     >导航</a></li>
                     <li><a
                         href="https://support.qq.com/products/313868?" target="_blank"
-                        style={{color: style.color, fontSize: fontsize + 'px'}}
+                        style={{color: StyleObj.color, fontSize: FontObj + 'px'}}
                     >反馈</a></li>
                     <li><a
                         href="https://momoyu.cc/login" target="_blank"
-                        style={{color: style.color, fontSize: fontsize + 'px'}}
+                        style={{color: StyleObj.color, fontSize:FontObj + 'px'}}
                     >反馈RSS订阅</a></li>
                 </ul>
                 <a
                     href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank"
-                    style={{color: style.color, fontSize: fontsize + 'px'}}
+                    style={{color: StyleObj.color, fontSize: FontObj + 'px'}}
                 >© 2021 momoyu.cc
                     粤ICP备2020133024号</a>
                 <a
                     href="https://beian.mps.gov.cn/#/query/webSearch" target="_blank"
-                    style={{color: style.color, fontSize: fontsize + 'px'}}
+                    style={{color: StyleObj.color, fontSize:FontObj + 'px'}}
                 >粤公网安备
                     44011202001391号</a>
             </div>
@@ -130,4 +87,4 @@ function footer() {
     )
 }
 
-export default footer
+export default index

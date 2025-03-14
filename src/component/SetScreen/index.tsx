@@ -1,40 +1,23 @@
-// import { useContext } from 'react'
-// import { StyleContext } from '../Content/Content.tsx'
-import { useState, useCallback } from 'react'
+import { useState } from 'react'
 import './SetScreen.less'
 
 type Theme = '暗夜' | '护眼' | '极客';
 import { useAtom } from 'jotai'
-import { Firstshow, Logoshow, Overhidden, Checkwork, Fontsize, Style, Setscrstyle } from '../../jotai/Store.ts'
+import { FirstShow, LogoShow, OverHidden, CheckWork, FontSize, Style, SetScrStyle } from '../../jotai/Store.ts'
 
-function setScreen() {
-    const [firstshow, setFirstshow] = useAtom(Firstshow)
-    const [logoshow, setLogoshow] = useAtom(Logoshow)
-    const [overhidden, setOverhidden] = useAtom(Overhidden)
-    const [checkwork, setCheckwork] = useAtom(Checkwork)
-    const [fontsize, setFontsize] = useAtom(Fontsize)
-    const [style, setStyle] = useAtom(Style)
-    const [setscrstyle, setSetscrstyle] = useAtom(Setscrstyle)
+function index() {
+    const [FirstObj, setFirstObj] = useAtom(FirstShow)
+    const [LogoObj, setLogoObj] = useAtom(LogoShow)
+    const [OverObj, setOverObj] = useAtom(OverHidden)
+    const [CheckObj, setCheckObj] = useAtom(CheckWork)
+    const [FontObj, setFontObj] = useAtom(FontSize)
+    const [StyleObj, setStyleObj] = useAtom(Style)
+    const [SetObj, setSetObj] = useAtom(SetScrStyle)
     
     
-    // const {
-    //     setscrstyle,
-    //     setSetscrstyle,
-    // style,
-    // setStyle,
-    // setFontsize,
-    // fontsize,
-    // checkwork,
-    // setCheckwork,
-    // setOverhidden,
-    // overhidden,
-    // logoshow,
-    // setLogoshow,
-    // setFirstshow,
-    // firstshow,
-    // } = useContext(StyleContext)
+    
     const handleOnclick = (event) => {
-        setSetscrstyle({display: 'none', height: '0px'})
+        setSetObj({display: 'none', height: '0px'})
         event.preventDefault()
     }
     
@@ -44,9 +27,9 @@ function setScreen() {
     
     const fzOnmouseDown = (event) => {
         if (event.target.value == '-') {
-            setFontsize(fontsize - 1)
+            setFontObj(FontObj - 1)
         } else {
-            setFontsize(fontsize + 1)
+            setFontObj(FontObj + 1)
         }
     }
     const zjOnmouseDown = (event) => {
@@ -55,7 +38,7 @@ function setScreen() {
             switch (theme) {
                 case '暗夜':
                     newTheme = '护眼'
-                    setStyle({
+                    setStyleObj({
                         backgroundColor: '#333e43',
                         color: 'rgb(176, 179, 181)',
                         svg: <svg
@@ -72,7 +55,7 @@ function setScreen() {
                     break
                 case '护眼':
                     newTheme = '极客'
-                    setStyle({
+                    setStyleObj({
                         backgroundColor: 'white',
                         color: 'black',
                         svg: <svg
@@ -89,7 +72,7 @@ function setScreen() {
                     break
                 default:
                     newTheme = '暗夜'
-                    setStyle({
+                    setStyleObj({
                         backgroundColor: '#1f2025',
                         color: 'rgb(176, 179, 181)',
                         svg: <svg
@@ -110,7 +93,7 @@ function setScreen() {
             switch (theme) {
                 case '暗夜':
                     newTheme = '极客'
-                    setStyle({
+                    setStyleObj({
                         backgroundColor: 'white',
                         color: 'black',
                         svg: <svg
@@ -127,7 +110,7 @@ function setScreen() {
                     break
                 case '极客':
                     newTheme = '护眼'
-                    setStyle({
+                    setStyleObj({
                         backgroundColor: '#333e43',
                         color: 'rgb(176, 179, 181)',
                         svg: <svg
@@ -144,7 +127,7 @@ function setScreen() {
                     break
                 default:
                     newTheme = '暗夜'
-                    setStyle({
+                    setStyleObj({
                         backgroundColor: '#1f2025',
                         color: 'rgb(176, 179, 181)',
                         svg: <svg
@@ -177,23 +160,23 @@ function setScreen() {
         }
         switch (event.currentTarget.getAttribute('name')) {
             case 'toumo':
-                if (checkwork) {
-                    setCheckwork(false)
+                if (CheckObj) {
+                    setCheckObj(false)
                 } else {
-                    setCheckwork(true)
+                    setCheckObj(true)
                 }
                 
                 break
             case 'yincang':
-                if (overhidden.height == '20px') {
-                    setOverhidden({
+                if (OverObj.height == '20px') {
+                    setOverObj({
                         height: '',
                         overflow: '',
                         textOverflow: '',
                         whiteSpace: ''
                     })
                 } else {
-                    setOverhidden({
+                    setOverObj({
                         height: '20px',
                         overflow: 'hidden',
                         textOverflow: 'ellipsis',
@@ -204,17 +187,17 @@ function setScreen() {
                 
                 break
             case 'logo':
-                if (logoshow) {
-                    setLogoshow(false)
+                if (LogoObj) {
+                    setLogoObj(false)
                 } else {
-                    setLogoshow(true)
+                    setLogoObj(true)
                 }
                 break
             case 'first':
-                if (firstshow) {
-                    setFirstshow(false)
+                if (FirstObj) {
+                    setFirstObj(false)
                 } else {
-                    setFirstshow(true)
+                    setFirstObj(true)
                 }
                 break
             default:
@@ -228,7 +211,7 @@ function setScreen() {
     return (
         <div
             className="setscreen " id="set"
-            style={{display: setscrstyle.display, backgroundColor: style.backgroundColor, color: style.color}}
+            style={{display: SetObj.display, backgroundColor: StyleObj.backgroundColor, color: StyleObj.color}}
         >
             <div className="settop">
                 <span><svg
@@ -240,7 +223,7 @@ function setScreen() {
                             p-id="2997" fill="#bfbfbf"
                         ></path>
                     </svg>设置</span>
-                {style.svg ? style.svg :
+                {StyleObj.svg ? StyleObj.svg :
                     <svg
                         t="1741179270154" className="icon" viewBox="0 0 1024 1024" version="1.1"
                         xmlns="http://www.w3.org/2000/svg" p-id="2629" width="200" height="200" onClick={handleOnclick}
@@ -273,7 +256,7 @@ function setScreen() {
                             <input
                                 type="button" className="on-number" value="-" data-v="-1" onMouseDown={fzOnmouseDown}
                             />
-                            <input type="text" value={fontsize} />
+                            <input type="text" value={FontObj} />
                             <input
                                 type="button" className="on-number" value="+" data-v="1" onMouseDown={fzOnmouseDown}
                             />
@@ -325,4 +308,4 @@ function setScreen() {
     )
 }
 
-export default setScreen
+export default index
