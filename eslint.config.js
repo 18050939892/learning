@@ -14,12 +14,13 @@ export default tseslint.config(
         languageOptions: {
             ecmaVersion: 2021,
             sourceType: 'module',
-            parser: tseslint.parser,  // 添加这行
+            parser: tseslint.parser,
             parserOptions: {
                 ecmaFeatures: {
                     jsx: true,
                 },
-                project: './tsconfig.json',  // 添加这行，指向你的 tsconfig.json
+                projectService: true,  // 使用 projectService 替代 project
+                tsconfigRootDir: process.cwd(),
             },
             globals: {
                 ...globals.browser,
