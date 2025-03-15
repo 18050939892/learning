@@ -6,6 +6,7 @@ function index() {
     // 命名按照这个格式
     const [style, setStyle] = useAtom(Style)
     return (
+        // TODO 这里的 backgroundColor 需要变化吗？ 能用 CSS 实现的，不要引入 JS，一个类就可以解决了
         <header style={{backgroundColor: style.backgroundColor}}>
             <img
                 src="https://momoyu.cc/assets/logo-1-DXR4uO3F.png" alt=""

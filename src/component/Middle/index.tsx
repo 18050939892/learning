@@ -29,7 +29,8 @@ function index() {
     }, [size])
     
     
-    const [FirstObj, setFirstObj] = useAtom(FirstShow)
+    // todo 这里全优化一下， 如果 set 没用到，不用写了
+    const [FirstObj] = useAtom(FirstShow)
     const [LogoObj, setLogoObj] = useAtom(LogoShow)
     const [OverObj, setOverObj] = useAtom(OverHidden)
     const [CheckObj, setCheckObj] = useAtom(CheckWork)
@@ -86,6 +87,7 @@ function index() {
     
     
     const items = [
+        // todo 这里的 svg，弄一个 icons 目录，每个 svg 一个文件，然后引入
         {
             svg: <svg
                 t="1741091539061" className="icon" viewBox="0 0 1024 1024" version="1.1"
@@ -550,6 +552,8 @@ function index() {
                 firstarr[index].style.cssText = 'padding-top:10px;height:15px; width:90.5%; border-radius:5px 5px;color:rgb(176, 179, 181);'
                 mainRef.current.prepend(firstarr[index])
             })
+            
+            // todo 这里的写法也是错的，重复的代码太多了，优化成 循环的形式，不会写就发给 AI，让他发给你正确答案
             firstarr[5].after(mainRef.current.querySelectorAll('.itemmain')[4])
             firstarr[5].after(mainRef.current.querySelectorAll('.itemmain')[3])
             firstarr[5].after(mainRef.current.querySelectorAll('.itemmain')[3])
@@ -568,6 +572,7 @@ function index() {
             
         } else {
             
+            // todo 这里的写法也是错的，重复的代码太多了，优化成 循环的形式，不会写就发给 AI，让他发给你正确答案
             if (middleRef.current.querySelectorAll('.additem')[0]) {
                 middleRef.current.querySelectorAll('.additem')[0].before(mainRef.current.querySelectorAll('.itemmain')[0])
                 middleRef.current.querySelectorAll('.additem')[0].before(mainRef.current.querySelectorAll('.itemmain')[1])

@@ -2,7 +2,9 @@ import { atom } from 'jotai'
 
 export const FirstShow = atom<boolean>(false)
 export const LogoShow = atom<boolean>(true)
-export const OverHidden = atom<object>({
+
+// TODO atom 的类型都不需要自己写，他会自动推导，全删掉
+export const OverHidden = atom({
     height: '',
     overflow: '',
     textOverflow: '',
