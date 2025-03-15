@@ -26,6 +26,7 @@ function index() {
     const [theme, setTheme] = useState<Theme>('暗夜')
     
     
+    // todo 这些逻辑都一样，直接挂在具体位置上，不要声明后再引用，函数可以直接内嵌上去
     const fzOnmouseDown = (event) => {
         if (event.target.value == '-') {
             setFontObj(FontObj - 1)
@@ -33,6 +34,8 @@ function index() {
             setFontObj(FontObj + 1)
         }
     }
+    
+    // todo 这些逻辑都一样，直接挂在具体位置上，不要声明后再引用，函数可以直接内嵌上去
     const zjOnmouseDown = (event) => {
         if (event.target.value == '<') {
             let newTheme: Theme
@@ -91,6 +94,8 @@ function index() {
             setTheme(newTheme)
         } else {
             let newTheme: Theme
+            // todo react 不需要这种写法，大部分逻辑可以直接写在 主函数里，然后直接计算出来。80% 情况都不用 setState
+            // 这里整段干掉，然后写在主函数里，直接计算
             switch (theme) {
                 case '暗夜':
                     newTheme = '极客'
@@ -289,8 +294,10 @@ function index() {
             </div>
             <div className="contentOne">
                 <ul>
+                    {/* todo 这种一次性的逻辑，全部直接铺在 HTML 里面，不要再弄成变量了 */}
                     {LiOneList}
                     {LiTwoList}
+                    {/* --------------------------------------------------------- */}
                     <li>
                         <label htmlFor="nowday">今日热门</label>
                         <input type="text" name="nowday" placeholder="略" id="nowday" />
