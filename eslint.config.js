@@ -14,16 +14,18 @@ export default tseslint.config(
         languageOptions: {
             ecmaVersion: 2021,
             sourceType: 'module',
+            parser: tseslint.parser,  // 添加这行
+            parserOptions: {
+                ecmaFeatures: {
+                    jsx: true,
+                },
+                project: './tsconfig.json',  // 添加这行，指向你的 tsconfig.json
+            },
             globals: {
                 ...globals.browser,
                 ...globals.node,
                 ...globals.commonjs,
                 ...globals.es2021,
-            },
-            parserOptions: {
-                ecmaFeatures: {
-                    jsx: true,
-                },
             },
         },
         plugins: {
