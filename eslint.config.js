@@ -104,6 +104,7 @@ export default tseslint.config(
             'react/no-unescaped-entities': 'off',
             'react/jsx-one-expression-per-line': 'off',
             'react/jsx-closing-tag-location': 'off',
+            'react/no-unknown-property': 'off',
 
             // Object formatting
             'object-curly-newline': [
