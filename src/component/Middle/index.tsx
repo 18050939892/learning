@@ -29,7 +29,6 @@ function index() {
         }
     }, [size])
 
-
     // todo 这里全优化一下， 如果 set 没用到，不用写了
     // 零散的原子实例
     const [firstShow] = useAtom(FirstShow)
@@ -43,18 +42,28 @@ function index() {
 
     // 显示设置界面
     const handleOnclick = (event) => {
-        setSetScrStyle({display: 'block', height: document.documentElement.scrollHeight + 'px'})
+        setSetScrStyle({
+            display: 'block',
+            height: document.documentElement.scrollHeight + 'px'
+        })
         event.preventDefault()
     }
-
 
     // 刷新功能
     const NewsLists = []
     const handleUpdate = () => {
         // 模拟从接口里的数据
         const news = [
-            {id: 1, title: '京东的环境二的发表今晚肯定非常不健康无纺布尽快v发v为日本海军发生口角', number: '385万'},
-            {id: 2, title: '京东', number: '385万'},
+            {
+                id: 1,
+                title: '京东的环境二的发表今晚肯定非常不健康无纺布尽快v发v为日本海军发生口角',
+                number: '385万'
+            },
+            {
+                id: 2,
+                title: '京东',
+                number: '385万'
+            },
         ]
         const NewsContent = []
         NewsContent[0] = news
@@ -63,20 +72,29 @@ function index() {
             NewsLists[i] = NewsContent[i].map(NewValue =>
                 <li>
                     <span
-                        className="spanone" style={{color: style.color, fontSize: fontSize + 'px'}}
+                        className="spanone"
+                        style={{
+                            color: style.color,
+                            fontSize: fontSize + 'px'
+                        }}
                     >{NewValue.id}</span>
                     <span
-                        className="spantwo" style={{
-                        color: style.color,
-                        fontSize: fontSize + 'px',
-                        height: overHidden.height,
-                        overflow: overHidden.overflow,
-                        textOverflow: overHidden.textOverflow,
-                        whiteSpace: overHidden.whiteSpace
-                    }}
+                        className="spantwo"
+                        style={{
+                            color: style.color,
+                            fontSize: fontSize + 'px',
+                            height: overHidden.height,
+                            overflow: overHidden.overflow,
+                            textOverflow: overHidden.textOverflow,
+                            whiteSpace: overHidden.whiteSpace
+                        }}
                     >{NewValue.title}</span>
                     <span
-                        className="spanthree" style={{color: style.color, fontSize: fontSize + 'px'}}
+                        className="spanthree"
+                        style={{
+                            color: style.color,
+                            fontSize: fontSize + 'px'
+                        }}
                     >{NewValue.number}</span>
                 </li>
             )
@@ -171,8 +189,6 @@ function index() {
             }
         }
     }, [firstShow])
-
-
     return (
         <div ref={middleRef} id="middle">
             <main ref={mainRef}>
@@ -183,18 +199,41 @@ function index() {
                     <div id="topImg">
                         <span>{checkWork ? unWorkList[0] : workList[0]}</span>
                     </div>
-                    <div id="toptextone" style={{color: style.color, fontSize: fontSize + 'px'}}>
+                    <div
+                        id="toptextone"
+                        style={{
+                            color: style.color,
+                            fontSize: fontSize + 'px'
+                        }}
+                    >
                         登录后可使用自定义订阅功能
                     </div>
-                    <div id="toptexttwo" style={{color: style.color, fontSize: fontSize + 'px'}}>
+                    <div
+                        id="toptexttwo"
+                        style={{
+                            color: style.color,
+                            fontSize: fontSize + 'px'
+                        }}
+                    >
                         实时<span>{checkWork ? unWorkList[1] : workList[1]}</span>人数: &nbsp;
                         <span>{checkWork ? unWorkList[2] : workList[2]}</span>
                     </div>
                     <div id="topsvg">
-                        <a title="设置" className="topIcon set" href="" onClick={handleOnclick}>
+                        <a
+                            title="设置"
+                            className="topIcon set"
+                            href=""
+                            onClick={handleOnclick}
+                        >
                             {SvgList[0]}
                         </a>
-                        <a title="音乐" className="topIcon" href="https://peal.cc/player" target="_blank">
+                        <a
+                            title="音乐"
+                            className="topIcon"
+                            href="https://peal.cc/player"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
                             {SvgList[1]}
                         </a>
                         <a className="topIcon" href="">
@@ -208,8 +247,11 @@ function index() {
                             </div>
                         </div>
                         <a
-                            title="留言反馈" className="topIcon" href="https://support.qq.com/products/313868?"
+                            title="留言反馈"
+                            className="topIcon"
+                            href="https://support.qq.com/products/313868?"
                             target="_blank"
+                            rel="noreferrer"
                         >
                             {SvgList[3]}
                         </a>
@@ -217,9 +259,13 @@ function index() {
                 </div>
                 <div id="buttom" className="buttomcls">
                     <a
-                        href="#" className="showrp"
+                        href="#"
+                        className="showrp"
 
-                        style={{overflow: 'hidden', fontSize: fontSize + 'px'}}
+                        style={{
+                            overflow: 'hidden',
+                            fontSize: fontSize + 'px'
+                        }}
                     >🧧 领取一个外卖红包吧，每日可领取~</a>
                     <div
                         id="redpackage"
@@ -236,7 +282,11 @@ function index() {
                     >📣 <span>{checkWork ? unWorkList[4] : workList[4]}</span>提醒：今天是3月4日，周二的傍晚<br />
                         古人云：‘为天地立心，为生民立命。’我却说：‘为<span>{checkWork ? unWorkList[5] : workList[5]}</span>，为<span>{checkWork ? unWorkList[6] : workList[6]}</span>。’
                     </p><br />
-                    <p style={{overflow: 'hidden', fontSize: fontSize + 'px'}}>
+                    <p style={{
+                        overflow: 'hidden',
+                        fontSize: fontSize + 'px'
+                    }}
+                    >
                         离周末还有4天<br />
                         离清明节还有32天<br />
                         离劳动节还有58天<br />
@@ -245,17 +295,27 @@ function index() {
 
                     <a
                         href="https://peal.cc/blog/01JKSGGB5Z2GABN0ATJ01PSEB7"
-                        target="_blank" style={{overflow: 'hidden', fontSize: fontSize + 'px'}}
+                        target="_blank"
+                        style={{
+                            overflow: 'hidden',
+                            fontSize: fontSize + 'px'
+                        }}
+                        rel="noreferrer"
                     >《致各位<span>{checkWork ? unWorkList[7] : workList[7]}</span>的一封信》</a>
                     <a
-                        href="https://peal.cc/blog/01JKSGGB5ZCZGQXVD0S7DGDK8F" id="lasta"
-                        target="_blank" style={{overflow: 'hidden', fontSize: fontSize + 'px'}}
+                        href="https://peal.cc/blog/01JKSGGB5ZCZGQXVD0S7DGDK8F"
+                        id="lasta"
+                        target="_blank"
+                        style={{
+                            overflow: 'hidden',
+                            fontSize: fontSize + 'px'
+                        }}
+                        rel="noreferrer"
                     >《赞助名单公示》</a>
                 </div>
             </aside>
         </div>
     )
 }
-
 
 export default index

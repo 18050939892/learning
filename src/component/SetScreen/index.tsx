@@ -3,7 +3,9 @@ import './index.less'
 import { SvgList } from './svg.tsx'
 import itemsMethod from './icons.tsx'
 import { useAtom } from 'jotai'
-import { CheckWork, FirstShow, FontSize, LogoShow, OverHidden, SetScrStyle, Style } from '../../jotai/Store.ts'
+import {
+    CheckWork, FirstShow, FontSize, LogoShow, OverHidden, SetScrStyle, Style
+} from '../../jotai/Store.ts'
 
 type Theme = '暗夜' | '护眼' | '极客';
 
@@ -47,57 +49,57 @@ function index() {
         if (event.target.value == '<') {
             let newTheme: Theme
             switch (theme) {
-                case '暗夜':
-                    newTheme = '护眼'
-                    setStyle({
-                        backgroundColor: '#333e43',
-                        color: 'rgb(176, 179, 181)',
-                        svg: items[0]
-                    })
-                    break
-                case '护眼':
-                    newTheme = '极客'
-                    setStyle({
-                        backgroundColor: 'white',
-                        color: 'black',
-                        svg: items[1]
-                    })
-                    break
-                default:
-                    newTheme = '暗夜'
-                    setStyle({
-                        backgroundColor: '#1f2025',
-                        color: 'rgb(176, 179, 181)',
-                        svg: items[0]
-                    })
+            case '暗夜':
+                newTheme = '护眼'
+                setStyle({
+                    backgroundColor: '#333e43',
+                    color: 'rgb(176, 179, 181)',
+                    svg: items[0]
+                })
+                break
+            case '护眼':
+                newTheme = '极客'
+                setStyle({
+                    backgroundColor: 'white',
+                    color: 'black',
+                    svg: items[1]
+                })
+                break
+            default:
+                newTheme = '暗夜'
+                setStyle({
+                    backgroundColor: '#1f2025',
+                    color: 'rgb(176, 179, 181)',
+                    svg: items[0]
+                })
             }
             setTheme(newTheme)
         } else {
             let newTheme: Theme
             switch (theme) {
-                case '暗夜':
-                    newTheme = '极客'
-                    setStyle({
-                        backgroundColor: 'white',
-                        color: 'black',
-                        svg: items[1]
-                    })
-                    break
-                case '极客':
-                    newTheme = '护眼'
-                    setStyle({
-                        backgroundColor: '#333e43',
-                        color: 'rgb(176, 179, 181)',
-                        svg: items[0]
-                    })
-                    break
-                default:
-                    newTheme = '暗夜'
-                    setStyle({
-                        backgroundColor: '#1f2025',
-                        color: 'rgb(176, 179, 181)',
-                        svg: items[0]
-                    })
+            case '暗夜':
+                newTheme = '极客'
+                setStyle({
+                    backgroundColor: 'white',
+                    color: 'black',
+                    svg: items[1]
+                })
+                break
+            case '极客':
+                newTheme = '护眼'
+                setStyle({
+                    backgroundColor: '#333e43',
+                    color: 'rgb(176, 179, 181)',
+                    svg: items[0]
+                })
+                break
+            default:
+                newTheme = '暗夜'
+                setStyle({
+                    backgroundColor: '#1f2025',
+                    color: 'rgb(176, 179, 181)',
+                    svg: items[0]
+                })
             }
             setTheme(newTheme)
         }
@@ -119,48 +121,48 @@ function index() {
 
         // todo 这种 swtich 的方式写法是错的，不需要这样写
         switch (event.currentTarget.getAttribute('name')) {
-            case 'toumo':
-                if (checkWork) {
-                    setCheckWork(false)
-                } else {
-                    setCheckWork(true)
-                }
+        case 'toumo':
+            if (checkWork) {
+                setCheckWork(false)
+            } else {
+                setCheckWork(true)
+            }
 
-                break
-            case 'yincang':
-                if (overHidden.height == '20px') {
-                    setOverHidden({
-                        height: '',
-                        overflow: '',
-                        textOverflow: '',
-                        whiteSpace: ''
-                    })
-                } else {
-                    setOverHidden({
-                        height: '20px',
-                        overflow: 'hidden',
-                        textOverflow: 'ellipsis',
-                        whiteSpace: 'nowrap'
-                    })
-                }
+            break
+        case 'yincang':
+            if (overHidden.height == '20px') {
+                setOverHidden({
+                    height: '',
+                    overflow: '',
+                    textOverflow: '',
+                    whiteSpace: ''
+                })
+            } else {
+                setOverHidden({
+                    height: '20px',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap'
+                })
+            }
 
-                break
-            case 'logo':
-                if (logoShow) {
-                    setLogoShow(false)
-                } else {
-                    setLogoShow(true)
-                }
-                break
-            case 'first':
-                if (firstShow) {
-                    setFirstShow(false)
-                } else {
-                    setFirstShow(true)
-                }
-                break
-            default:
-                break
+            break
+        case 'logo':
+            if (logoShow) {
+                setLogoShow(false)
+            } else {
+                setLogoShow(true)
+            }
+            break
+        case 'first':
+            if (firstShow) {
+                setFirstShow(false)
+            } else {
+                setFirstShow(true)
+            }
+            break
+        default:
+            break
         }
     }
 
@@ -173,14 +175,14 @@ function index() {
         data: '<',
         dataTwo: '>'
     },
-        {
-            htmlFor: 'ziti',
-            title: '字体大小',
-            onMethod: fzOnmouseDown,
-            value: fontSize,
-            data: '-',
-            dataTwo: '+'
-        }]
+    {
+        htmlFor: 'ziti',
+        title: '字体大小',
+        onMethod: fzOnmouseDown,
+        value: fontSize,
+        data: '-',
+        dataTwo: '+'
+    }]
     const LiOneList = LiOne.map((item, index) =>
         <li>
             <label htmlFor={item.htmlFor}>{item.title}</label>
@@ -207,17 +209,17 @@ function index() {
         htmlFor: 'toumo',
         title: '偷摸模式',
     },
-        {
-            htmlFor: 'yincang',
-            title: '超出隐藏',
-        },
-        {
-            htmlFor: 'logo',
-            title: 'LOGO显示',
-        }, {
-            htmlFor: 'first',
-            title: '首页分类',
-        },
+    {
+        htmlFor: 'yincang',
+        title: '超出隐藏',
+    },
+    {
+        htmlFor: 'logo',
+        title: 'LOGO显示',
+    }, {
+        htmlFor: 'first',
+        title: '首页分类',
+    },
     ]
     const LiTwoList = LiTwo.map((item, index) =>
         <li>
