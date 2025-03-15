@@ -3,24 +3,32 @@ import { useAtom } from 'jotai'
 import { Style } from '../../jotai/Store.ts'
 
 function index() {
-    const [StyleObj, setStyleObj] = useAtom(Style)
-    const handleOnclick = (event) => {
-        if (event.target.id == 'login') {
-            window.location.href = '../../../login.html'
-        } else {
-            window.location.href = '../../../login.html'
-        }
-        
-    }
+    // 命名按照这个格式
+    const [style, setStyle] = useAtom(Style)
     return (
-        <header style={{backgroundColor: StyleObj.backgroundColor}}>
+        <header style={{backgroundColor: style.backgroundColor}}>
             <img
                 src="https://momoyu.cc/assets/logo-1-DXR4uO3F.png" alt=""
-                style={{backgroundColor: StyleObj.backgroundColor}}
+                style={{backgroundColor: style.backgroundColor}}
             />
-            <input type="text" placeholder="搜索..." style={{backgroundColor: StyleObj.backgroundColor}} />
-            <button id="login" className="submit" onClick={handleOnclick}>登陆</button>
-            <button id="register" className="submit" onClick={handleOnclick}>注册</button>
+            <input type="text" placeholder="搜索..." style={{backgroundColor: style.backgroundColor}} />
+            <button
+                id="login"
+                className="submit"
+                onClick={() => {
+                    // 逻辑绑定内聚化，直接写标签上
+                    window.location.href = '../../../login.html'
+                }}
+            >登陆
+            </button>
+            <button
+                id="register"
+                className="submit"
+                onClick={() => {
+                    window.location.href = '../../../register.html'
+                }}
+            >注册
+            </button>
         </header>
     )
 }
