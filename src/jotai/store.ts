@@ -15,6 +15,29 @@ export const Style = atom<object>({backgroundColor: '#1f2025', color: 'rgb(176, 
 // 这样
 // export const Style = {backgroundColor: '#1f2025', color: 'rgb(176, 179, 181)', svg: ''}
 
+export const Theme = atom('暗夜')
+const themeStyles = {
+    '暗夜': {
+        backgroundColor: '#1f2025',
+        color: 'rgb(176, 179, 181)',
+        svg: items[0]
+    },
+    '护眼': {
+        backgroundColor: '#333e43',
+        color: 'rgb(176, 179, 181)',
+        svg: items[0]
+    },
+    '极客': {
+        backgroundColor: 'white',
+        color: 'black',
+        svg: items[1]
+    }
+}
+export const MyStyle = atom((get) => {
+    const theme = get(Theme)
+    return themeStyles[theme]
+})
+
 export const WorkList = atom<Array>(['读者', '学习', '362', '验证：学习', '学习', '工作学习', '未来奋斗', '学友'])
 export const UnWorkList = atom<Array>(['无名', '摸鱼', '421', '验证：摸鱼', '摸鱼', '工资摸鱼', '自由争命', '鱼友'])
 
