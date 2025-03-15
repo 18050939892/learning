@@ -1,8 +1,8 @@
-import { LogoShow } from '../../jotai/Store.ts'
+import { LogoShow } from '../../jotai/store.ts'
 import { useAtom } from 'jotai'
 
 // todo React 组件名都是大驼峰，要记得
-function icons() {
+export function Icons() {
     // 原子实例
     const [logoShow] = useAtom(LogoShow)
 
@@ -429,4 +429,4 @@ function icons() {
     return items
 }
 
-export default icons
+

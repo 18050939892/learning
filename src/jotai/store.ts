@@ -5,12 +5,7 @@ export const FirstShow = atom<boolean>(false)
 export const LogoShow = atom<boolean>(true)
 
 // TODO atom 的类型都不需要自己写，他会自动推导，全删掉
-export const OverHidden = atom({
-    height: '',
-    overflow: '',
-    textOverflow: '',
-    whiteSpace: ''
-})
+export const OverHidden = atom({})
 export const CheckWork = atom<boolean>(true)
 export const FontSize = atom<number>(14)
 

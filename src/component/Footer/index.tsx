@@ -1,12 +1,12 @@
 import './index.less'
 import { useAtom } from 'jotai'
-import { FontSize, Style } from '../../jotai/Store.ts'
+import { FontSize, Style } from '../../jotai/store.ts'
 import { SvgList } from './svg.tsx'
 
-function index() {
+export function Footer() {
     // 零散原子实例
-    const [fontSize, setFontSize] = useAtom(FontSize)
-    const [style, setStyle] = useAtom(Style)
+    const [fontSize] = useAtom(FontSize)
+    const [style] = useAtom(Style)
 
     // 重复Html代码循环遍历化
     const LiContent = [
@@ -65,4 +65,4 @@ function index() {
     )
 }
 
-export default index
+

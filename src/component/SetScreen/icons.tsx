@@ -1,9 +1,9 @@
-import { SetScrStyle } from '../../jotai/Store.ts'
+import { SetScrStyle } from '../../jotai/store.ts'
 import { useAtom } from 'jotai'
 
-function icons() {
+export function Icons() {
     // 原子实例
-    const [setScrStyle, setSetScrStyle] = useAtom(SetScrStyle)
+    const [, setSetScrStyle] = useAtom(SetScrStyle)
 
     // 设置界面关闭
     const handleOnclick = (event) => {
@@ -37,4 +37,4 @@ function icons() {
     return items
 }
 
-export default icons
+

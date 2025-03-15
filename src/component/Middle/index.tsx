@@ -1,5 +1,5 @@
-import useWindowSize from '../../hooks/UseWindowSize.ts'
-import itemsMethod from './icons.tsx'
+import useWindowSize from '../../hooks/useWindowSize.ts'
+import { Icons } from './icons.tsx'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import './index.less'
 import {
@@ -11,11 +11,11 @@ import {
     Style,
     UnWorkList,
     WorkList
-} from '../../jotai/Store.ts'
+} from '../../jotai/store.ts'
 import { useAtom } from 'jotai'
 import { SvgList } from './svg.tsx'
 
-function index() {
+export function Middle() {
     // 页面自适应
     const mainRef = useRef<HTMLElement>(null)
     const middleRef = useRef<HTMLDivElement>(null)
@@ -29,32 +29,32 @@ function index() {
         }
     }, [size])
 
-
     // todo 这里全优化一下， 如果 set 没用到，不用写了
     // 零散的原子实例
     const [firstShow] = useAtom(FirstShow)
-    const [overHidden, setOverObj] = useAtom(OverHidden)
-    const [checkWork, setCheckObj] = useAtom(CheckWork)
-    const [fontSize, setFontObj] = useAtom(FontSize)
-    const [style, setStyleObj] = useAtom(Style)
-    const [workList, setWorkObj] = useAtom(WorkList)
-    const [unWorkList, setUnObj] = useAtom(UnWorkList)
-    const [SetObj, setSetScrStyle] = useAtom(SetScrStyle)
-
-    // 显示设置界面
-    const handleOnclick = (event) => {
-        setSetScrStyle({display: 'block', height: document.documentElement.scrollHeight + 'px'})
-        event.preventDefault()
-    }
-
+    const [overHidden] = useAtom(OverHidden)
+    const [checkWork] = useAtom(CheckWork)
+    const [fontSize] = useAtom(FontSize)
+    const [style] = useAtom(Style)
+    const [workList] = useAtom(WorkList)
+    const [unWorkList] = useAtom(UnWorkList)
+    const [, setSetScrStyle] = useAtom(SetScrStyle)
 
     // 刷新功能
     const NewsLists = []
     const handleUpdate = () => {
         // 模拟从接口里的数据
         const news = [
-            {id: 1, title: '京东的环境二的发表今晚肯定非常不健康无纺布尽快v发v为日本海军发生口角', number: '385万'},
-            {id: 2, title: '京东', number: '385万'},
+            {
+                id: 1,
+                title: '京东的环境二的发表今晚肯定非常不健康无纺布尽快v发v为日本海军发生口角',
+                number: '385万'
+            },
+            {
+                id: 2,
+                title: '京东',
+                number: '385万'
+            },
         ]
         const NewsContent = []
         NewsContent[0] = news
@@ -63,20 +63,29 @@ function index() {
             NewsLists[i] = NewsContent[i].map(NewValue =>
                 <li>
                     <span
-                        className="spanone" style={{color: style.color, fontSize: fontSize + 'px'}}
+                        className="spanone"
+                        style={{
+                            color: style.color,
+                            fontSize: fontSize + 'px'
+                        }}
                     >{NewValue.id}</span>
                     <span
-                        className="spantwo" style={{
-                        color: style.color,
-                        fontSize: fontSize + 'px',
-                        height: overHidden.height,
-                        overflow: overHidden.overflow,
-                        textOverflow: overHidden.textOverflow,
-                        whiteSpace: overHidden.whiteSpace
-                    }}
+                        className="spantwo"
+                        style={{
+                            color: style.color,
+                            fontSize: fontSize + 'px',
+                            height: overHidden.height,
+                            overflow: overHidden.overflow,
+                            textOverflow: overHidden.textOverflow,
+                            whiteSpace: overHidden.whiteSpace
+                        }}
                     >{NewValue.title}</span>
                     <span
-                        className="spanthree" style={{color: style.color, fontSize: fontSize + 'px'}}
+                        className="spanthree"
+                        style={{
+                            color: style.color,
+                            fontSize: fontSize + 'px'
+                        }}
                     >{NewValue.number}</span>
                 </li>
             )
@@ -85,7 +94,7 @@ function index() {
     handleUpdate()
 
     // 重复代码循环遍历化
-    const items = itemsMethod()
+    const items = Icons()
     const itemsRef = []
     for (let i = 0; i < items.length; i++) {
         itemsRef[i] = useRef<HTMLDivElement>(null)
@@ -136,43 +145,36 @@ function index() {
                 mainRef.current.prepend(firstarr[index])
             })
             // todo 这里的写法也是错的，重复的代码太多了，优化成 循环的形式，不会写就发给 AI，让他发给你正确答案
-            firstarr[5].after(mainRef.current.querySelectorAll('.itemmain')[4])
-            firstarr[5].after(mainRef.current.querySelectorAll('.itemmain')[3])
-            firstarr[5].after(mainRef.current.querySelectorAll('.itemmain')[3])
-            firstarr[5].after(mainRef.current.querySelectorAll('.itemmain')[3])
-            firstarr[4].after(mainRef.current.querySelectorAll('.itemmain')[8])
-            firstarr[4].after(mainRef.current.querySelectorAll('.itemmain')[8])
-            firstarr[4].after(mainRef.current.querySelectorAll('.itemmain')[8])
-            firstarr[3].after(mainRef.current.querySelectorAll('.itemmain')[13])
-            firstarr[3].after(mainRef.current.querySelectorAll('.itemmain')[11])
-            firstarr[3].after(mainRef.current.querySelectorAll('.itemmain')[11])
-            firstarr[2].after(mainRef.current.querySelectorAll('.itemmain')[12])
-            firstarr[2].after(mainRef.current.querySelectorAll('.itemmain')[11])
-            firstarr[1].after(mainRef.current.querySelectorAll('.itemmain')[12])
-            firstarr[0].after(mainRef.current.querySelectorAll('.itemmain')[13])
+            // 定义操作映射：[firstarr索引, [要插入的itemmain索引数组]]
+            const operations = [
+                [5, [4, 3, 3, 3]],
+                [4, [8, 8, 8]],
+                [3, [13, 11, 11]],
+                [2, [12, 11]],
+                [1, [12]],
+                [0, [13]]
+            ]
+            // 获取所有 .itemmain 元素
+            let itemMainElements = mainRef.current.querySelectorAll('.itemmain')
+            // 执行操作
+            operations.forEach(([firstArrIndex, itemMainIndices]) => {
+                itemMainIndices.forEach(itemMainIndex => {
+                    itemMainElements = mainRef.current.querySelectorAll('.itemmain');
+                    firstarr[firstArrIndex].after(itemMainElements[itemMainIndex])
+                })
+            })
         } else {
             // todo 这里的写法也是错的，重复的代码太多了，优化成 循环的形式，不会写就发给 AI，让他发给你正确答案
             if (middleRef.current.querySelectorAll('.additem')[0]) {
-                middleRef.current.querySelectorAll('.additem')[0].before(mainRef.current.querySelectorAll('.itemmain')[0])
-                middleRef.current.querySelectorAll('.additem')[0].before(mainRef.current.querySelectorAll('.itemmain')[1])
-                middleRef.current.querySelectorAll('.additem')[0].before(mainRef.current.querySelectorAll('.itemmain')[2])
-                middleRef.current.querySelectorAll('.additem')[0].before(mainRef.current.querySelectorAll('.itemmain')[10])
-                middleRef.current.querySelectorAll('.additem')[0].before(mainRef.current.querySelectorAll('.itemmain')[4])
-                middleRef.current.querySelectorAll('.additem')[0].before(mainRef.current.querySelectorAll('.itemmain')[12])
-                middleRef.current.querySelectorAll('.additem')[0].before(mainRef.current.querySelectorAll('.itemmain')[6])
-                middleRef.current.querySelectorAll('.additem')[0].before(mainRef.current.querySelectorAll('.itemmain')[7])
-                middleRef.current.querySelectorAll('.additem')[0].before(mainRef.current.querySelectorAll('.itemmain')[8])
-                middleRef.current.querySelectorAll('.additem')[0].before(mainRef.current.querySelectorAll('.itemmain')[9])
-                middleRef.current.querySelectorAll('.additem')[0].before(mainRef.current.querySelectorAll('.itemmain')[10])
-                middleRef.current.querySelectorAll('.additem')[0].before(mainRef.current.querySelectorAll('.itemmain')[12])
-                middleRef.current.querySelectorAll('.additem')[0].before(mainRef.current.querySelectorAll('.itemmain')[13])
-                middleRef.current.querySelectorAll('.additem')[0].before(mainRef.current.querySelectorAll('.itemmain')[13])
+                const operations = [0, 1, 2, 10, 4, 12, 6, 7, 8, 9, 10, 12, 13, 13]
+                let itemMainElements = middleRef.current.querySelectorAll('.additem')[0]
+                operations.forEach(itemMainIndices => {
+                    itemMainElements.before(mainRef.current.querySelectorAll('.itemmain')[itemMainIndices])
+                })
                 mainRef.current.querySelectorAll('.additem').forEach(el => el.remove())
             }
         }
     }, [firstShow])
-
-
     return (
         <div ref={middleRef} id="middle">
             <main ref={mainRef}>
@@ -183,18 +185,47 @@ function index() {
                     <div id="topImg">
                         <span>{checkWork ? unWorkList[0] : workList[0]}</span>
                     </div>
-                    <div id="toptextone" style={{color: style.color, fontSize: fontSize + 'px'}}>
+                    <div
+                        id="toptextone"
+                        style={{
+                            color: style.color,
+                            fontSize: fontSize + 'px'
+                        }}
+                    >
                         登录后可使用自定义订阅功能
                     </div>
-                    <div id="toptexttwo" style={{color: style.color, fontSize: fontSize + 'px'}}>
+                    <div
+                        id="toptexttwo"
+                        style={{
+                            color: style.color,
+                            fontSize: fontSize + 'px'
+                        }}
+                    >
                         实时<span>{checkWork ? unWorkList[1] : workList[1]}</span>人数: &nbsp;
                         <span>{checkWork ? unWorkList[2] : workList[2]}</span>
                     </div>
                     <div id="topsvg">
-                        <a title="设置" className="topIcon set" href="" onClick={handleOnclick}>
+                        <a
+                            title="设置"
+                            className="topIcon set"
+                            href=""
+                            onClick={(event) => {
+                                setSetScrStyle({
+                                    display: 'block',
+                                    height: document.documentElement.scrollHeight + 'px'
+                                })
+                                event.preventDefault()
+                            }}
+                        >
                             {SvgList[0]}
                         </a>
-                        <a title="音乐" className="topIcon" href="https://peal.cc/player" target="_blank">
+                        <a
+                            title="音乐"
+                            className="topIcon"
+                            href="https://peal.cc/player"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
                             {SvgList[1]}
                         </a>
                         <a className="topIcon" href="">
@@ -208,8 +239,11 @@ function index() {
                             </div>
                         </div>
                         <a
-                            title="留言反馈" className="topIcon" href="https://support.qq.com/products/313868?"
+                            title="留言反馈"
+                            className="topIcon"
+                            href="https://support.qq.com/products/313868?"
                             target="_blank"
+                            rel="noreferrer"
                         >
                             {SvgList[3]}
                         </a>
@@ -217,9 +251,13 @@ function index() {
                 </div>
                 <div id="buttom" className="buttomcls">
                     <a
-                        href="#" className="showrp"
+                        href="#"
+                        className="showrp"
 
-                        style={{overflow: 'hidden', fontSize: fontSize + 'px'}}
+                        style={{
+                            overflow: 'hidden',
+                            fontSize: fontSize + 'px'
+                        }}
                     >🧧 领取一个外卖红包吧，每日可领取~</a>
                     <div
                         id="redpackage"
@@ -236,7 +274,12 @@ function index() {
                     >📣 <span>{checkWork ? unWorkList[4] : workList[4]}</span>提醒：今天是3月4日，周二的傍晚<br />
                         古人云：‘为天地立心，为生民立命。’我却说：‘为<span>{checkWork ? unWorkList[5] : workList[5]}</span>，为<span>{checkWork ? unWorkList[6] : workList[6]}</span>。’
                     </p><br />
-                    <p style={{overflow: 'hidden', fontSize: fontSize + 'px'}}>
+                    <p
+                        style={{
+                            overflow: 'hidden',
+                            fontSize: fontSize + 'px'
+                        }}
+                    >
                         离周末还有4天<br />
                         离清明节还有32天<br />
                         离劳动节还有58天<br />
@@ -245,11 +288,22 @@ function index() {
 
                     <a
                         href="https://peal.cc/blog/01JKSGGB5Z2GABN0ATJ01PSEB7"
-                        target="_blank" style={{overflow: 'hidden', fontSize: fontSize + 'px'}}
+                        target="_blank"
+                        style={{
+                            overflow: 'hidden',
+                            fontSize: fontSize + 'px'
+                        }}
+                        rel="noreferrer"
                     >《致各位<span>{checkWork ? unWorkList[7] : workList[7]}</span>的一封信》</a>
                     <a
-                        href="https://peal.cc/blog/01JKSGGB5ZCZGQXVD0S7DGDK8F" id="lasta"
-                        target="_blank" style={{overflow: 'hidden', fontSize: fontSize + 'px'}}
+                        href="https://peal.cc/blog/01JKSGGB5ZCZGQXVD0S7DGDK8F"
+                        id="lasta"
+                        target="_blank"
+                        style={{
+                            overflow: 'hidden',
+                            fontSize: fontSize + 'px'
+                        }}
+                        rel="noreferrer"
                     >《赞助名单公示》</a>
                 </div>
             </aside>
@@ -258,4 +312,3 @@ function index() {
 }
 
 
-export default index

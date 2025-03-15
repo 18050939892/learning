@@ -1,9 +1,9 @@
 import './index.less'
 import { useAtom } from 'jotai'
-import { SetScrStyle } from '../../jotai/Store.ts'
+import { SetScrStyle } from '../../jotai/store.ts'
 
-function index() {
-    const [setScrStyle, setSetScrStylej] = useAtom(SetScrStyle)
+export function Cover() {
+    const [setScrStyle] = useAtom(SetScrStyle)
     return (
         <div
             id="cover"
@@ -16,4 +16,4 @@ function index() {
     )
 }
 
-export default index
+

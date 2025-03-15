@@ -1,10 +1,10 @@
 import './index.less'
 import { useAtom } from 'jotai'
-import { Style } from '../../jotai/Store.ts'
+import { Style } from '../../jotai/store.ts'
 
-function index() {
+export function Header() {
     // 命名按照这个格式
-    const [style, setStyle] = useAtom(Style)
+    const [style] = useAtom(Style)
     return (
         // TODO 这里的 backgroundColor 需要变化吗？ 能用 CSS 实现的，不要引入 JS，一个类就可以解决了
         <header style={{backgroundColor: style.backgroundColor}}>
@@ -34,4 +34,4 @@ function index() {
     )
 }
 
-export default index
+
