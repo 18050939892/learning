@@ -1,4 +1,4 @@
-export  const SvgList=[
+export const SvgList = [
     <svg
         t="1741101025160" className="icon" viewBox="0 0 1024 1024" version="1.1"
         xmlns="http://www.w3.org/2000/svg" p-id="30432" width="200" height="200"

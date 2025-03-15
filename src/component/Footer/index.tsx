@@ -1,35 +1,36 @@
 import './index.less'
 import { useAtom } from 'jotai'
 import { FontSize, Style } from '../../jotai/Store.ts'
-import {SvgList} from './svg.tsx'
+import { SvgList } from './svg.tsx'
 
 function index() {
     // 零散原子实例
     const [fontSize, setFontSize] = useAtom(FontSize)
     const [style, setStyle] = useAtom(Style)
-    
+
     // 重复Html代码循环遍历化
     const LiContent = [
         {
-        href: 'https://momoyu.cc/', title: '首页'
-        },{
-        href: 'https://nav.momoyu.cc/', title: '导航'
-        },{
-        href: 'https://support.qq.com/products/313868?', title: '反馈'
-        },{
-        href: 'https://momoyu.cc/login', title: '反馈RSS订阅'
+            href: 'https://momoyu.cc/', title: '首页'
+        }, {
+            href: 'https://nav.momoyu.cc/', title: '导航'
+        }, {
+            href: 'https://support.qq.com/products/313868?', title: '反馈'
+        }, {
+            href: 'https://momoyu.cc/login', title: '反馈RSS订阅'
         },
     ]
-    const LlList=LiContent.map((item, index) =>
+    const LlList = LiContent.map((item, index) =>
         <li>
             <a
-            href={item.href} target="_blank"
-            style={{color: style.color, fontSize: fontSize + 'px'}}>
+                href={item.href} target="_blank"
+                style={{color: style.color, fontSize: fontSize + 'px'}}
+            >
                 {item.title}
             </a>
         </li>
     )
-    
+
     return (
         <footer style={{backgroundColor: style.backgroundColor}}>
             <div className="svg">
