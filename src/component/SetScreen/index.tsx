@@ -6,6 +6,7 @@ type Theme = '暗夜' | '护眼' | '极客';
 import { useAtom } from 'jotai'
 import { FirstShow, LogoShow, OverHidden, CheckWork, FontSize, Style, SetScrStyle } from '../../jotai/Store.ts'
 
+// todo React 组件名都是大驼峰，要记得
 function index() {
     // 零散原子实例
     const [firstShow, setFirstShow] = useAtom(FirstShow)
@@ -15,13 +16,13 @@ function index() {
     const [fontSize, setFontSize] = useAtom(FontSize)
     const [style, setStyle] = useAtom(Style)
     const [setScrStyle, setSetScrStyle] = useAtom(SetScrStyle)
-    
+
     // 设置界面关闭
     const handleOnclick = (event) => {
         setSetScrStyle({display: 'none', height: '0px'})
         event.preventDefault()
     }
-    
+
     // 字体大小功能
     const fzOnmouseDown = (event) => {
         if (event.target.value == '-') {
@@ -30,7 +31,7 @@ function index() {
             setFontSize(fontSize + 1)
         }
     }
-    
+
     // 主题切换功能
     const [theme, setTheme] = useState<Theme>('暗夜')
     const items=itemsMethod()
@@ -94,7 +95,7 @@ function index() {
         }
         console.log(theme)
     }
-    
+
     // todo 这些逻辑应该都可以只用 CSS 实现，这一大段都可以干掉
     // 其余各类各类功能+按键滑动效果
     const checkOnclock = (event) => {
@@ -114,7 +115,7 @@ function index() {
                 } else {
                    setCheckWork(true)
                 }
-                
+
                 break
             case 'yincang':
                 if (overHidden.height == '20px') {
@@ -132,8 +133,8 @@ function index() {
                         whiteSpace: 'nowrap'
                     })
                 }
-                
-                
+
+
                 break
             case 'logo':
                 if (logoShow) {
@@ -152,10 +153,10 @@ function index() {
             default:
                 break
         }
-        
-        
+
+
     }
-    
+
     // 重复Html循环遍历化
     const LiOne=[{
         htmlFor:"zhuti",
@@ -218,8 +219,8 @@ function index() {
                 </div>}
         </li>
     )
-    
-    
+
+
     return (
         <div
             className="setscreen " id="set"
@@ -243,8 +244,8 @@ function index() {
                         <input type="text" name="nowday" placeholder="略" id="nowday" />
                     </li>
                 </ul>
-            
-            
+
+
             </div>
             <div className="contentTwo">略</div>
             <div className="setbuttom" onClick={handleOnclick}><a href="#">开摸!</a></div>
