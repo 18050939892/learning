@@ -4,7 +4,9 @@ import { SvgList } from './svg.tsx'
 import itemsMethod from './icons.tsx'
 type Theme = '暗夜' | '护眼' | '极客';
 import { useAtom } from 'jotai'
-import { FirstShow, LogoShow, OverHidden, CheckWork, FontSize, Style, SetScrStyle } from '../../jotai/Store.ts'
+import {
+    FirstShow, LogoShow, OverHidden, CheckWork, FontSize, Style, SetScrStyle
+} from '../../jotai/Store.ts'
 
 // todo React 组件名都是大驼峰，要记得
 function index() {
@@ -18,12 +20,17 @@ function index() {
     const [setScrStyle, setSetScrStyle] = useAtom(SetScrStyle)
 
     // 设置界面关闭
+    // todo 函数直接挂标签上，不要声明得很远，然后再引用他，屏幕滚来滚去，效率很低
     const handleOnclick = (event) => {
-        setSetScrStyle({display: 'none', height: '0px'})
+        setSetScrStyle({
+            display: 'none',
+            height: '0px'
+        })
         event.preventDefault()
     }
 
     // 字体大小功能
+    // todo 函数直接挂标签上，不要声明得很远，然后再引用他，屏幕滚来滚去，效率很低
     const fzOnmouseDown = (event) => {
         if (event.target.value == '-') {
             setFontSize(fontSize - 1)
@@ -34,62 +41,64 @@ function index() {
 
     // 主题切换功能
     const [theme, setTheme] = useState<Theme>('暗夜')
-    const items=itemsMethod()
+    const items = itemsMethod()
+
+    // todo 函数直接挂标签上，不要声明得很远，然后再引用他，屏幕滚来滚去，效率很低
     const zjOnmouseDown = (event) => {
         if (event.target.value == '<') {
             let newTheme: Theme
             switch (theme) {
-                case '暗夜':
-                    newTheme = '护眼'
-                    setStyle({
-                        backgroundColor: '#333e43',
-                        color: 'rgb(176, 179, 181)',
-                        svg:items[0]
-                    })
-                    break
-                case '护眼':
-                    newTheme = '极客'
-                    setStyle({
-                        backgroundColor: 'white',
-                        color: 'black',
-                        svg:items[1]
-                    })
-                    break
-                default:
-                    newTheme = '暗夜'
-                    setStyle({
-                        backgroundColor: '#1f2025',
-                        color: 'rgb(176, 179, 181)',
-                        svg:items[0]
-                    })
+            case '暗夜':
+                newTheme = '护眼'
+                setStyle({
+                    backgroundColor: '#333e43',
+                    color: 'rgb(176, 179, 181)',
+                    svg:items[0]
+                })
+                break
+            case '护眼':
+                newTheme = '极客'
+                setStyle({
+                    backgroundColor: 'white',
+                    color: 'black',
+                    svg:items[1]
+                })
+                break
+            default:
+                newTheme = '暗夜'
+                setStyle({
+                    backgroundColor: '#1f2025',
+                    color: 'rgb(176, 179, 181)',
+                    svg:items[0]
+                })
             }
             setTheme(newTheme)
         } else {
             let newTheme: Theme
             switch (theme) {
-                case '暗夜':
-                    newTheme = '极客'
-                   setStyle({
-                        backgroundColor: 'white',
-                        color: 'black',
-                        svg:items[1]
-                    })
-                    break
-                case '极客':
-                    newTheme = '护眼'
-                    setStyle({
-                        backgroundColor: '#333e43',
-                        color: 'rgb(176, 179, 181)',
-                        svg: items[0]
-                    })
-                    break
-                default:
-                    newTheme = '暗夜'
-                    setStyle({
-                        backgroundColor: '#1f2025',
-                        color: 'rgb(176, 179, 181)',
-                        svg: items[0]
-                    })
+            case '暗夜':
+                newTheme = '极客'
+                setStyle({
+                    backgroundColor: 'white',
+                    color: 'black',
+                    svg:items[1]
+                })
+                break
+            case '极客':
+                newTheme = '护眼'
+                setStyle({
+                    backgroundColor: '#333e43',
+                    color: 'rgb(176, 179, 181)',
+                    svg: items[0]
+                })
+                break
+            default:
+                newTheme = '暗夜'
+                setStyle({
+                    backgroundColor: '#1f2025',
+                    color: 'rgb(176, 179, 181)',
+                    svg: items[0]
+                })
             }
             setTheme(newTheme)
         }
@@ -111,56 +120,53 @@ function index() {
 
         // todo 这种 swtich 的方式写法是错的，不需要这样写
         switch (event.currentTarget.getAttribute('name')) {
-            case 'toumo':
-                if (checkWork) {
-                    setCheckWork(false)
-                } else {
-                   setCheckWork(true)
-                }
+        case 'toumo':
+            if (checkWork) {
+                setCheckWork(false)
+            } else {
+                setCheckWork(true)
+            }
 
-                break
-            case 'yincang':
-                if (overHidden.height == '20px') {
-                    setOverHidden({
-                        height: '',
-                        overflow: '',
-                        textOverflow: '',
-                        whiteSpace: ''
-                    })
-                } else {
-                    setOverHidden({
-                        height: '20px',
-                        overflow: 'hidden',
-                        textOverflow: 'ellipsis',
-                        whiteSpace: 'nowrap'
-                    })
-                }
+            break
+        case 'yincang':
+            if (overHidden.height == '20px') {
+                setOverHidden({
+                    height: '',
+                    overflow: '',
+                    textOverflow: '',
+                    whiteSpace: ''
+                })
+            } else {
+                setOverHidden({
+                    height: '20px',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap'
+                })
+            }
 
-
-                break
-            case 'logo':
-                if (logoShow) {
-                    setLogoShow(false)
-                } else {
-                    setLogoShow(true)
-                }
-                break
-            case 'first':
-                if (firstShow) {
-                    setFirstShow(false)
-                } else {
-                    setFirstShow(true)
-                }
-                break
-            default:
-                break
+            break
+        case 'logo':
+            if (logoShow) {
+                setLogoShow(false)
+            } else {
+                setLogoShow(true)
+            }
+            break
+        case 'first':
+            if (firstShow) {
+                setFirstShow(false)
+            } else {
+                setFirstShow(true)
+            }
+            break
+        default:
+            break
         }
-
-
     }
 
     // 重复Html循环遍历化
-    const LiOne=[{
+    const LiOne = [{
         htmlFor:"zhuti",
         title:"主题切换",
         onMethod:zjOnmouseDown,
@@ -172,25 +178,33 @@ function index() {
         htmlFor:'ziti',
         title:"字体大小",
         onMethod:fzOnmouseDown,
-            value:fontSize,
+        value:fontSize,
         data:"-",
         dataTwo:"+"
     }]
-    const LiOneList=LiOne.map((item,index)=>
+    const LiOneList = LiOne.map((item, index)=>
         <li>
             <label htmlFor={item.htmlFor}>{item.title}</label>
             <div className="number-box">
                 <input
-                    type="button" className="on-number" value={item.data} data-v={item.data} onMouseDown={item.onMethod}
+                    type="button"
+                    className="on-number"
+                    value={item.data}
+                    data-v={item.data}
+                    onMouseDown={item.onMethod}
                 />
                 <input type="text" value={item.value} />
                 <input
-                    type="button" className="on-number" value={item.dataTwo} data-v={item.dataTwo} onMouseDown={item.onMethod}
+                    type="button"
+                    className="on-number"
+                    value={item.dataTwo}
+                    data-v={item.dataTwo}
+                    onMouseDown={item.onMethod}
                 />
             </div>
         </li>
     )
-    const LiTwo=[{
+    const LiTwo = [{
         htmlFor:"toumo",
         title:"偷摸模式",
     },
@@ -198,42 +212,63 @@ function index() {
         htmlFor:'yincang',
         title:"超出隐藏",
     },
-        {
+    {
         htmlFor:'logo',
         title:"LOGO显示",
-    },{
+    }, {
         htmlFor:'first',
         title:"首页分类",
     },
     ]
-    const LiTwoList=LiTwo.map((item,index)=>
+    const LiTwoList = LiTwo.map((item, index)=>
         <li>
             <label htmlFor={item.htmlFor}>{item.title}</label>
             {
-                index!=2? <div className="check" name={item.htmlFor} onClick={checkOnclock}>
+                index != 2 ? <div className="check" name={item.htmlFor} onClick={checkOnclock}>
                     <a href="#" className="true left">开启</a>
                     <a href="#" className="empty start"></a>
                     <a href="#" className="close between">关闭</a>
-            </div>:<div className="check" name={item.htmlFor}  id={item.htmlFor} onClick={checkOnclock}>
+                </div> : <div
+                    className="check"
+                    name={item.htmlFor}
+                    id={item.htmlFor}
+                    onClick={checkOnclock}
+                >
                     <a href="#" className="true start">开启</a>
                     <a href="#" className="empty between"></a>
                     <a href="#" className="close right">关闭</a>
                 </div>}
         </li>
     )
-
-
     return (
         <div
-            className="setscreen " id="set"
-            style={{display: setScrStyle.display, backgroundColor: style.backgroundColor, color: style.color}}>
+            className="setscreen "
+            id="set"
+            style={{
+                display: setScrStyle.display,
+                backgroundColor: style.backgroundColor,
+                color: style.color
+            }}
+        >
             <div className="settop">
                 <span>{SvgList[0]}设置</span>
                 {style.svg ? style.svg : <svg
-                    t="1741179270154" className="icon" viewBox="0 0 1024 1024" version="1.1"
-                    xmlns="http://www.w3.org/2000/svg" p-id="2629" width="200" height="200" onClick={handleOnclick}
+                    t="1741179270154"
+                    className="icon"
+                    viewBox="0 0 1024 1024"
+                    version="1.1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    p-id="2629"
+                    width="200"
+                    height="200"
+                    onClick={handleOnclick}
                 >
-                    <path d="M0 0h1024v1024H0z" fill="#ffffff" fill-opacity="0" p-id="2630"></path>
+                    <path
+                        d="M0 0h1024v1024H0z"
+                        fill="#ffffff"
+                        fill-opacity="0"
+                        p-id="2630"
+                    ></path>
                     {SvgList[1]}</svg>
                 }
             </div>
@@ -243,10 +278,14 @@ function index() {
                     {LiTwoList}
                     <li>
                         <label htmlFor="nowday">今日热门</label>
-                        <input type="text" name="nowday" placeholder="略" id="nowday" />
+                        <input
+                            type="text"
+                            name="nowday"
+                            placeholder="略"
+                            id="nowday"
+                        />
                     </li>
                 </ul>
-
 
             </div>
             <div className="contentTwo">略</div>
