@@ -12,7 +12,7 @@ function index() {
                 src="https://momoyu.cc/assets/logo-1-DXR4uO3F.png" alt=""
                 style={{backgroundColor: style.backgroundColor}}
             />
-            <input type="text" placeholder="搜索..." style={{backgroundColor: style.backgroundColor}} />
+            <input type="text" placeholder="搜索..." />
             <button
                 id="login"
                 className="submit"

@@ -1,91 +1,65 @@
 import { useState } from 'react'
 import './index.less'
 import { SvgList } from './svg.tsx'
-
+import itemsMethod from './icons.tsx'
 type Theme = '暗夜' | '护眼' | '极客';
 import { useAtom } from 'jotai'
 import { FirstShow, LogoShow, OverHidden, CheckWork, FontSize, Style, SetScrStyle } from '../../jotai/Store.ts'
 
 function index() {
-    const [FirstObj, setFirstObj] = useAtom(FirstShow)
-    const [LogoObj, setLogoObj] = useAtom(LogoShow)
-    const [OverObj, setOverObj] = useAtom(OverHidden)
-    const [CheckObj, setCheckObj] = useAtom(CheckWork)
-    const [FontObj, setFontObj] = useAtom(FontSize)
-    const [StyleObj, setStyleObj] = useAtom(Style)
-    const [SetObj, setSetObj] = useAtom(SetScrStyle)
+    // 零散原子实例
+    const [firstShow, setFirstShow] = useAtom(FirstShow)
+    const [logoShow, setLogoShow] = useAtom(LogoShow)
+    const [overHidden, setOverHidden] = useAtom(OverHidden)
+    const [checkWork, setCheckWork] = useAtom(CheckWork)
+    const [fontSize, setFontSize] = useAtom(FontSize)
+    const [style, setStyle] = useAtom(Style)
+    const [setScrStyle, setSetScrStyle] = useAtom(SetScrStyle)
     
-    
-    
+    // 设置界面关闭
     const handleOnclick = (event) => {
-        setSetObj({display: 'none', height: '0px'})
+        setSetScrStyle({display: 'none', height: '0px'})
         event.preventDefault()
     }
     
-    const [inputValue, setInputValue] = useState<number>(0)
-    const [theme, setTheme] = useState<Theme>('暗夜')
-    
-    
+    // 字体大小功能
     const fzOnmouseDown = (event) => {
         if (event.target.value == '-') {
-            setFontObj(FontObj - 1)
+            setFontSize(fontSize - 1)
         } else {
-            setFontObj(FontObj + 1)
+            setFontSize(fontSize + 1)
         }
     }
+    
+    // 主题切换功能
+    const [theme, setTheme] = useState<Theme>('暗夜')
+    const items=itemsMethod()
     const zjOnmouseDown = (event) => {
         if (event.target.value == '<') {
             let newTheme: Theme
             switch (theme) {
                 case '暗夜':
                     newTheme = '护眼'
-                    setStyleObj({
+                    setStyle({
                         backgroundColor: '#333e43',
                         color: 'rgb(176, 179, 181)',
-                        svg: <svg
-                            t="1741273897782" class="icon" viewBox="0 0 1024 1024" version="1.1"
-                            xmlns="http://www.w3.org/2000/svg" p-id="4249" width="200" height="200"
-                            onClick={handleOnclick}
-                        >
-                            <path
-                                d="M550.848 502.496l308.64-308.896a31.968 31.968 0 1 0-45.248-45.248l-308.608 308.896-308.64-308.928a31.968 31.968 0 1 0-45.248 45.248l308.64 308.896-308.64 308.896a31.968 31.968 0 1 0 45.248 45.248l308.64-308.896 308.608 308.896a31.968 31.968 0 1 0 45.248-45.248l-308.64-308.864z"
-                                p-id="4250" fill="#ffffff"
-                            ></path>
-                        </svg>
+                        svg:items[0]
                     })
                     break
                 case '护眼':
                     newTheme = '极客'
-                    setStyleObj({
+                    setStyle({
                         backgroundColor: 'white',
                         color: 'black',
-                        svg: <svg
-                            t="1741273897782" class="icon" viewBox="0 0 1024 1024" version="1.1"
-                            xmlns="http://www.w3.org/2000/svg" p-id="4249" width="200" height="200"
-                            onClick={handleOnclick}
-                        >
-                            <path
-                                d="M550.848 502.496l308.64-308.896a31.968 31.968 0 1 0-45.248-45.248l-308.608 308.896-308.64-308.928a31.968 31.968 0 1 0-45.248 45.248l308.64 308.896-308.64 308.896a31.968 31.968 0 1 0 45.248 45.248l308.64-308.896 308.608 308.896a31.968 31.968 0 1 0 45.248-45.248l-308.64-308.864z"
-                                p-id="4250"
-                            ></path>
-                        </svg>
+                        svg:items[1]
                     })
                     break
                 default:
                     newTheme = '暗夜'
-                    setStyleObj({
+                    setStyle({
                         backgroundColor: '#1f2025',
                         color: 'rgb(176, 179, 181)',
-                        svg: <svg
-                            t="1741273897782" class="icon" viewBox="0 0 1024 1024" version="1.1"
-                            xmlns="http://www.w3.org/2000/svg" p-id="4249" width="200" height="200"
-                            onClick={handleOnclick}
-                        >
-                            <path
-                                d="M550.848 502.496l308.64-308.896a31.968 31.968 0 1 0-45.248-45.248l-308.608 308.896-308.64-308.928a31.968 31.968 0 1 0-45.248 45.248l308.64 308.896-308.64 308.896a31.968 31.968 0 1 0 45.248 45.248l308.64-308.896 308.608 308.896a31.968 31.968 0 1 0 45.248-45.248l-308.64-308.864z"
-                                p-id="4250" fill="#ffffff"
-                            ></path>
-                        </svg>
+                        svg:items[0]
                     })
             }
             setTheme(newTheme)
@@ -94,53 +68,26 @@ function index() {
             switch (theme) {
                 case '暗夜':
                     newTheme = '极客'
-                    setStyleObj({
+                   setStyle({
                         backgroundColor: 'white',
                         color: 'black',
-                        svg: <svg
-                            t="1741273897782" class="icon" viewBox="0 0 1024 1024" version="1.1"
-                            xmlns="http://www.w3.org/2000/svg" p-id="4249" width="200" height="200"
-                            onClick={handleOnclick}
-                        >
-                            <path
-                                d="M550.848 502.496l308.64-308.896a31.968 31.968 0 1 0-45.248-45.248l-308.608 308.896-308.64-308.928a31.968 31.968 0 1 0-45.248 45.248l308.64 308.896-308.64 308.896a31.968 31.968 0 1 0 45.248 45.248l308.64-308.896 308.608 308.896a31.968 31.968 0 1 0 45.248-45.248l-308.64-308.864z"
-                                p-id="4250"
-                            ></path>
-                        </svg>
+                        svg:items[1]
                     })
                     break
                 case '极客':
                     newTheme = '护眼'
-                    setStyleObj({
+                    setStyle({
                         backgroundColor: '#333e43',
                         color: 'rgb(176, 179, 181)',
-                        svg: <svg
-                            t="1741273897782" class="icon" viewBox="0 0 1024 1024" version="1.1"
-                            xmlns="http://www.w3.org/2000/svg" p-id="4249" width="200" height="200"
-                            onClick={handleOnclick}
-                        >
-                            <path
-                                d="M550.848 502.496l308.64-308.896a31.968 31.968 0 1 0-45.248-45.248l-308.608 308.896-308.64-308.928a31.968 31.968 0 1 0-45.248 45.248l308.64 308.896-308.64 308.896a31.968 31.968 0 1 0 45.248 45.248l308.64-308.896 308.608 308.896a31.968 31.968 0 1 0 45.248-45.248l-308.64-308.864z"
-                                p-id="4250" fill="#ffffff"
-                            ></path>
-                        </svg>
+                        svg: items[0]
                     })
                     break
                 default:
                     newTheme = '暗夜'
-                    setStyleObj({
+                    setStyle({
                         backgroundColor: '#1f2025',
                         color: 'rgb(176, 179, 181)',
-                        svg: <svg
-                            t="1741273897782" class="icon" viewBox="0 0 1024 1024" version="1.1"
-                            xmlns="http://www.w3.org/2000/svg" p-id="4249" width="200" height="200"
-                            onClick={handleOnclick}
-                        >
-                            <path
-                                d="M550.848 502.496l308.64-308.896a31.968 31.968 0 1 0-45.248-45.248l-308.608 308.896-308.64-308.928a31.968 31.968 0 1 0-45.248 45.248l308.64 308.896-308.64 308.896a31.968 31.968 0 1 0 45.248 45.248l308.64-308.896 308.608 308.896a31.968 31.968 0 1 0 45.248-45.248l-308.64-308.864z"
-                                p-id="4250" fill="#ffffff"
-                            ></path>
-                        </svg>
+                        svg: items[0]
                     })
             }
             setTheme(newTheme)
@@ -149,8 +96,8 @@ function index() {
     }
     
     // todo 这些逻辑应该都可以只用 CSS 实现，这一大段都可以干掉
+    // 其余各类各类功能+按键滑动效果
     const checkOnclock = (event) => {
-        
         if (event.currentTarget.querySelector('a').className.split(' ')[1] == 'left') {
             event.currentTarget.querySelectorAll('a')[0].className = 'true start'
             event.currentTarget.querySelectorAll('a')[1].className = 'empty between'
@@ -162,23 +109,23 @@ function index() {
         }
         switch (event.currentTarget.getAttribute('name')) {
             case 'toumo':
-                if (CheckObj) {
-                    setCheckObj(false)
+                if (checkWork) {
+                    setCheckWork(false)
                 } else {
-                    setCheckObj(true)
+                   setCheckWork(true)
                 }
                 
                 break
             case 'yincang':
-                if (OverObj.height == '20px') {
-                    setOverObj({
+                if (overHidden.height == '20px') {
+                    setOverHidden({
                         height: '',
                         overflow: '',
                         textOverflow: '',
                         whiteSpace: ''
                     })
                 } else {
-                    setOverObj({
+                    setOverHidden({
                         height: '20px',
                         overflow: 'hidden',
                         textOverflow: 'ellipsis',
@@ -189,17 +136,17 @@ function index() {
                 
                 break
             case 'logo':
-                if (LogoObj) {
-                    setLogoObj(false)
+                if (logoShow) {
+                    setLogoShow(false)
                 } else {
-                    setLogoObj(true)
+                    setLogoShow(true)
                 }
                 break
             case 'first':
-                if (FirstObj) {
-                    setFirstObj(false)
+                if (firstShow) {
+                    setFirstShow(false)
                 } else {
-                    setFirstObj(true)
+                    setFirstShow(true)
                 }
                 break
             default:
@@ -209,6 +156,7 @@ function index() {
         
     }
     
+    // 重复Html循环遍历化
     const LiOne=[{
         htmlFor:"zhuti",
         title:"主题切换",
@@ -221,7 +169,7 @@ function index() {
         htmlFor:'ziti',
         title:"字体大小",
         onMethod:fzOnmouseDown,
-            value:FontObj,
+            value:fontSize,
         data:"-",
         dataTwo:"+"
     }]
@@ -255,7 +203,6 @@ function index() {
         title:"首页分类",
     },
     ]
-    
     const LiTwoList=LiTwo.map((item,index)=>
         <li>
             <label htmlFor={item.htmlFor}>{item.title}</label>
@@ -276,10 +223,10 @@ function index() {
     return (
         <div
             className="setscreen " id="set"
-            style={{display: SetObj.display, backgroundColor: StyleObj.backgroundColor, color: StyleObj.color}}>
+            style={{display: setScrStyle.display, backgroundColor: style.backgroundColor, color: style.color}}>
             <div className="settop">
                 <span>{SvgList[0]}设置</span>
-                {StyleObj.svg ? StyleObj.svg : <svg
+                {style.svg ? style.svg : <svg
                     t="1741179270154" className="icon" viewBox="0 0 1024 1024" version="1.1"
                     xmlns="http://www.w3.org/2000/svg" p-id="2629" width="200" height="200" onClick={handleOnclick}
                 >

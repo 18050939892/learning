@@ -4,9 +4,11 @@ import { FontSize, Style } from '../../jotai/Store.ts'
 import {SvgList} from './svg.tsx'
 
 function index() {
-    const [FontObj, setFontsObj] = useAtom(FontSize)
-    const [StyleObj, setStyleObj] = useAtom(Style)
+    // 零散原子实例
+    const [fontSize, setFontSize] = useAtom(FontSize)
+    const [style, setStyle] = useAtom(Style)
     
+    // 重复Html代码循环遍历化
     const LiContent = [
         {
         href: 'https://momoyu.cc/', title: '首页'
@@ -22,15 +24,14 @@ function index() {
         <li>
             <a
             href={item.href} target="_blank"
-            style={{color: StyleObj.color, fontSize: FontObj + 'px'}}>
+            style={{color: style.color, fontSize: fontSize + 'px'}}>
                 {item.title}
             </a>
         </li>
     )
     
-    
     return (
-        <footer style={{backgroundColor: StyleObj.backgroundColor}}>
+        <footer style={{backgroundColor: style.backgroundColor}}>
             <div className="svg">
                 {SvgList[0]}
             </div>
@@ -44,18 +45,18 @@ function index() {
                 </div>
                 {SvgList[1]}
             </div>
-            <div id="footerText" style={{color: StyleObj.color}}>
+            <div id="footerText" style={{color: style.color}}>
                 <ul>
                     {LlList}
                 </ul>
                 <a
                     href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank"
-                    style={{color: StyleObj.color, fontSize: FontObj + 'px'}}
+                    style={{color: style.color, fontSize: fontSize + 'px'}}
                 >© 2021 momoyu.cc
                     粤ICP备2020133024号</a>
                 <a
                     href="https://beian.mps.gov.cn/#/query/webSearch" target="_blank"
-                    style={{color: StyleObj.color, fontSize: FontObj + 'px'}}
+                    style={{color: style.color, fontSize: fontSize + 'px'}}
                 >粤公网安备
                     44011202001391号</a>
             </div>

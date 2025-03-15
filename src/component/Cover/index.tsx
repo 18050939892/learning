@@ -5,9 +5,9 @@ import { SetScrStyle } from '../../jotai/Store.ts'
 function index() {
     
     
-    const [SetObj, setSetObj] = useAtom(SetScrStyle)
+    const [setScrStyle, setSetScrStylej] = useAtom(SetScrStyle)
     return (
-        <div id="cover" style={{display: SetObj.display, height: SetObj.height}}>
+        <div id="cover" style={{display: setScrStyle.display, height: setScrStyle.height}}>
         </div>
     )
 }
