@@ -1,4 +1,4 @@
-import './Content.less'
+import './index.less'
 import Header from '../Header'
 import Middle from '../Middle'
 import SetScreen from '../SetScreen'

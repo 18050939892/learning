@@ -1,4 +1,4 @@
-import './Cover.less'
+import './index.less'
 import { useAtom } from 'jotai'
 import { SetScrStyle } from '../../jotai/Store.ts'
 

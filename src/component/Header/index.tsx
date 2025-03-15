@@ -1,4 +1,4 @@
-import './Header.less'
+import './index.less'
 import { useAtom } from 'jotai'
 import { Style } from '../../jotai/Store.ts'
 

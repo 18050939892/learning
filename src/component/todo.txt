@@ -1,0 +1,3 @@
+component 目录名不对
+
+应该是 components，这是全世界通用标准
