@@ -108,6 +108,8 @@ function index() {
             event.currentTarget.querySelectorAll('a')[1].className = 'empty start'
             event.currentTarget.querySelectorAll('a')[2].className = 'close between'
         }
+
+        // todo 这种 swtich 的方式写法是错的，不需要这样写
         switch (event.currentTarget.getAttribute('name')) {
             case 'toumo':
                 if (checkWork) {
