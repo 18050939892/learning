@@ -147,6 +147,7 @@ function index() {
         console.log(theme)
     }
     
+    // todo 这些逻辑应该都可以只用 CSS 实现，这一大段都可以干掉
     const checkOnclock = (event) => {
         
         if (event.currentTarget.querySelector('a').className.split(' ')[1] == 'left') {

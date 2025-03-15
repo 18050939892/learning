@@ -1,5 +1,6 @@
 import { atom } from 'jotai'
 
+// todo 这个 Store.ts 文件，不要用大写开头，Store.ts -> store.ts
 export const FirstShow = atom<boolean>(false)
 export const LogoShow = atom<boolean>(true)
 
