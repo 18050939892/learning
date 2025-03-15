@@ -16,23 +16,23 @@ export const Style = atom<object>({backgroundColor: '#1f2025', color: 'rgb(176, 
 // export const Style = {backgroundColor: '#1f2025', color: 'rgb(176, 179, 181)', svg: ''}
 
 export const Theme = atom('暗夜')
-const themeStyles = {
-    '暗夜': {
-        backgroundColor: '#1f2025',
-        color: 'rgb(176, 179, 181)',
-        svg: items[0]
-    },
-    '护眼': {
-        backgroundColor: '#333e43',
-        color: 'rgb(176, 179, 181)',
-        svg: items[0]
-    },
-    '极客': {
-        backgroundColor: 'white',
-        color: 'black',
-        svg: items[1]
-    }
-}
+// const themeStyles = {
+//     '暗夜': {
+//         backgroundColor: '#1f2025',
+//         color: 'rgb(176, 179, 181)',
+//         svg: items[0]
+//     },
+//     '护眼': {
+//         backgroundColor: '#333e43',
+//         color: 'rgb(176, 179, 181)',
+//         svg: items[0]
+//     },
+//     '极客': {
+//         backgroundColor: 'white',
+//         color: 'black',
+//         svg: items[1]
+//     }
+// }
 export const MyStyle = atom((get) => {
     const theme = get(Theme)
     return themeStyles[theme]
