@@ -204,21 +204,34 @@
     border-radius: 0 10px 10px 0;
 }
 
-
-.left {
-    left: -40px;
+/* 使用CSS控制状态切换 - 选中状态 */
+.toggle-checkbox:checked ~ .check .true {
+    left: 0px !important; /* 使用!important确保CSS规则优先级高于内联样式 */
+    transition: left 0.3s ease;
 }
 
-.start {
-    left: 0px;
+.toggle-checkbox:checked ~ .check .empty {
+    left: 40px !important;
+    transition: left 0.3s ease;
 }
 
-.between {
-    left: 40px;
+.toggle-checkbox:checked ~ .check .close {
+    left: 80px !important;
+    transition: left 0.3s ease;
 }
 
-.right {
-    left: 80px;
+/* 使用CSS控制状态切换 - 未选中状态 */
+.toggle-checkbox:not(:checked) ~ .check .true {
+    left: -40px !important;
+    transition: left 0.3s ease;
 }
 
+.toggle-checkbox:not(:checked) ~ .check .empty {
+    left: 0px !important;
+    transition: left 0.3s ease;
+}
 
+.toggle-checkbox:not(:checked) ~ .check .close {
+    left: 40px !important;
+    transition: left 0.3s ease;
+}

@@ -7,13 +7,15 @@ import {
     FirstShow,
     FontSize,
     OverHidden,
-    SetScrStyle,
-    Style,
+    SetScrShow,
+    StyleValue,
     UnWorkList,
     WorkList
 } from '../../jotai/store.ts'
+import {StoreObject} from '../SetScreen/StoreObject.ts'
 import { useAtom } from 'jotai'
 import { SvgList } from './svg.tsx'
+import {overHiddenClass} from '../SetScreen/StoreObject.ts'
 
 export function Middle() {
     // 页面自适应
@@ -35,10 +37,11 @@ export function Middle() {
     const [overHidden] = useAtom(OverHidden)
     const [checkWork] = useAtom(CheckWork)
     const [fontSize] = useAtom(FontSize)
-    const [style] = useAtom(Style)
+    const [styleValue] = useAtom(StyleValue)
     const [workList] = useAtom(WorkList)
     const [unWorkList] = useAtom(UnWorkList)
-    const [, setSetScrStyle] = useAtom(SetScrStyle)
+    const [, setSetScrShow] = useAtom(SetScrShow)
+    const style = StoreObject()
 
     // 刷新功能
     const NewsLists = []
@@ -60,30 +63,31 @@ export function Middle() {
         NewsContent[0] = news
 
         for (let i = 0; i < NewsContent.length; i++) {
+            console.log(style[styleValue].color)
             NewsLists[i] = NewsContent[i].map(NewValue =>
                 <li>
                     <span
                         className="spanone"
                         style={{
-                            color: style.color,
+                            color: style[styleValue].color,
                             fontSize: fontSize + 'px'
                         }}
                     >{NewValue.id}</span>
                     <span
                         className="spantwo"
                         style={{
-                            color: style.color,
+                            color: style[styleValue].color,
                             fontSize: fontSize + 'px',
-                            height: overHidden.height,
-                            overflow: overHidden.overflow,
-                            textOverflow: overHidden.textOverflow,
-                            whiteSpace: overHidden.whiteSpace
+                            height:overHiddenClass[overHidden].height,
+                            overflow: overHiddenClass[overHidden].overflow,
+                            textOverflow: overHiddenClass[overHidden].textOverflow,
+                            whiteSpace: overHiddenClass[overHidden].whiteSpace
                         }}
                     >{NewValue.title}</span>
                     <span
                         className="spanthree"
                         style={{
-                            color: style.color,
+                            color: style[styleValue].color,
                             fontSize: fontSize + 'px'
                         }}
                     >{NewValue.number}</span>
@@ -100,7 +104,7 @@ export function Middle() {
         itemsRef[i] = useRef<HTMLDivElement>(null)
     }
     const ItemsHtml = items.map((item, index) =>
-        <div className="item itemmain" style={{backgroundColor: style.backgroundColor}} ref={itemsRef[index]}>
+        <div className="item itemmain" style={{backgroundColor: style[styleValue].backgroundColor}} ref={itemsRef[index]}>
             <a href="#" className="title">
 
                 {item.svg}
@@ -181,14 +185,14 @@ export function Middle() {
                 {ItemsHtml}
             </main>
             <aside ref={asideRef} style={{top: ScrollTop + 'px'}}>
-                <div id="top" style={{backgroundColor: style.backgroundColor}}>
+                <div id="top" style={{backgroundColor: style[styleValue].backgroundColor}}>
                     <div id="topImg">
                         <span>{checkWork ? unWorkList[0] : workList[0]}</span>
                     </div>
                     <div
                         id="toptextone"
                         style={{
-                            color: style.color,
+                            color: style[styleValue].color,
                             fontSize: fontSize + 'px'
                         }}
                     >
@@ -197,7 +201,7 @@ export function Middle() {
                     <div
                         id="toptexttwo"
                         style={{
-                            color: style.color,
+                            color: style[styleValue].color,
                             fontSize: fontSize + 'px'
                         }}
                     >
@@ -210,10 +214,7 @@ export function Middle() {
                             className="topIcon set"
                             href=""
                             onClick={(event) => {
-                                setSetScrStyle({
-                                    display: 'block',
-                                    height: document.documentElement.scrollHeight + 'px'
-                                })
+                                setSetScrShow('show')
                                 event.preventDefault()
                             }}
                         >
