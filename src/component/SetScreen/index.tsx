@@ -4,10 +4,11 @@ import { SvgList } from './svg.tsx'
 import {Icons} from './icons.tsx'
 import { useAtom } from 'jotai'
 import {
-    CheckWork, FirstShow, FontSize, LogoShow, OverHidden, SetScrStyle, Style
+    CheckWork, FirstShow, FontSize, LogoShow, OverHidden, SetScrShow, StyleValue
 } from '../../jotai/store.ts'
 
 type Theme = '暗夜' | '护眼' | '极客';
+import {StoreObject, setScrStyle} from './StoreObject.ts'
 
 // todo React 组件名都是大驼峰，要记得
 export function SetScreen() {
@@ -17,9 +18,10 @@ export function SetScreen() {
     const [overHidden, setOverHidden] = useAtom(OverHidden)
     const [checkWork, setCheckWork] = useAtom(CheckWork)
     const [fontSize, setFontSize] = useAtom(FontSize)
-    const [style, setStyle] = useAtom(Style)
-    const [setScrStyle, setSetScrStyle] = useAtom(SetScrStyle)
-
+    const [styleValue, setStyleValue] = useAtom(StyleValue)
+    const [setScrShow, setSetScrShow] = useAtom(SetScrShow)
+    const style = StoreObject()
+    const setScrStyleItem = setScrStyle()
     // 设置界面关闭
     // todo 函数直接挂标签上，不要声明得很远，然后再引用他，屏幕滚来滚去，效率很低
     // 已转移
@@ -28,7 +30,6 @@ export function SetScreen() {
     // 已转移
     // 主题切换功能
     const [theme, setTheme] = useState<Theme>('暗夜')
-    const items = Icons()
 
     // todo 函数直接挂标签上，不要声明得很远，然后再引用他，屏幕滚来滚去，效率很低
     const zjOnmouseDown = (event) => {
@@ -37,27 +38,15 @@ export function SetScreen() {
             switch (theme) {
             case '暗夜':
                 newTheme = '护眼'
-                setStyle({
-                    backgroundColor: '#333e43',
-                    color: 'rgb(176, 179, 181)',
-                    svg: items[0]
-                })
+                setStyleValue('护眼')
                 break
             case '护眼':
                 newTheme = '极客'
-                setStyle({
-                    backgroundColor: 'white',
-                    color: 'black',
-                    svg: items[1]
-                })
+                setStyleValue('极客')
                 break
             default:
                 newTheme = '暗夜'
-                setStyle({
-                    backgroundColor: '#1f2025',
-                    color: 'rgb(176, 179, 181)',
-                    svg: items[0]
-                })
+                setStyleValue('暗夜')
             }
             setTheme(newTheme)
         } else {
@@ -65,27 +54,15 @@ export function SetScreen() {
             switch (theme) {
             case '暗夜':
                 newTheme = '极客'
-                setStyle({
-                    backgroundColor: 'white',
-                    color: 'black',
-                    svg: items[1]
-                })
+                setStyleValue('极客')
                 break
             case '极客':
                 newTheme = '护眼'
-                setStyle({
-                    backgroundColor: '#333e43',
-                    color: 'rgb(176, 179, 181)',
-                    svg: items[0]
-                })
+                setStyleValue('护眼')
                 break
             default:
                 newTheme = '暗夜'
-                setStyle({
-                    backgroundColor: '#1f2025',
-                    color: 'rgb(176, 179, 181)',
-                    svg: items[0]
-                })
+                setStyleValue('暗夜')
             }
             setTheme(newTheme)
         }
@@ -106,50 +83,19 @@ export function SetScreen() {
         }
 
         // todo 这种 swtich 的方式写法是错的，不需要这样写
-        switch (event.currentTarget.getAttribute('name')) {
-        case 'toumo':
-            if (checkWork) {
-                setCheckWork(false)
-            } else {
-                setCheckWork(true)
-            }
-
-            break
-        case 'yincang':
-            if (overHidden.height == '20px') {
-                setOverHidden({
-                    height: '',
-                    overflow: '',
-                    textOverflow: '',
-                    whiteSpace: ''
-                })
-            } else {
-                setOverHidden({
-                    height: '20px',
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis',
-                    whiteSpace: 'nowrap'
-                })
-            }
-
-            break
-        case 'logo':
-            if (logoShow) {
-                setLogoShow(false)
-            } else {
-                setLogoShow(true)
-            }
-            break
-        case 'first':
-            if (firstShow) {
-                setFirstShow(false)
-            } else {
-                setFirstShow(true)
-            }
-            break
-        default:
-            break
-        }
+        const actionName = event.currentTarget.getAttribute('name');
+        const toggleActions = {
+            'toumo': () => setCheckWork(prevState => !prevState),
+            'yincang': () => setOverHidden(prevState =>
+                prevState.height === '20px'
+                    ? {height: '', overflow: '', textOverflow: '', whiteSpace: ''}
+                    : {height: '20px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap'}
+            ),
+            'logo': () => setLogoShow(prevState => !prevState),
+            'first': () => setFirstShow(prevState => !prevState)
+        };
+        // 如果存在对应的动作，则执行
+        toggleActions[actionName]();
     }
 
     // 重复Html循环遍历化
@@ -238,14 +184,14 @@ export function SetScreen() {
             className="setscreen "
             id="set"
             style={{
-                display: setScrStyle.display,
-                backgroundColor: style.backgroundColor,
-                color: style.color
+                display: setScrStyleItem[setScrShow].display,
+                backgroundColor: style[styleValue].backgroundColor,
+                color: style[styleValue].color
             }}
         >
             <div className="settop">
                 <span>{SvgList[0]}设置</span>
-                {style.svg ? style.svg : <svg
+                {style[styleValue].svg ? style[styleValue].svg : <svg
                     t="1741179270154"
                     className="icon"
                     viewBox="0 0 1024 1024"
@@ -255,10 +201,7 @@ export function SetScreen() {
                     width="200"
                     height="200"
                     onClick={(event) => {
-                        setSetScrStyle({
-                            display: 'none',
-                            height: '0px'
-                        })
+                        setSetScrShow('hide')
                         event.preventDefault()
                     }}
                 >
@@ -289,10 +232,7 @@ export function SetScreen() {
             </div>
             <div className="contentTwo">略</div>
             <div className="setbuttom" onClick={(event) => {
-                setSetScrStyle({
-                    display: 'none',
-                    height: '0px'
-                })
+                setSetScrShow('hide')
                 event.preventDefault()
             }}><a href="#">开摸!</a></div>
         </div>

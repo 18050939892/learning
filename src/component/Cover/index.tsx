@@ -1,15 +1,17 @@
 import './index.less'
 import { useAtom } from 'jotai'
-import { SetScrStyle } from '../../jotai/store.ts'
+import { SetScrShow } from '../../jotai/store.ts'
+import {setScrStyle} from '../SetScreen/StoreObject.ts'
 
 export function Cover() {
-    const [setScrStyle] = useAtom(SetScrStyle)
+    const [setScrShow] = useAtom(SetScrShow)
+    const setScrStyleItem = setScrStyle()
     return (
         <div
             id="cover"
             style={{
-                display: setScrStyle.display,
-                height: setScrStyle.height
+                display: setScrStyleItem[setScrShow].display,
+                height: setScrStyleItem[setScrShow].height
             }}
         >
         </div>

@@ -1,16 +1,13 @@
-import { SetScrStyle } from '../../jotai/store.ts'
+import { SetScrShow } from '../../jotai/store.ts'
 import { useAtom } from 'jotai'
-
 export function Icons() {
     // 原子实例
-    const [, setSetScrStyle] = useAtom(SetScrStyle)
-
+    const [, setSetScrShow] = useAtom(SetScrShow)
     // 设置界面关闭
     const handleOnclick = (event) => {
-        setSetScrStyle({display: 'none', height: '0px'})
+        setSetScrShow('hide')
         event.preventDefault()
     }
-
     //   svg数组
     const items = [
         <svg

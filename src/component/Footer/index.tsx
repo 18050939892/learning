@@ -1,12 +1,14 @@
 import './index.less'
 import { useAtom } from 'jotai'
-import { FontSize, Style } from '../../jotai/store.ts'
+import { FontSize, StyleValue } from '../../jotai/store.ts'
+import {StoreObject} from '../SetScreen/StoreObject.ts'
 import { SvgList } from './svg.tsx'
 
 export function Footer() {
     // 零散原子实例
     const [fontSize] = useAtom(FontSize)
-    const [style] = useAtom(Style)
+    const [styleValue] = useAtom(StyleValue)
+    const style = StoreObject()
 
     // 重复Html代码循环遍历化
     const LiContent = [
@@ -24,7 +26,7 @@ export function Footer() {
         <li>
             <a
                 href={item.href} target="_blank"
-                style={{color: style.color, fontSize: fontSize + 'px'}}
+                style={{color: style[styleValue].color, fontSize: fontSize + 'px'}}
             >
                 {item.title}
             </a>
@@ -32,7 +34,7 @@ export function Footer() {
     )
 
     return (
-        <footer style={{backgroundColor: style.backgroundColor}}>
+        <footer style={{backgroundColor: style[styleValue].backgroundColor}}>
             <div className="svg">
                 {SvgList[0]}
             </div>
@@ -46,18 +48,18 @@ export function Footer() {
                 </div>
                 {SvgList[1]}
             </div>
-            <div id="footerText" style={{color: style.color}}>
+            <div id="footerText" style={{color: style[styleValue].color}}>
                 <ul>
                     {LlList}
                 </ul>
                 <a
                     href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank"
-                    style={{color: style.color, fontSize: fontSize + 'px'}}
+                    style={{color: style[styleValue].color, fontSize: fontSize + 'px'}}
                 >© 2021 momoyu.cc
                     粤ICP备2020133024号</a>
                 <a
                     href="https://beian.mps.gov.cn/#/query/webSearch" target="_blank"
-                    style={{color: style.color, fontSize: fontSize + 'px'}}
+                    style={{color: style[styleValue].color, fontSize: fontSize + 'px'}}
                 >粤公网安备
                     44011202001391号</a>
             </div>
