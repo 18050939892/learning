@@ -12,10 +12,9 @@ import {
     UnWorkList,
     WorkList
 } from '../../jotai/store.ts'
-import {StoreObject} from '../SetScreen/StoreObject.ts'
+import { overHiddenClass, StoreObject } from '../SetScreen/StoreObject.ts'
 import { useAtom } from 'jotai'
 import { SvgList } from './svg.tsx'
-import {overHiddenClass} from '../SetScreen/StoreObject.ts'
 
 export function Middle() {
     // 页面自适应
@@ -30,8 +29,6 @@ export function Middle() {
             mainRef.current.style.width = `${middleWidth - asideWidth}px`
         }
     }, [size])
-
-    // todo 这里全优化一下， 如果 set 没用到，不用写了
     // 零散的原子实例
     const [firstShow] = useAtom(FirstShow)
     const [overHidden] = useAtom(OverHidden)
@@ -78,7 +75,7 @@ export function Middle() {
                         style={{
                             color: style[styleValue].color,
                             fontSize: fontSize + 'px',
-                            height:overHiddenClass[overHidden].height,
+                            height: overHiddenClass[overHidden].height,
                             overflow: overHiddenClass[overHidden].overflow,
                             textOverflow: overHiddenClass[overHidden].textOverflow,
                             whiteSpace: overHiddenClass[overHidden].whiteSpace
@@ -104,7 +101,11 @@ export function Middle() {
         itemsRef[i] = useRef<HTMLDivElement>(null)
     }
     const ItemsHtml = items.map((item, index) =>
-        <div className="item itemmain" style={{backgroundColor: style[styleValue].backgroundColor}} ref={itemsRef[index]}>
+        <div
+            className="item itemmain"
+            style={{backgroundColor: style[styleValue].backgroundColor}}
+            ref={itemsRef[index]}
+        >
             <a href="#" className="title">
 
                 {item.svg}
@@ -148,7 +149,6 @@ export function Middle() {
                 firstarr[index].style.cssText = 'padding-top:10px;height:15px; width:90.5%; border-radius:5px 5px;color:rgb(176, 179, 181);'
                 mainRef.current.prepend(firstarr[index])
             })
-            // todo 这里的写法也是错的，重复的代码太多了，优化成 循环的形式，不会写就发给 AI，让他发给你正确答案
             // 定义操作映射：[firstarr索引, [要插入的itemmain索引数组]]
             const operations = [
                 [5, [4, 3, 3, 3]],
@@ -163,12 +163,11 @@ export function Middle() {
             // 执行操作
             operations.forEach(([firstArrIndex, itemMainIndices]) => {
                 itemMainIndices.forEach(itemMainIndex => {
-                    itemMainElements = mainRef.current.querySelectorAll('.itemmain');
+                    itemMainElements = mainRef.current.querySelectorAll('.itemmain')
                     firstarr[firstArrIndex].after(itemMainElements[itemMainIndex])
                 })
             })
         } else {
-            // todo 这里的写法也是错的，重复的代码太多了，优化成 循环的形式，不会写就发给 AI，让他发给你正确答案
             if (middleRef.current.querySelectorAll('.additem')[0]) {
                 const operations = [0, 1, 2, 10, 4, 12, 6, 7, 8, 9, 10, 12, 13, 13]
                 let itemMainElements = middleRef.current.querySelectorAll('.additem')[0]
@@ -311,5 +310,3 @@ export function Middle() {
         </div>
     )
 }
-
-

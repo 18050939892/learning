@@ -9,7 +9,6 @@ import { setScrStyle, StoreObject } from './StoreObject.ts'
 
 type Theme = '暗夜' | '护眼' | '极客';
 
-// todo React 组件名都是大驼峰，要记得
 export function SetScreen() {
     // 零散原子实例
     const [, setFirstShow] = useAtom(FirstShow)
@@ -21,16 +20,8 @@ export function SetScreen() {
     const [setScrShow, setSetScrShow] = useAtom(SetScrShow)
     const style = StoreObject()
     const setScrStyleItem = setScrStyle()
-    // 设置界面关闭
-    // todo 函数直接挂标签上，不要声明得很远，然后再引用他，屏幕滚来滚去，效率很低
-    // 已转移
-    // 字体大小功能
-    // todo 函数直接挂标签上，不要声明得很远，然后再引用他，屏幕滚来滚去，效率很低
-    // 已转移
     // 主题切换功能
     const [theme, setTheme] = useState<Theme>('暗夜')
-
-    // todo 函数直接挂标签上，不要声明得很远，然后再引用他，屏幕滚来滚去，效率很低
     const zjOnmouseDown = (event) => {
         if (event.target.value == '<') {
             let newTheme: Theme
@@ -67,11 +58,8 @@ export function SetScreen() {
         }
         console.log(theme)
     }
-
-    // todo 这些逻辑应该都可以只用 CSS 实现，这一大段都可以干掉
     // 其余各类各类功能+按键滑动效果
     const checkOnclock = (event) => {
-        // todo 这种 swtich 的方式写法是错的，不需要这样写
         const actionName = event.currentTarget.getAttribute('name')
         const toggleActions = {
             'toumo': () => setCheckWork(prevState => !prevState),
@@ -164,9 +152,9 @@ export function SetScreen() {
                     className="check"
                     name={item.htmlFor}
                     onClick={(e) => {
-                    // 手动切换复选框状态，触发CSS效果
+                        // 手动切换复选框状态，触发CSS效果
                         document.getElementById(`toggle-${item.htmlFor}`).checked =
-                        !document.getElementById(`toggle-${item.htmlFor}`).checked
+                            !document.getElementById(`toggle-${item.htmlFor}`).checked
                         // 执行原有的点击事件处理
                         checkOnclock(e)
                     }}
@@ -181,9 +169,9 @@ export function SetScreen() {
                     name={item.htmlFor}
                     id={item.htmlFor}
                     onClick={(e) => {
-                    // 手动切换复选框状态，触发CSS效果
+                        // 手动切换复选框状态，触发CSS效果
                         document.getElementById(`toggle-${item.htmlFor}`).checked =
-                        !document.getElementById(`toggle-${item.htmlFor}`).checked
+                            !document.getElementById(`toggle-${item.htmlFor}`).checked
                         // 执行原有的点击事件处理
                         checkOnclock(e)
                     }}

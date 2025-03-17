@@ -141,6 +141,7 @@
         $(window).on('load', function () {
             var all = $(".contentTop>span");
             var url = window.location.href.split("=")[1];
+            console.log(url)
            if(url!="login"){
             $("#formtwo").css('display', 'block')
             $("#formone").css('display', 'none')
@@ -168,7 +169,7 @@
             $(".main").css({
                 'height': height - parseFloat($(".top").css('height')) + "px"
             })
-            
+
             all.on('click', function () {
                 if ($(this).text() == "登陆") {
                     $("#formone").css('display', 'block')

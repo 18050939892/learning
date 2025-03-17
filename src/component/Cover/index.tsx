@@ -1,7 +1,7 @@
 import './index.less'
 import { useAtom } from 'jotai'
 import { SetScrShow } from '../../jotai/store.ts'
-import {setScrStyle} from '../SetScreen/StoreObject.ts'
+import { setScrStyle } from '../SetScreen/StoreObject.ts'
 
 export function Cover() {
     const [setScrShow] = useAtom(SetScrShow)
@@ -17,5 +17,4 @@ export function Cover() {
         </div>
     )
 }
-
 

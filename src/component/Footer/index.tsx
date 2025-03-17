@@ -1,7 +1,7 @@
 import './index.less'
 import { useAtom } from 'jotai'
 import { FontSize, StyleValue } from '../../jotai/store.ts'
-import {StoreObject} from '../SetScreen/StoreObject.ts'
+import { StoreObject } from '../SetScreen/StoreObject.ts'
 import { SvgList } from './svg.tsx'
 
 export function Footer() {
@@ -13,26 +13,34 @@ export function Footer() {
     // 重复Html代码循环遍历化
     const LiContent = [
         {
-            href: 'https://momoyu.cc/', title: '首页'
+            href: 'https://momoyu.cc/',
+            title: '首页'
         }, {
-            href: 'https://nav.momoyu.cc/', title: '导航'
+            href: 'https://nav.momoyu.cc/',
+            title: '导航'
         }, {
-            href: 'https://support.qq.com/products/313868?', title: '反馈'
+            href: 'https://support.qq.com/products/313868?',
+            title: '反馈'
         }, {
-            href: 'https://momoyu.cc/login', title: '反馈RSS订阅'
+            href: 'https://momoyu.cc/login',
+            title: '反馈RSS订阅'
         },
     ]
     const LlList = LiContent.map((item, index) =>
         <li>
             <a
-                href={item.href} target="_blank"
-                style={{color: style[styleValue].color, fontSize: fontSize + 'px'}}
+                href={item.href}
+                target="_blank"
+                style={{
+                    color: style[styleValue].color,
+                    fontSize: fontSize + 'px'
+                }}
+                rel="noreferrer"
             >
                 {item.title}
             </a>
         </li>
     )
-
     return (
         <footer style={{backgroundColor: style[styleValue].backgroundColor}}>
             <div className="svg">
@@ -53,18 +61,27 @@ export function Footer() {
                     {LlList}
                 </ul>
                 <a
-                    href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank"
-                    style={{color: style[styleValue].color, fontSize: fontSize + 'px'}}
+                    href="https://beian.miit.gov.cn/#/Integrated/index"
+                    target="_blank"
+                    style={{
+                        color: style[styleValue].color,
+                        fontSize: fontSize + 'px'
+                    }}
+                    rel="noreferrer"
                 >© 2021 momoyu.cc
                     粤ICP备2020133024号</a>
                 <a
-                    href="https://beian.mps.gov.cn/#/query/webSearch" target="_blank"
-                    style={{color: style[styleValue].color, fontSize: fontSize + 'px'}}
+                    href="https://beian.mps.gov.cn/#/query/webSearch"
+                    target="_blank"
+                    style={{
+                        color: style[styleValue].color,
+                        fontSize: fontSize + 'px'
+                    }}
+                    rel="noreferrer"
                 >粤公网安备
                     44011202001391号</a>
             </div>
         </footer>
     )
 }
-
 

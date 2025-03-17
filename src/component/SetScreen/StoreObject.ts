@@ -1,5 +1,5 @@
 import { Icons } from './icons.tsx'
-import {useEffect} from 'react'
+import { useEffect } from 'react'
 
 export function StoreObject() {
     const items = Icons()
@@ -23,16 +23,15 @@ export function StoreObject() {
     return style
 }
 
-
-export function setScrStyle  (){
-    let setScrStyleitem={
-        'show':{
+export function setScrStyle() {
+    let setScrStyleitem = {
+        'show': {
             display: 'block',
-            height:document.documentElement.scrollHeight + 'px'
+            height: document.documentElement.scrollHeight + 'px'
         },
-        'hide' : {
+        'hide': {
             display: 'none',
-            height:'0px'
+            height: '0px'
         }
     }
     useEffect(() => {
@@ -42,13 +41,13 @@ export function setScrStyle  (){
 }
 
 export const overHiddenClass = {
-    'hide' : {
+    'hide': {
         height: '20px',
         overflow: 'hidden',
         textOverflow: 'ellipsis',
         whiteSpace: 'nowrap'
     },
-    'show' : {
+    'show': {
         height: '',
         overflow: '',
         textOverflow: '',
