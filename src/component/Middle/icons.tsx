@@ -1,5 +1,15 @@
 import { LogoShow } from '../../jotai/store.ts'
 import { useAtom } from 'jotai'
+import * as React from 'react'
+
+// todo 这种形式把 逻辑跟 数据完全解耦了，然后你所有的业务图标都会被控制是否显示，这个事情只需要写一遍
+// todo 用这种形式解耦后，把每个具体的 svg 取一个名字，然后每个图标一个文件，放在 icons/** 文件夹下
+export function MySvg({ children }: { children: React.ReactNode }) {
+    const [logoShow] = useAtom(LogoShow)
+    return <div style={{display: logoShow ? 'block' : 'none'}}>
+        { children }
+    </div>
+}
 
 export function Icons() {
     // 原子实例
@@ -8,6 +18,9 @@ export function Icons() {
     //svg数组
     const items = [
         {
+            // TODO 这里有个高级内容，就是高阶组件的知识，你现在之所以只能把 svg 写在 Icons 函数里，是因为他依赖了 LogoShow
+            // 但是你可以封装一下叫做 MySvg 的组件，然后在 MySvg 里面引入 LogoShow，然后组件里的 icon 参数是 纯粹的静态 svg，就可以实现 状态跟 svg 数据的分离
+            // 这个文件的第 5 行示范了怎么写这个组件
             svg: <svg
                 t="1741091539061"
                 className="icon"

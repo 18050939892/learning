@@ -23,6 +23,9 @@ export function SetScreen() {
     // 主题切换功能
     const [theme, setTheme] = useState<Theme>('暗夜')
     const zjOnmouseDown = (event) => {
+        // todo 这里的 if else 本质上是可以完全优化掉的， 没有 if else 这种东西
+        // 主题切换其实就是维护一个 主题色数组，然后 上一个 ，下一个，切换序号，而不是像这种写死的方式
+        const themeList = ['暗夜', '护眼', '极客']
         if (event.target.value == '<') {
             let newTheme: Theme
             switch (theme) {
@@ -73,6 +76,8 @@ export function SetScreen() {
         toggleActions[actionName]()
     }
     // 重复Html循环遍历化
+
+    // todo 这里的思路错了，主题切换和字体大小，完全可以直接写在标签上，然后 onMouseDown={item.onMethod} 也是直接写内联函数，一切都很自然
     const LiOne = [{
         htmlFor: 'zhuti',
         title: '主题切换',
@@ -95,6 +100,8 @@ export function SetScreen() {
         data: '-',
         dataTwo: '+'
     }]
+
+    // todo 这种一次性表达式需要内联在 标签里，直接铺上去，不要间接
     const LiOneList = LiOne.map((item, index) =>
         <li>
             <label htmlFor={item.htmlFor}>{item.title}</label>
@@ -133,6 +140,8 @@ export function SetScreen() {
         title: '首页分类',
     },
     ]
+
+    // todo 这种一次性表达式需要内联在 标签里，直接铺上去，不要间接
     const LiTwoList = LiTwo.map((item, index) =>
         <li>
             <label htmlFor={item.htmlFor}>{item.title}</label>

@@ -17,7 +17,6 @@ export function Header() {
                 id="login"
                 className="submit"
                 onClick={() => {
-                    // 逻辑绑定内聚化，直接写标签上
                     window.location.href = '../../../login.html?id=login'
                 }}
             >登陆

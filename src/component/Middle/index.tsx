@@ -22,6 +22,8 @@ export function Middle() {
     const middleRef = useRef<HTMLDivElement>(null)
     const asideRef = useRef<HTMLElement>(null)
     const size = useWindowSize()
+
+    // todo useEffect 应该放在 useState useRef useAtom 的后面，保持整齐。 他一般是放在最后的，不要中间插一个 useEffect
     useEffect(() => {
         if (middleRef.current && asideRef.current && mainRef.current) {
             const middleWidth = parseFloat(getComputedStyle(middleRef.current).width)
@@ -41,6 +43,9 @@ export function Middle() {
     const style = StoreObject()
 
     // 刷新功能
+    // todo 大部分情况下，不要声明一个空数组，然后再往里面加东西。
+    // todo 学习一下 数据不可变 这个思想
+    // todo 学习代码思想： 纯函数、不可变性、原子性
     const NewsLists = []
     const handleUpdate = () => {
         // 模拟从接口里的数据
@@ -62,6 +67,7 @@ export function Middle() {
         for (let i = 0; i < NewsContent.length; i++) {
             console.log(style[styleValue].color)
             NewsLists[i] = NewsContent[i].map(NewValue =>
+                // todo css className 的命名规范是 span-one，中划线连接
                 <li>
                     <span
                         className="spanone"
@@ -95,6 +101,9 @@ export function Middle() {
     handleUpdate()
 
     // 重复代码循环遍历化
+    // todo 尽量不要使用 for循环，使用 map 代替
+    // todo 大部分情况下，不要声明一个空数组，然后再往里面加东西。
+    // 而是： 声明的时候，就直接把东西全部铺好。  不要手动赋值
     const items = Icons()
     const itemsRef = []
     for (let i = 0; i < items.length; i++) {
@@ -120,9 +129,12 @@ export function Middle() {
     )
 
     // 侧边栏随滚动变化位置
+    // todo scrolltop -> scrollTop
     const [ScrollTop, setScrolltop] = useState(85)
     const handleScroll = useCallback(
         () => {
+            // todo 这里的表达式可以优化成 setScrolltop(document.documentElement.scrollTop >= 100 ? 30 : 85)
+            // 后续所有这种类似逻辑，都要记得
             if (document.documentElement.scrollTop >= 100) {
                 setScrolltop(30)
             } else {
@@ -141,6 +153,10 @@ export function Middle() {
     const FirstTitle = ['购物平台', '视频平台', '新闻资讯', '程序员聚集地', 'IT科技', '热门社区']
     const firstarr = []
     useEffect(() => {
+        // todo 这里的代码问题很大，思考一下能不能用 CSS 直接替换掉
+        // 能不能把这段代码优化掉
+        // 记住一件事：  复杂的逻辑，说明思路是错的，简单的逻辑是正确的。
+        // 简单优于复杂
         if (firstShow) {
             FirstTitle.map((item, index) => {
                 firstarr[index] = document.createElement('div')

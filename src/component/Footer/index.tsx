@@ -11,6 +11,7 @@ export function Footer() {
     const style = StoreObject()
 
     // 重复Html代码循环遍历化
+    // 这种属于数据，所以不用铺上去
     const LiContent = [
         {
             href: 'https://momoyu.cc/',
@@ -26,6 +27,9 @@ export function Footer() {
             title: '反馈RSS订阅'
         },
     ]
+
+    // todo 这种一次性表达式需要内联在 标签里，直接铺上去，不要间接
+    // 其他所有地方都改一下，如果只用一次的，直接铺上去
     const LlList = LiContent.map((item, index) =>
         <li>
             <a
