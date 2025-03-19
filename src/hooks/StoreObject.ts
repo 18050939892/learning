@@ -1,7 +1,9 @@
-import { Icons } from './icons.tsx'
-import { useEffect } from 'react'
+import { Icons } from '../component/SetScreen/icons.tsx'
+import { useEffect, useState } from 'react'
+import { SetScrShow } from '../jotai/store.ts'
+import { useAtom } from 'jotai'
 
-export function StoreObject() {
+export function useStoreObject() {
     const items = Icons()
     const style = {
         'dark': {
@@ -26,20 +28,17 @@ export function StoreObject() {
 // todo 你这种写法叫做 自定义 Hook，函数名的取名规则是 useXXX()
 // 例如这里叫做 useScreenStyle()
 // 其他所有 hooks 都改一下
-export function setScrStyle() {
+export function useScreenStyle() {
     let setScrStyleitem = {
         'show': {
             display: 'block',
-            height: document.documentElement.scrollHeight + 'px'
+            height: document.documentElement.scrollHeight + 'px',
         },
         'hide': {
             display: 'none',
             height: '0px'
         }
     }
-    useEffect(() => {
-        setScrStyleitem['show'].height = document.documentElement.scrollHeight + 'px'
-    }, [document.documentElement.scrollHeight])
     return setScrStyleitem
 }
 

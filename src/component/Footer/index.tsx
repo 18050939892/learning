@@ -1,14 +1,14 @@
 import './index.less'
 import { useAtom } from 'jotai'
 import { FontSize, StyleValue } from '../../jotai/store.ts'
-import { StoreObject } from '../SetScreen/StoreObject.ts'
+import { useStoreObject } from '../../hooks/StoreObject.ts'
 import { SvgList } from './svg.tsx'
 
 export function Footer() {
     // 零散原子实例
     const [fontSize] = useAtom(FontSize)
     const [styleValue] = useAtom(StyleValue)
-    const style = StoreObject()
+    const style = useStoreObject()
 
     // 重复Html代码循环遍历化
     // 这种属于数据，所以不用铺上去
@@ -27,24 +27,7 @@ export function Footer() {
             title: '反馈RSS订阅'
         },
     ]
-
     // todo 这种一次性表达式需要内联在 标签里，直接铺上去，不要间接
-    // 其他所有地方都改一下，如果只用一次的，直接铺上去
-    const LlList = LiContent.map((item, index) =>
-        <li>
-            <a
-                href={item.href}
-                target="_blank"
-                style={{
-                    color: style[styleValue].color,
-                    fontSize: fontSize + 'px'
-                }}
-                rel="noreferrer"
-            >
-                {item.title}
-            </a>
-        </li>
-    )
     return (
         <footer style={{backgroundColor: style[styleValue].backgroundColor}}>
             <div className="svg">
@@ -62,7 +45,21 @@ export function Footer() {
             </div>
             <div id="footerText" style={{color: style[styleValue].color}}>
                 <ul>
-                    {LlList}
+                    {LiContent.map((item, index) =>
+                        <li>
+                            <a
+                                href={item.href}
+                                target="_blank"
+                                style={{
+                                    color: style[styleValue].color,
+                                    fontSize: fontSize + 'px'
+                                }}
+                                rel="noreferrer"
+                            >
+                                {item.title}
+                            </a>
+                        </li>
+                    )}
                 </ul>
                 <a
                     href="https://beian.miit.gov.cn/#/Integrated/index"

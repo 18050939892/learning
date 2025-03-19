@@ -1,66 +1,139 @@
 // todo 学习一下 less 的语法，这里的选择器都可以变得很简洁
 // 可以直接发给 AI，让他教你怎么写
-#content > header {
-    height: 54.4px;
-    line-height: 64.4px;
-    background-color: #1f2025;
-    padding: 5px 14px 5px 20px;
-    position: relative;;
-}
+//#content > header {
+//    height: 54.4px;
+//    line-height: 64.4px;
+//    background-color: #1f2025;
+//    padding: 5px 14px 5px 20px;
+//    position: relative;;
+//}
+//
+//#content > header > img {
+//    position: absolute;
+//    top: 15.2px;
+//    width: 32px;
+//    height: 32px;
+//    background-color: #1f2025;
+//}
+//
+//#content > header > input {
+//    position: absolute;
+//    left: 60px;
+//    top: 15.4px;
+//    width: 19%;
+//    padding: 0 10px;
+//    height: 23.6px;
+//    border-radius: 10px 10px;
+//    color: aliceblue;
+//    background-color: #2a2d34;
+//    border: 5px solid #2a2d34;
+//}
+//
+//#content > header > input:focus {
+//    outline: 0px solid #2a2d34;
+//}
+//
+//#content > header > .submit {
+//    position: absolute;
+//    /* width: 58.26px; */
+//    height: 30px;
+//    right: 20px;
+//    background-color: #5983ce;
+//    color: aliceblue;
+//    border-radius: 5px 5px;
+//    padding: 5px 15px;
+//    border: 0px;
+//    top: 16.2px;
+//
+//}
+//
+//#content > header > .submit:hover {
+//    box-shadow: 0px 0px 8px #4fab9e;
+//}
+//
+//#content > header > #login {
+//    position: absolute;
+//    right: 90px;
+//    background-color: #4fab9e;
+//}
+//
+//#logo {
+//    margin-left: -60px;
+//}
+//
+//.dark {
+//    background-color: #1f2025 !important;
+//}
+//
+//.eye {
+//    background-color: #333e43 !important;
+//}
+//
+//.geek {
+//    background-color: white !important;
+//}
+#content {
+    > header {
+        height: 54.4px;
+        line-height: 64.4px;
+        background-color: #1f2025;
+        padding: 5px 14px 5px 20px;
+        position: relative;
 
-#content > header > img {
-    position: absolute;
-    top: 15.2px;
-    width: 32px;
-    height: 32px;
-    background-color: #1f2025;
-}
+        > img {
+            position: absolute;
+            top: 15.2px;
+            width: 32px;
+            height: 32px;
+            background-color: #1f2025;
+        }
 
-#content > header > input {
-    position: absolute;
-    left: 60px;
-    top: 15.4px;
-    width: 19%;
-    padding: 0 10px;
-    height: 23.6px;
-    border-radius: 10px 10px;
-    color: aliceblue;
-    background-color: #2a2d34;
-    border: 5px solid #2a2d34;
-}
+        > input {
+            position: absolute;
+            left: 60px;
+            top: 15.4px;
+            width: 19%;
+            padding: 0 10px;
+            height: 23.6px;
+            border-radius: 10px 10px;
+            color: aliceblue;
+            background-color: #2a2d34;
+            border: 5px solid #2a2d34;
 
-#content > header > input:focus {
-    outline: 0px solid #2a2d34;
-}
+            &:focus {
+                outline: 0px solid #2a2d34;
+            }
+        }
 
-#content > header > .submit {
-    position: absolute;
-    /* width: 58.26px; */
-    height: 30px;
-    right: 20px;
-    background-color: #5983ce;
-    color: aliceblue;
-    border-radius: 5px 5px;
-    padding: 5px 15px;
-    border: 0px;
-    top: 16.2px;
+        > .submit {
+            position: absolute;
+            height: 30px;
+            right: 20px;
+            background-color: #5983ce;
+            color: aliceblue;
+            border-radius: 5px 5px;
+            padding: 5px 15px;
+            border: 0px;
+            top: 16.2px;
 
-}
+            &:hover {
+                box-shadow: 0px 0px 8px #4fab9e;
+            }
+        }
 
-#content > header > .submit:hover {
-    box-shadow: 0px 0px 8px #4fab9e;
-}
-
-#content > header > #login {
-    position: absolute;
-    right: 90px;
-    background-color: #4fab9e;
+        > #login {
+            position: absolute;
+            right: 90px;
+            background-color: #4fab9e;
+        }
+    }
 }
 
 #logo {
     margin-left: -60px;
 }
 
+// 主题相关类
 .dark {
     background-color: #1f2025 !important;
 }
