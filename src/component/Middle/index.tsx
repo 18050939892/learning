@@ -12,7 +12,7 @@ import {
     UnWorkList,
     WorkList
 } from '../../jotai/store.ts'
-import { overHiddenClass, StoreObject } from '../SetScreen/StoreObject.ts'
+import { overHiddenClass, useStoreObject } from '../../hooks/StoreObject.ts'
 import { useAtom } from 'jotai'
 import { SvgList } from './svg.tsx'
 
@@ -40,7 +40,7 @@ export function Middle() {
     const [workList] = useAtom(WorkList)
     const [unWorkList] = useAtom(UnWorkList)
     const [, setSetScrShow] = useAtom(SetScrShow)
-    const style = StoreObject()
+    const style = useStoreObject()
 
     // 刷新功能
     // todo 大部分情况下，不要声明一个空数组，然后再往里面加东西。
@@ -65,7 +65,6 @@ export function Middle() {
         NewsContent[0] = news
 
         for (let i = 0; i < NewsContent.length; i++) {
-            console.log(style[styleValue].color)
             NewsLists[i] = NewsContent[i].map(NewValue =>
                 // todo css className 的命名规范是 span-one，中划线连接
                 <li>

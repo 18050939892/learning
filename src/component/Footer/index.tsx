@@ -1,14 +1,14 @@
 import './index.less'
 import { useAtom } from 'jotai'
 import { FontSize, StyleValue } from '../../jotai/store.ts'
-import { StoreObject } from '../SetScreen/StoreObject.ts'
+import { useStoreObject } from '../../hooks/StoreObject.ts'
 import { SvgList } from './svg.tsx'
 
 export function Footer() {
     // 零散原子实例
     const [fontSize] = useAtom(FontSize)
     const [styleValue] = useAtom(StyleValue)
-    const style = StoreObject()
+    const style = useStoreObject()
 
     // 重复Html代码循环遍历化
     // 这种属于数据，所以不用铺上去

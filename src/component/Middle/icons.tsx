@@ -4,10 +4,10 @@ import * as React from 'react'
 
 // todo 这种形式把 逻辑跟 数据完全解耦了，然后你所有的业务图标都会被控制是否显示，这个事情只需要写一遍
 // todo 用这种形式解耦后，把每个具体的 svg 取一个名字，然后每个图标一个文件，放在 icons/** 文件夹下
-export function MySvg({ children }: { children: React.ReactNode }) {
+export function MySvg({children}: {children: React.ReactNode}) {
     const [logoShow] = useAtom(LogoShow)
     return <div style={{display: logoShow ? 'block' : 'none'}}>
-        { children }
+        {children}
     </div>
 }
 
