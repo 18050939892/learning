@@ -19,3 +19,6 @@ todo 这里的表达式可以优化成 setScrolltop(document.documentElement.scr
 todo 这里的代码问题很大，思考一下能不能用 CSS 直接替换掉
 这里使用flex布局+order解决排序问题
 todo 学习一下 less 的语法，这里的选择器都可以变得很简洁
+todo 仍然没有彻底理解 原子状态和衍生状态，简单来说，这里的改变主题色，只能使用一次 setXXX()，其他状态通过这个 xxx 属性衍生出来
+只要用了超过1次set就必定是错的
+todo 这里的 svg 应该给他取个名字， 不要用 SvgList[0] 这种方式引用，不然不知道是什么意思，不好维护

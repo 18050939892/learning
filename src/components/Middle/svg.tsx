@@ -1,5 +1,6 @@
-export const SvgList = [
-    <svg
+export const svg = <svg></svg>
+export const SvgList = {
+    '设置': <svg
         t="1741080105706"
         className="icon"
         viewBox="0 0 1024 1024"
@@ -15,7 +16,7 @@ export const SvgList = [
             p-id="2628"
         ></path>
     </svg>,
-    <svg
+    '音乐': <svg
         t="1741080251951"
         className="icon"
         viewBox="0 0 1024 1024"
@@ -44,6 +45,7 @@ export const SvgList = [
             p-id="4694"
         ></path>
     </svg>,
+    '加微':
     <svg
         t="1741080280281"
         className="icon"
@@ -65,7 +67,7 @@ export const SvgList = [
             p-id="5708"
         ></path>
     </svg>,
-    <svg
+    '反馈': <svg
         t="1741080344571"
         className="icon"
         viewBox="0 0 1024 1024"
@@ -87,5 +89,5 @@ export const SvgList = [
         ></path>
     </svg>
 
-]
+}
 

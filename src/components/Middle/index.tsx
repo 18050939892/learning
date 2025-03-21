@@ -5,16 +5,15 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import './index.less'
 import './first.less'
 import {
-    CheckWork,
+    CheckWork, CurrentTheme,
     FirstShow,
     FontSize,
     OverHidden,
     SetScrShow,
-    StyleValue,
     UnWorkList,
     WorkList
 } from '../../jotai/store.ts'
-import { overHiddenClass, useStoreObject } from '../../hooks/StoreObject.ts'
+import { overHiddenClass } from '../../hooks/StoreObject.ts'
 import { useAtom } from 'jotai'
 import { SvgList } from './svg.tsx'
 
@@ -24,16 +23,14 @@ export function Middle() {
     const middleRef = useRef<HTMLDivElement>(null)
     const asideRef = useRef<HTMLElement>(null)
     const size = useWindowSize()
-    // 零散的原子实例
     const [firstShow] = useAtom(FirstShow)
     const [overHidden] = useAtom(OverHidden)
     const [checkWork] = useAtom(CheckWork)
     const [fontSize] = useAtom(FontSize)
-    const [styleValue] = useAtom(StyleValue)
     const [workList] = useAtom(WorkList)
     const [unWorkList] = useAtom(UnWorkList)
+    const [currentTheme] = useAtom(CurrentTheme)
     const [, setSetScrShow] = useAtom(SetScrShow)
-    const style = useStoreObject()
     useEffect(() => {
         if (middleRef.current && asideRef.current && mainRef.current) {
             const middleWidth = parseFloat(getComputedStyle(middleRef.current).width)
@@ -61,14 +58,14 @@ export function Middle() {
                     <span
                         className="span-one"
                         style={{
-                            color: style[styleValue].color,
+                            color: currentTheme.color,
                             fontSize: fontSize + 'px'
                         }}
                     >{NewValue.id}</span>
                     <span
                         className="span-two"
                         style={{
-                            color: style[styleValue].color,
+                            color: currentTheme.color,
                             fontSize: fontSize + 'px',
                             height: overHiddenClass[overHidden].height,
                             overflow: overHiddenClass[overHidden].overflow,
@@ -79,7 +76,7 @@ export function Middle() {
                     <span
                         className="span-three"
                         style={{
-                            color: style[styleValue].color,
+                            color: currentTheme.color,
                             fontSize: fontSize + 'px'
                         }}
                     >{NewValue.number}</span>
@@ -114,7 +111,7 @@ export function Middle() {
             <main ref={mainRef} className={`container ${firstShow ? 'layout-first' : ''}`}>
                 {FirstTitle.map((item, index) =>
                     <div
-                        className={`item additem title-${index}`}
+                        className={`item title-${index}`}
                         style={{
                             paddingTop: '10px',
                             height: '15px',
@@ -129,8 +126,8 @@ export function Middle() {
                 )}
                 {items.map((item, index) =>
                     <div
-                        className={`item itemmain content content-${index}`}
-                        style={{backgroundColor: style[styleValue].backgroundColor}}
+                        className={`item content content-${index}`}
+                        style={{backgroundColor: currentTheme.backgroundColor}}
                         ref={itemsRef[index]}
                     >
                         <a href="#" className="title">
@@ -148,52 +145,52 @@ export function Middle() {
                 )}
             </main>
             <aside ref={asideRef} style={{top: ScrollTop + 'px'}}>
-                <div id="top" style={{backgroundColor: style[styleValue].backgroundColor}}>
-                    <div id="topImg">
+                <div id="top" style={{backgroundColor: currentTheme.backgroundColor}}>
+                    <div id="top-img">
                         <span>{checkWork ? unWorkList[0] : workList[0]}</span>
                     </div>
                     <div
-                        id="toptextone"
+                        id="top-text-one"
                         style={{
-                            color: style[styleValue].color,
+                            color: currentTheme.color,
                             fontSize: fontSize + 'px'
                         }}
                     >
                         登录后可使用自定义订阅功能
                     </div>
                     <div
-                        id="toptexttwo"
+                        id="top-text-two"
                         style={{
-                            color: style[styleValue].color,
+                            color: currentTheme.color,
                             fontSize: fontSize + 'px'
                         }}
                     >
                         实时<span>{checkWork ? unWorkList[1] : workList[1]}</span>人数: &nbsp;
                         <span>{checkWork ? unWorkList[2] : workList[2]}</span>
                     </div>
-                    <div id="topsvg">
+                    <div id="top-svg">
                         <a
                             title="设置"
-                            className="topIcon set"
+                            className="top-icon set"
                             href=""
                             onClick={(event) => {
                                 setSetScrShow('show')
                                 event.preventDefault()
                             }}
                         >
-                            {SvgList[0]}
+                            {SvgList['设置']}
                         </a>
                         <a
                             title="音乐"
-                            className="topIcon"
+                            className="top-icon"
                             href="https://peal.cc/player"
                             target="_blank"
                             rel="noreferrer"
                         >
-                            {SvgList[1]}
+                            {SvgList['音乐']}
                         </a>
-                        <a className="topIcon" href="">
-                            {SvgList[2]}
+                        <a className="top-icon" href="">
+                            {SvgList['加微']}
                         </a>
                         <div id="weixin">
                             <img src="https://momoyu.cc/assets/qq-EN_yH9uA.png" alt="" />
@@ -204,19 +201,19 @@ export function Middle() {
                         </div>
                         <a
                             title="留言反馈"
-                            className="topIcon"
+                            className="top-icon"
                             href="https://support.qq.com/products/313868?"
                             target="_blank"
                             rel="noreferrer"
                         >
-                            {SvgList[3]}
+                            {SvgList['反馈']}
                         </a>
                     </div>
                 </div>
-                <div id="buttom" className="buttomcls">
+                <div id="buttom" className="buttom-cls">
                     <a
                         href="#"
-                        className="showrp"
+                        className="show-rp"
 
                         style={{
                             overflow: 'hidden',
@@ -224,7 +221,7 @@ export function Middle() {
                         }}
                     >🧧 领取一个外卖红包吧，每日可领取~</a>
                     <div
-                        id="redpackage"
+                        id="red-package"
                     >
                         <img src="https://momoyu.cc/assets/mthb-CdT7CTbd.jpg" alt="" />
                         <div className="bb"></div>
@@ -261,7 +258,7 @@ export function Middle() {
                     >《致各位<span>{checkWork ? unWorkList[7] : workList[7]}</span>的一封信》</a>
                     <a
                         href="https://peal.cc/blog/01JKSGGB5ZCZGQXVD0S7DGDK8F"
-                        id="lasta"
+                        id="last-a"
                         target="_blank"
                         style={{
                             overflow: 'hidden',
