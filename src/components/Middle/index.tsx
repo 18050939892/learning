@@ -34,8 +34,6 @@ export function Middle() {
     const [unWorkList] = useAtom(UnWorkList)
     const [, setSetScrShow] = useAtom(SetScrShow)
     const style = useStoreObject()
-
-    // 页面自适应
     useEffect(() => {
         if (middleRef.current && asideRef.current && mainRef.current) {
             const middleWidth = parseFloat(getComputedStyle(middleRef.current).width)
@@ -43,8 +41,6 @@ export function Middle() {
             mainRef.current.style.width = `${middleWidth - asideWidth}px`
         }
     }, [size])
-
-    //获取数据
     const handleUpdate = () => {
         // 模拟从接口里的数据
         const NewsContent = [[
@@ -93,14 +89,12 @@ export function Middle() {
     }
     // 这个不能设置成useState，不然隐藏会失效，因为它的修改需要使用到set，而没法直接改
     let NewsLists = handleUpdate()
-
     // 重复代码循环遍历化
     const items = Icons
     const itemsRef = items.map((item, i) => {
         return useRef<HTMLDivElement>(null)
     })
 
-    // 侧边栏自适应
     const [ScrollTop, setScrollTop] = useState(85)
     const handleScroll = useCallback(
         () => {
