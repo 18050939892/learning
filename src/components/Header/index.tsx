@@ -1,16 +1,15 @@
 import './index.less'
 import { useAtom } from 'jotai'
-import { StyleValue } from '../../jotai/store.ts'
+import { CurrentTheme } from '../../jotai/store.ts'
 
 export function Header() {
-    // 命名按照这个格式
-    const [styleValue] = useAtom(StyleValue)
+    const [currentTheme] = useAtom(CurrentTheme)
     return (
-        <header className={styleValue}>
+        <header className={currentTheme.value}>
             <img
                 src="https://momoyu.cc/assets/logo-1-DXR4uO3F.png"
                 alt=""
-                className={styleValue}
+                className={currentTheme.value}
             />
             <input type="text" placeholder="搜索..." />
             <button

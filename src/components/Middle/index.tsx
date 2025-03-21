@@ -5,16 +5,15 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import './index.less'
 import './first.less'
 import {
-    CheckWork,
+    CheckWork, CurrentTheme,
     FirstShow,
     FontSize,
     OverHidden,
     SetScrShow,
-    StyleValue,
     UnWorkList,
     WorkList
 } from '../../jotai/store.ts'
-import { overHiddenClass, useStoreObject } from '../../hooks/StoreObject.ts'
+import { overHiddenClass } from '../../hooks/StoreObject.ts'
 import { useAtom } from 'jotai'
 import { SvgList } from './svg.tsx'
 
@@ -24,16 +23,14 @@ export function Middle() {
     const middleRef = useRef<HTMLDivElement>(null)
     const asideRef = useRef<HTMLElement>(null)
     const size = useWindowSize()
-    // 零散的原子实例
     const [firstShow] = useAtom(FirstShow)
     const [overHidden] = useAtom(OverHidden)
     const [checkWork] = useAtom(CheckWork)
     const [fontSize] = useAtom(FontSize)
-    const [styleValue] = useAtom(StyleValue)
     const [workList] = useAtom(WorkList)
     const [unWorkList] = useAtom(UnWorkList)
+    const [currentTheme] = useAtom(CurrentTheme)
     const [, setSetScrShow] = useAtom(SetScrShow)
-    const style = useStoreObject()
     useEffect(() => {
         if (middleRef.current && asideRef.current && mainRef.current) {
             const middleWidth = parseFloat(getComputedStyle(middleRef.current).width)
@@ -61,14 +58,14 @@ export function Middle() {
                     <span
                         className="span-one"
                         style={{
-                            color: style[styleValue].color,
+                            color: currentTheme.color,
                             fontSize: fontSize + 'px'
                         }}
                     >{NewValue.id}</span>
                     <span
                         className="span-two"
                         style={{
-                            color: style[styleValue].color,
+                            color: currentTheme.color,
                             fontSize: fontSize + 'px',
                             height: overHiddenClass[overHidden].height,
                             overflow: overHiddenClass[overHidden].overflow,
@@ -79,7 +76,7 @@ export function Middle() {
                     <span
                         className="span-three"
                         style={{
-                            color: style[styleValue].color,
+                            color: currentTheme.color,
                             fontSize: fontSize + 'px'
                         }}
                     >{NewValue.number}</span>
@@ -130,7 +127,7 @@ export function Middle() {
                 {items.map((item, index) =>
                     <div
                         className={`item itemmain content content-${index}`}
-                        style={{backgroundColor: style[styleValue].backgroundColor}}
+                        style={{backgroundColor: currentTheme.backgroundColor}}
                         ref={itemsRef[index]}
                     >
                         <a href="#" className="title">
@@ -148,14 +145,14 @@ export function Middle() {
                 )}
             </main>
             <aside ref={asideRef} style={{top: ScrollTop + 'px'}}>
-                <div id="top" style={{backgroundColor: style[styleValue].backgroundColor}}>
+                <div id="top" style={{backgroundColor: currentTheme.backgroundColor}}>
                     <div id="topImg">
                         <span>{checkWork ? unWorkList[0] : workList[0]}</span>
                     </div>
                     <div
                         id="toptextone"
                         style={{
-                            color: style[styleValue].color,
+                            color: currentTheme.color,
                             fontSize: fontSize + 'px'
                         }}
                     >
@@ -164,7 +161,7 @@ export function Middle() {
                     <div
                         id="toptexttwo"
                         style={{
-                            color: style[styleValue].color,
+                            color: currentTheme.color,
                             fontSize: fontSize + 'px'
                         }}
                     >

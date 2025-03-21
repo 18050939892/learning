@@ -1,3 +1,8 @@
+
+// todo 这里的 svg 应该给他取个名字， 不要用 SvgList[0] 这种方式引用，不然不知道是什么意思，不好维护
+// 可以这样直接导出，甚至不用函数包裹， svg 是一种值，可以直接引用的
+export const svg = <svg></svg>
+
 export const SvgList = [
     <svg
         t="1741080105706"

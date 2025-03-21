@@ -1,17 +1,13 @@
 import './index.less'
 import { useAtom } from 'jotai'
-import { FontSize, StyleValue } from '../../jotai/store.ts'
-import { useStoreObject } from '../../hooks/StoreObject.ts'
+import { CurrentTheme, FontSize } from '../../jotai/store.ts'
 import { SvgList } from './svg.tsx'
 
 export function Footer() {
     // 零散原子实例
     const [fontSize] = useAtom(FontSize)
-    const [styleValue] = useAtom(StyleValue)
-    const style = useStoreObject()
+    const [currentTheme] = useAtom(CurrentTheme)
 
-    // 重复Html代码循环遍历化
-    // 这种属于数据，所以不用铺上去
     const LiContent = [
         {
             href: 'https://momoyu.cc/',
@@ -28,7 +24,7 @@ export function Footer() {
         },
     ]
     return (
-        <footer style={{backgroundColor: style[styleValue].backgroundColor}}>
+        <footer style={{backgroundColor: currentTheme.backgroundColor}}>
             <div className="svg">
                 {SvgList[0]}
             </div>
@@ -42,15 +38,15 @@ export function Footer() {
                 </div>
                 {SvgList[1]}
             </div>
-            <div id="footerText" style={{color: style[styleValue].color}}>
+            <div id="footerText" style={{color: currentTheme.color}}>
                 <ul>
-                    {LiContent.map((item, index) =>
+                    {LiContent.map((item) =>
                         <li>
                             <a
                                 href={item.href}
                                 target="_blank"
                                 style={{
-                                    color: style[styleValue].color,
+                                    color: currentTheme.color,
                                     fontSize: fontSize + 'px'
                                 }}
                                 rel="noreferrer"
@@ -64,7 +60,7 @@ export function Footer() {
                     href="https://beian.miit.gov.cn/#/Integrated/index"
                     target="_blank"
                     style={{
-                        color: style[styleValue].color,
+                        color: currentTheme,
                         fontSize: fontSize + 'px'
                     }}
                     rel="noreferrer"
@@ -74,7 +70,7 @@ export function Footer() {
                     href="https://beian.mps.gov.cn/#/query/webSearch"
                     target="_blank"
                     style={{
-                        color: style[styleValue].color,
+                        color: currentTheme,
                         fontSize: fontSize + 'px'
                     }}
                     rel="noreferrer"
