@@ -1,0 +1,21 @@
+component 目录名不对
+
+应该是 components，这是全世界通用标准
+todo 这些类型都可以去掉，可以他可以自动推导， atom<Array> -> atom
+todo 你这种写法叫做 自定义 Hook，函数名的取名规则是 useXXX()
+注：这个todo指的不是普通函数，而是返回数组的函数
+todo 这里的 if else 本质上是可以完全优化掉的， 没有 if else 这种东西
+这里是将if转换为切换序号
+todo 这里的思路错了，主题切换和字体大小，完全可以直接写在标签上，然后 onMouseDown={item.onMethod} 也是直接写内联函数，一切都很自然
+todo 这种一次性表达式需要内联在 标签里，直接铺上去，不要间接
+todo useEffect 应该放在 useState useRef useAtom 的后面，保持整齐。 他一般是放在最后的，不要中间插一个 useEffect
+todo 大部分情况下，不要声明一个空数组，然后再往里面加东西。
+todo 学习一下 数据不可变 这个思想
+todo 学习代码思想： 纯函数、不可变性、原子性
+todo css className 的命名规范是 span-one，中划线连接
+todo 尽量不要使用 for循环，使用 map 代替
+todo 这里的表达式可以优化成 setScrolltop(document.documentElement.scrollTop >= 100 ? 30 : 85)
+原本是简单的if语句
+todo 这里的代码问题很大，思考一下能不能用 CSS 直接替换掉
+这里使用flex布局+order解决排序问题
+todo 学习一下 less 的语法，这里的选择器都可以变得很简洁

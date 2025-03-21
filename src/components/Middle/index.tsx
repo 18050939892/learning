@@ -1,9 +1,9 @@
 import useWindowSize from '../../hooks/useWindowSize.ts'
 import { Icons } from './icons.tsx'
-import {MySvg} from './mysvg.tsx'
+import { MySvg } from './mysvg.tsx'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import './index.less'
-import './first.css'
+import './first.less'
 import {
     CheckWork,
     FirstShow,
@@ -34,7 +34,8 @@ export function Middle() {
     const [unWorkList] = useAtom(UnWorkList)
     const [, setSetScrShow] = useAtom(SetScrShow)
     const style = useStoreObject()
-    // todo useEffect 应该放在 useState useRef useAtom 的后面，保持整齐。 他一般是放在最后的，不要中间插一个 useEffect
+
+    // 页面自适应
     useEffect(() => {
         if (middleRef.current && asideRef.current && mainRef.current) {
             const middleWidth = parseFloat(getComputedStyle(middleRef.current).width)
@@ -42,11 +43,8 @@ export function Middle() {
             mainRef.current.style.width = `${middleWidth - asideWidth}px`
         }
     }, [size])
-    // 刷新功能
-    // todo 大部分情况下，不要声明一个空数组，然后再往里面加东西。
-    // todo 学习一下 数据不可变 这个思想
-    // todo 学习代码思想： 纯函数、不可变性、原子性
-    // const NewsLists = []
+
+    //获取数据
     const handleUpdate = () => {
         // 模拟从接口里的数据
         const NewsContent = [[
@@ -63,7 +61,6 @@ export function Middle() {
         ]]
         return NewsContent.map((item, index) => {
             return NewsContent[index].map(NewValue =>
-                // todo css className 的命名规范是 span-one，中划线连接
                 <li>
                     <span
                         className="span-one"
@@ -98,40 +95,15 @@ export function Middle() {
     let NewsLists = handleUpdate()
 
     // 重复代码循环遍历化
-    // todo 尽量不要使用 for循环，使用 map 代替
-    // todo 大部分情况下，不要声明一个空数组，然后再往里面加东西。
-    // 而是： 声明的时候，就直接把东西全部铺好。  不要手动赋值
     const items = Icons
     const itemsRef = items.map((item, i) => {
         return useRef<HTMLDivElement>(null)
     })
-    const ItemsHtml = items.map((item, index) =>
-        <div
-            className={`item itemmain content content-${index}`}
-            style={{backgroundColor: style[styleValue].backgroundColor}}
-            ref={itemsRef[index]}
-        >
-            <a href="#" className="title">
-                <MySvg>
-                    {item.svg}
-                </MySvg>
-                <h4>{item.title}</h4>&nbsp;
-                <h6>{item.nowtime}</h6>
-            </a>
-            {item.svg2}
-            <ul>
-                {NewsLists[index]}
-            </ul>
-        </div>
-    )
 
-    // 侧边栏随滚动变化位置
-    // todo scrolltop -> scrollTop
+    // 侧边栏自适应
     const [ScrollTop, setScrollTop] = useState(85)
     const handleScroll = useCallback(
         () => {
-            // todo 这里的表达式可以优化成 setScrolltop(document.documentElement.scrollTop >= 100 ? 30 : 85)
-            // 后续所有这种类似逻辑，都要记得
             setScrollTop(document.documentElement.scrollTop >= 100 ? 30 : 85)
         }, [ScrollTop]
     )
@@ -142,29 +114,44 @@ export function Middle() {
         }
     }, [document.documentElement.scrollTop])
 
-    //首页分类功能
-    // todo 这里的代码问题很大，思考一下能不能用 CSS 直接替换掉
     const FirstTitle = ['热门社区', 'IT科技', '程序员聚集地', '新闻资讯', '视频平台', '购物平台']
-    const title = FirstTitle.map((item, index) =>
-        <div
-            className={`item additem title-${index}`}
-            style={{
-                paddingTop: '10px',
-                height: '15px',
-                width: '90.5%',
-                borderRadius: '5px 5px',
-                color: 'rgb(176, 179, 181)',
-                display: firstShow ? 'block' : 'none' /* 默认隐藏所有元素 */
-            }}
-        >
-            {item}
-        </div>
-    )
     return (
         <div ref={middleRef} id="middle">
             <main ref={mainRef} className={`container ${firstShow ? 'layout-first' : ''}`}>
-                {title}
-                {ItemsHtml}
+                {FirstTitle.map((item, index) =>
+                    <div
+                        className={`item additem title-${index}`}
+                        style={{
+                            paddingTop: '10px',
+                            height: '15px',
+                            width: '90.5%',
+                            borderRadius: '5px 5px',
+                            color: 'rgb(176, 179, 181)',
+                            display: firstShow ? 'block' : 'none' /* 默认隐藏所有元素 */
+                        }}
+                    >
+                        {item}
+                    </div>
+                )}
+                {items.map((item, index) =>
+                    <div
+                        className={`item itemmain content content-${index}`}
+                        style={{backgroundColor: style[styleValue].backgroundColor}}
+                        ref={itemsRef[index]}
+                    >
+                        <a href="#" className="title">
+                            <MySvg>
+                                {item.svg}
+                            </MySvg>
+                            <h4>{item.title}</h4>&nbsp;
+                            <h6>{item.nowtime}</h6>
+                        </a>
+                        {item.svg2}
+                        <ul>
+                            {NewsLists[index]}
+                        </ul>
+                    </div>
+                )}
             </main>
             <aside ref={asideRef} style={{top: ScrollTop + 'px'}}>
                 <div id="top" style={{backgroundColor: style[styleValue].backgroundColor}}>
