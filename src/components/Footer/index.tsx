@@ -27,7 +27,6 @@ export function Footer() {
             title: '反馈RSS订阅'
         },
     ]
-    // todo 这种一次性表达式需要内联在 标签里，直接铺上去，不要间接
     return (
         <footer style={{backgroundColor: style[styleValue].backgroundColor}}>
             <div className="svg">

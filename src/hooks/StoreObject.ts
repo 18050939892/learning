@@ -1,8 +1,4 @@
-import { Icons } from '../component/SetScreen/icons.tsx'
-import { useEffect, useState } from 'react'
-import { SetScrShow } from '../jotai/store.ts'
-import { useAtom } from 'jotai'
-
+import { Icons } from '../components/SetScreen/icons.tsx'
 export function useStoreObject() {
     const items = Icons()
     const style = {
@@ -24,10 +20,6 @@ export function useStoreObject() {
     }
     return style
 }
-
-// todo 你这种写法叫做 自定义 Hook，函数名的取名规则是 useXXX()
-// 例如这里叫做 useScreenStyle()
-// 其他所有 hooks 都改一下
 export function useScreenStyle() {
     let setScrStyleitem = {
         'show': {
@@ -41,7 +33,6 @@ export function useScreenStyle() {
     }
     return setScrStyleitem
 }
-
 export const overHiddenClass = {
     'hide': {
         height: '20px',

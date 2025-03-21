@@ -1,4 +1,4 @@
-import { Content } from './component/Content/index.tsx'
+import { Content } from './components/Content/index.tsx'
 
 export function App() {
     return (
