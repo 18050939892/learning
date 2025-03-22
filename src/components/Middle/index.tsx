@@ -1,11 +1,12 @@
 import useWindowSize from '../../hooks/useWindowSize.ts'
 import { Icons } from './icons.tsx'
 import { MySvg } from './mysvg.tsx'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import './index.less'
 import './first.less'
 import {
-    CheckWork, CurrentTheme,
+    CheckWork,
+    CurrentTheme,
     FirstShow,
     FontSize,
     OverHidden,
@@ -92,22 +93,9 @@ export function Middle() {
         return useRef<HTMLDivElement>(null)
     })
 
-    // todo 这个 scrollTop 没用，他官方完全没有靠 JS 去控制滚动条的位置，而是通过 CSS 控制的。包括 useEffect 全都可以删掉
-    const [ScrollTop, setScrollTop] = useState(85)
-    const handleScroll = useCallback(
-        () => {
-            setScrollTop(document.documentElement.scrollTop >= 100 ? 30 : 85)
-        }, [ScrollTop]
-    )
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll)
-        return () => {
-            window.removeEventListener('scroll', handleScroll)
-        }
-    }, [document.documentElement.scrollTop])
-
     const FirstTitle = ['热门社区', 'IT科技', '程序员聚集地', '新闻资讯', '视频平台', '购物平台']
     return (
+
         <div ref={middleRef} id="middle">
             <main ref={mainRef} className={`container ${firstShow ? 'layout-first' : ''}`}>
                 {FirstTitle.map((item, index) =>
@@ -145,7 +133,10 @@ export function Middle() {
                     </div>
                 )}
             </main>
-            <aside ref={asideRef} style={{top: ScrollTop + 'px'}}>
+            <aside
+                ref={asideRef}
+                // style={{top: ScrollTop + 'px'}}
+            >
                 <div id="top" style={{backgroundColor: currentTheme.backgroundColor}}>
                     <div id="top-img">
                         <span>{checkWork ? unWorkList[0] : workList[0]}</span>
@@ -270,5 +261,6 @@ export function Middle() {
                 </div>
             </aside>
         </div>
+
     )
 }

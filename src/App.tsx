@@ -1,10 +1,18 @@
-import { Content } from './components/Content/index.tsx'
-
+import './App.less'
+import { Header } from './components/Header'
+import { Middle } from './components/Middle'
+import { SetScreen } from './components/SetScreen'
+import { Footer } from './components/Footer'
 export function App() {
     return (
-        <>
-            <Content></Content>
-        </>
+        <div>
+            <div id="content">
+                <Header />
+                <Middle />
+                <SetScreen />
+                <Footer />
+            </div>
+        </div>
     )
 }
 

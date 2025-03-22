@@ -33,7 +33,7 @@ jotai的atom不需要设置类型，它会自动推导
 scroolHeight，scroolHeight没变化，反过来又让阴影不变
 
 今天完成了jotai自动推导，改自定义Hook的名字，将重复率较低的一次性表达式从循环结构复原为HTML结构，优化主题结构的if，改为用序号切换的形式实现效果，
-解决了刚发现的阴影面积异常问题，优化了阴影高度的即时更新能力，并将高度绑定的scroolHeight改成body的高度，放在计算时把自己算在内
+解决了刚发现的阴影面积异常问题，优化了阴影高度的即时更新能力，并将高度绑定的scroolHeight改成document.body.clientWidth，放在计算时把自己算在内
 
 useState useRef useAtom后面才是useeffect
 
@@ -46,5 +46,7 @@ useState useRef useAtom后面才是useeffect
 classname的命名规范:xxx-xxx
 
 想要对某个元素下的元素排序，可以使用flex+order的组合
+
+注：当sticky的元素没有高度时，sticky定位会自动失效
 
 
