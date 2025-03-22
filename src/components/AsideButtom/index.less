@@ -1,0 +1,60 @@
+#buttom {
+    margin-top: 20px;
+    width: 320px;
+    height: 217.2px;
+    background-color: #615c47;
+    border-radius: 20px 20px;
+    padding: 20px 20px;
+    color: rgb(176, 179, 181);
+    font-size: 14px;
+    position: relative;
+
+    > #red-package {
+        position: relative;
+        top: -10px;
+        visibility: hidden;
+        opacity: 0;
+        transition: top 0.5s linear, opacity 0.5s linear, visibility 0.5s ease;
+
+        &:hover {
+            top: -40px;
+            visibility: visible;
+            opacity: 1;
+        }
+
+        > img {
+            width: 300px;
+            height: 400px;
+            position: absolute;
+            top: -400px;
+            left: -10px;
+            border: 1px solid white;
+        }
+
+        > .bb {
+            position: absolute;
+            top: 0px;
+            left: 120px;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 20px solid rgb(255, 255, 255);
+        }
+    }
+
+    > .show-rp:hover ~ #red-package {
+        top: -40px;
+        visibility: visible;
+        opacity: 1;
+    }
+}
+// 底部链接风格
+.buttom-cls {
+    > a:hover {
+        text-decoration: underline;
+    }
+}
+ //最后一个锚点
+#last-a {
+    position: absolute;
+    right: 20px;
+}

@@ -1,0 +1,114 @@
+#top {
+    display: block;
+    width: 360px;
+    height: 249px;
+    background-color: #1f2025;
+    border-radius: 20px 20px;
+    position: relative;
+    > #top-svg {
+        position: absolute;
+        display: flex;
+        width: 90%;
+        height: 75px;
+        line-height: 75px;
+        text-align: center;
+        color: rgb(255, 255, 255);
+        left: 50%;
+        transform: translate(-50%, 0);
+        font-size: 14px;
+        top: 205px;
+        justify-content: space-around;
+
+        > div {
+            width: 200px;
+            height: 250px;
+            background-color: rgb(255, 255, 255);
+            position: absolute;
+            z-index: 1;
+            left: 95px;
+            padding: 10px 10px;
+            color: #18191e;
+            visibility: hidden;
+            top: -260px;
+            opacity: 0;
+            transition: top 0.5s linear, opacity 0.5s linear, visibility 0.5s ease;
+
+            &:hover {
+                visibility: visible;
+                opacity: 1;
+                top: -300px;
+            }
+
+            > img {
+                position: absolute;
+                left: 10px;
+                width: 200px;
+                height: 220px;
+            }
+
+            > div {
+                position: absolute;
+                top: 205px;
+                height: 30px;
+
+                > span {
+                    display: block;
+                    position: absolute;
+                    top: 18px;
+                }
+            }
+        }
+
+        > .top-icon:nth-child(3):hover ~ div {
+            visibility: visible;
+            opacity: 1;
+            top: -300px;
+        }
+    }
+}
+// 顶部文本区域
+#top-text-one {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 75px;
+    line-height: 75px;
+    text-align: center;
+    color: rgb(176, 179, 181);
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 14px;
+    top: 120px;
+}
+
+#top-text-two {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 75px;
+    line-height: 75px;
+    text-align: center;
+    color: rgb(176, 179, 181);
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 14px;
+    top: 145px;
+}
+
+// 顶部图像
+#top-img {
+    position: absolute;
+    display: block;
+    width: 75px;
+    height: 75px;
+    background-color: #5983ce;
+    border-radius: 37.5px 37.5px;
+    line-height: 75px;
+    text-align: center;
+    color: aliceblue;
+    font-size: 20px;
+    font-weight: bold;
+    left: 50%;
+    transform: translate(-50%, 0);
+    top: 50px;
+}

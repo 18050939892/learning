@@ -60,8 +60,6 @@ export function SetScreen() {
             <div
                 id="cover"
                 style={{
-                    // height: document.body.clientHeight,
-                    // width: document.body.clientWidth,
                     display: setScrStyleItem[setScrShow].display,
                 }}
             ></div>
