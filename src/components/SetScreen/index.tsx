@@ -181,6 +181,8 @@ export function SetScreen() {
                                         opacity: 0
                                     }}
                                 />
+
+                                {/* todo 这个 if else 简化掉, 没用。 然后把上面 checkOnclock 内联进来 */}
                                 {index != 2 ? (
                                     <div
                                         className="check"

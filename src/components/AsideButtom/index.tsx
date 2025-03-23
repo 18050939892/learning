@@ -29,7 +29,10 @@ export function AsideButtom() {
                     overflow: 'hidden',
                     fontSize: fontSize + 'px'
                 }}
-            >📣 <span>{checkWork ? unWorkList[4] : workList[4]}</span>提醒：今天是3月4日，周二的傍晚<br />
+            >📣
+                {/* todo 你这里的 unWorkList[4]  和 workList[4]，先放到配置里然后再引用，是多此一举了，可以直接把具体的文案写这里，其他所有地方都改一下 */}
+                {/*<span>{checkWork ? '验证：摸鱼' : '摸鱼'}</span>提醒：今天是3月4日，周二的傍晚<br />*/}
+                <span>{checkWork ? unWorkList[4] : workList[4]}</span>提醒：今天是3月4日，周二的傍晚<br />
                 古人云：‘为天地立心，为生民立命。’我却说：‘为<span>{checkWork ? unWorkList[5] : workList[5]}</span>，为<span>{checkWork ? unWorkList[6] : workList[6]}</span>。’
             </p><br />
             <p
