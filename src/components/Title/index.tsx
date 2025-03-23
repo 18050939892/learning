@@ -1,11 +1,12 @@
 import { FirstShow } from '../../jotai/store.ts'
-import {useAtom} from 'jotai'
+import { useAtom } from 'jotai'
+
 export function Title(props) {
     const [firstShow] = useAtom(FirstShow)
-    console.log(props)
+    const {item, index} = props
     return (
         <div
-            className={`item title-${props.index}`}
+            className={`item title-${index}`}
             style={{
                 paddingTop: '10px',
                 height: '15px',
@@ -15,7 +16,7 @@ export function Title(props) {
                 display: firstShow ? 'block' : 'none' /* 默认隐藏所有元素 */
             }}
         >
-            {props.item}
+            {item}
         </div>
     )
 }

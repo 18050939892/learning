@@ -1,26 +1,17 @@
 import { SvgList } from '../Middle/svg.tsx'
 import { useAtom } from 'jotai/index'
 import './index.less'
-import {
-    CheckWork,
-    CurrentTheme,
-    FontSize,
-    SetScrShow,
-    UnWorkList,
-    WorkList
-} from '../../jotai/store.ts'
+import { CheckWork, CurrentTheme, FontSize, SetScrShow, } from '../../jotai/store.ts'
 
 export function AsideTop() {
     const [checkWork] = useAtom(CheckWork)
     const [fontSize] = useAtom(FontSize)
-    const [workList] = useAtom(WorkList)
-    const [unWorkList] = useAtom(UnWorkList)
     const [currentTheme] = useAtom(CurrentTheme)
     const [, setSetScrShow] = useAtom(SetScrShow)
     return (
         <div id="top" style={{backgroundColor: currentTheme.backgroundColor}}>
             <div id="top-img">
-                <span>{checkWork ? unWorkList[0] : workList[0]}</span>
+                <span>{checkWork ? '无名' : '读者'}</span>
             </div>
             <div
                 id="top-text-one"
@@ -38,8 +29,8 @@ export function AsideTop() {
                     fontSize: fontSize + 'px'
                 }}
             >
-                实时<span>{checkWork ? unWorkList[1] : workList[1]}</span>人数: &nbsp;
-                <span>{checkWork ? unWorkList[2] : workList[2]}</span>
+                实时<span>{checkWork ? '摸鱼' : '学习'}</span>人数: &nbsp;
+                <span>{checkWork ? '421' : '362'}</span>
             </div>
             <div id="top-svg">
                 <a
@@ -68,7 +59,7 @@ export function AsideTop() {
                 <div id="weixin">
                     <img src="https://momoyu.cc/assets/qq-EN_yH9uA.png" alt="" />
                     <div>群号：607942298
-                        <span>{checkWork ? unWorkList[3] : workList[3]}</span>
+                        <span>{checkWork ? '验证:摸鱼' : '验证:学习'}</span>
                         <div className="three"></div>
                     </div>
                 </div>

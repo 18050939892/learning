@@ -21,6 +21,7 @@ export const Icons = [
         svg: <ZhiHu />,
         title: '知乎热榜',
         nowtime: '(15分钟前)',
+        // 这个 svg2 会变化吗？ 不会变化的话直接写源码里
         svg2: <Re />
     },
     {

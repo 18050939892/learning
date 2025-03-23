@@ -26,3 +26,14 @@ todo 这里的 svg 应该给他取个名字， 不要用 SvgList[0] 这种方式
 todo 遮罩层直接写在弹窗组件里，与弹窗内容并列，依靠fixed，四个方向全0，来实现固化阴影
 todo 这个 scrollTop 没用，他官方完全没有靠 JS 去控制滚动条的位置，而是通过 CSS 控制的。包括 useEffect 全都可以删掉
 这个用sticky实现，注意：当使用sticky时，开始sticky定位的元素需要有高度，不然sticky会无效
+todo 这个组件是多余的，抽得比较混乱。一般组件抽象，不要搞太多参数，如果参数很多，这个组件就不封装了
+像 MySvg 那种比较适合，而且经常能用的，才封
+另外的情况，就是根据界面分割，Header、Middle、Footer，这种要分出来。这个 Item 就不用封装了
+todo 取值的时候，不要用很长的链条去取， props.xxx.yyy.zzz 这种代码，简化掉，最多只有一层
+const {NewValue} = props
+const {id, title, number} = NewValue
+这样，后续所有代码都记住
+todo 用一堆 useRef 说明思路错了，这东西不应该常用，最多只有很少的情况需要用
+todo 纯数据驱动的思路，不要直接操作 DOM
+TODO 这个数组的命名不对，只有组件和 jotai 的状态才需要大驼峰。 命名也不对，应该是 firstTitleList
+todo 你这里的 unWorkList[4]  和 workList[4]，先放到配置里然后再引用，是多此一举了，可以直接把具体的文案写这里，其他所有地方都改一下

@@ -1,30 +1,18 @@
-import useWindowSize from '../../hooks/useWindowSize.ts'
 import { Icons } from './icons.tsx'
-import { Item } from '../Item'
 import { Title } from '../Title'
 import { AsideTop } from '../AsideTop'
-import { NewsList } from '../NewsList'
-import { useEffect, useRef } from 'react'
+import { NewsItem } from '../NewsList'
 import './index.less'
 import './first.less'
-import { FirstShow } from '../../jotai/store.ts'
+import { CurrentTheme, FirstShow } from '../../jotai/store.ts'
 import { useAtom } from 'jotai'
 import { AsideButtom } from '../AsideButtom'
-
+import { MySvg } from './mysvg.tsx'
 export function Middle() {
     // 页面自适应
-    const mainRef = useRef<HTMLElement>(null)
-    const middleRef = useRef<HTMLDivElement>(null)
-    const asideRef = useRef<HTMLElement>(null)
-    const size = useWindowSize()
     const [firstShow] = useAtom(FirstShow)
-    useEffect(() => {
-        if (middleRef.current && asideRef.current && mainRef.current) {
-            const middleWidth = parseFloat(getComputedStyle(middleRef.current).width)
-            const asideWidth = parseFloat(getComputedStyle(asideRef.current).width)
-            mainRef.current.style.width = `${middleWidth - asideWidth}px`
-        }
-    }, [size])
+    const [currentTheme] = useAtom(CurrentTheme)
+
     const handleUpdate = () => {
         // 模拟从接口里的数据
         const NewsContent = [[
@@ -41,35 +29,41 @@ export function Middle() {
         ]]
         return NewsContent.map((item, index) => {
             return NewsContent[index].map(NewValue =>
-                <NewsList NewValue={NewValue}></NewsList>
+                <NewsItem NewValue={NewValue}></NewsItem>
             )
         })
     }
     // 这个不能设置成useState，不然隐藏会失效，因为它的修改需要使用到set，而没法直接改
     let NewsLists = handleUpdate()
     // 重复代码循环遍历化
-    const items = Icons
-    const itemsRef = items.map(() => {
-        return useRef<HTMLDivElement>(null)
-    })
-    const FirstTitle = ['热门社区', 'IT科技', '程序员聚集地', '新闻资讯', '视频平台', '购物平台']
+    const firstTitleList = ['热门社区', 'IT科技', '程序员聚集地', '新闻资讯', '视频平台', '购物平台']
     return (
-        <div ref={middleRef} id="middle">
-            <main ref={mainRef} className={`container ${firstShow ? 'layout-first' : ''}`}>
-                {FirstTitle.map((item, index) =>
+        <div id="middle">
+            <main className={`container ${firstShow ? 'layout-first' : ''}`}>
+                {firstTitleList.map((item, index) =>
                     <Title item={item} index={index}></Title>
                 )}
-                {items.map((item, index) =>
-                    <Item
-                        item={item}
-                        index={index}
-                        NewsLists={NewsLists[index]}
-                        itemRef={itemsRef[index]}
-                    ></Item>
+                {Icons.map((item, index) =>
+                    <div
+                        className={`item content content-${index}`}
+                        style={{backgroundColor: currentTheme.backgroundColor}}
+                    >
+                        <a href="#" className="title">
+                            <MySvg>
+                                {item.svg}
+                            </MySvg>
+                            <h4>{item.title}</h4>&nbsp;
+                            <h6>{item.nowtime}</h6>
+                        </a>
+                        {item.svg2}
+                        <ul>
+                            {NewsLists[index]}
+                        </ul>
+                    </div>
                 )
                 }
             </main>
-            <aside ref={asideRef}>
+            <aside>
                 <AsideTop></AsideTop>
                 <AsideButtom></AsideButtom>
             </aside>

@@ -2,10 +2,13 @@ import { overHiddenClass } from '../../hooks/StoreObject.ts'
 import { useAtom } from 'jotai/index'
 import { CurrentTheme, FontSize, OverHidden } from '../../jotai/store.ts'
 import './index.less'
-export function NewsList(props) {
+
+export function NewsItem(props) {
     const [overHidden] = useAtom(OverHidden)
     const [fontSize] = useAtom(FontSize)
     const [currentTheme] = useAtom(CurrentTheme)
+    const {NewValue} = props
+    const {id, title, number} = NewValue
     return (
         <li>
             <span
@@ -14,7 +17,8 @@ export function NewsList(props) {
                     color: currentTheme.color,
                     fontSize: fontSize + 'px'
                 }}
-            >{props.NewValue.id}</span>
+            >{id}</span>
+
             <span
                 className="span-two"
                 style={{
@@ -25,14 +29,14 @@ export function NewsList(props) {
                     textOverflow: overHiddenClass[overHidden].textOverflow,
                     whiteSpace: overHiddenClass[overHidden].whiteSpace
                 }}
-            >{props.NewValue.title}</span>
+            >{title}</span>
             <span
                 className="span-three"
                 style={{
                     color: currentTheme.color,
                     fontSize: fontSize + 'px'
                 }}
-            >{props.NewValue.number}</span>
+            >{number}</span>
         </li>
     )
 }

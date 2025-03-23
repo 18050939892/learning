@@ -24,21 +24,6 @@ export function SetScreen() {
     const [currentTheme] = useAtom(CurrentTheme)
     const [setScrShow, setSetScrShow] = useAtom(SetScrShow)
     const setScrStyleItem = useScreenStyle()
-
-    // 其余各类各类功能+按键滑动效果
-    const checkOnclock = (event) => {
-        const actionName = event.currentTarget.getAttribute('name')
-        const toggleActions = {
-            'toumo': () => setCheckWork(prevState => !prevState),
-            'yincang': () => setOverHidden(prevState =>
-                prevState === 'hide' ? 'show' : 'hide'
-            ),
-            'logo': () => setLogoShow(prevState => !prevState),
-            'first': () => setFirstShow(prevState => !prevState)
-        }
-        // 如果存在对应的动作，则执行
-        toggleActions[actionName]()
-    }
     const LiTwo = [{
         htmlFor: 'toumo',
         title: '偷摸模式',
@@ -181,40 +166,34 @@ export function SetScreen() {
                                         opacity: 0
                                     }}
                                 />
-                                {index != 2 ? (
+                                {
                                     <div
                                         className="check"
                                         name={item.htmlFor}
-                                        onClick={(e) => {
+                                        id={item.htmlFor}
+                                        onClick={(event) => {
                                             const dom = document.getElementById(`toggle-${item.htmlFor}`) as any
                                             // 手动切换复选框状态，触发CSS效果
                                             dom.checked = !dom.checked
-                                            // 执行原有的点击事件处理
-                                            checkOnclock(e)
+                                            // this.checked = !this.checked
+                                            const actionName = event.currentTarget.getAttribute('name')
+                                            const toggleActions = {
+                                                'toumo': () => setCheckWork(prevState => !prevState),
+                                                'yincang': () => setOverHidden(prevState =>
+                                                    prevState === 'hide' ? 'show' : 'hide'
+                                                ),
+                                                'logo': () => setLogoShow(prevState => !prevState),
+                                                'first': () => setFirstShow(prevState => !prevState)
+                                            }
+                                            // 如果存在对应的动作，则执行
+                                            toggleActions[actionName]()
                                         }}
                                     >
                                         <a href="#" className="true left">开启</a>
                                         <a href="#" className="empty start"></a>
                                         <a href="#" className="close between">关闭</a>
                                     </div>
-                                ) : (
-                                    <div
-                                        className="check"
-                                        name={item.htmlFor}
-                                        id={item.htmlFor}
-                                        onClick={(e) => {
-                                            const dom = document.getElementById(`toggle-${item.htmlFor}`) as any
-                                            // 手动切换复选框状态，触发CSS效果
-                                            dom.checked = !dom.checked
-                                            // 执行原有的点击事件处理
-                                            checkOnclock(e)
-                                        }}
-                                    >
-                                        <a href="#" className="true start">开启</a>
-                                        <a href="#" className="empty between"></a>
-                                        <a href="#" className="close right">关闭</a>
-                                    </div>
-                                )}
+                                }
                             </li>
                         )}
                         <li>
