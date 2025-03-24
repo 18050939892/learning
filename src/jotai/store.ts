@@ -6,7 +6,7 @@ export const LogoShow = atom(true)
 type ScrType = 'show' | 'hide'
 export const OverHidden = atom<ScrType>('show')
 export const CheckWork = atom(true)
-export const FontSize = atom(14)
+export const FontSize = atom(13)
 export const themeList = [
     {
         name: '暗夜',
@@ -31,3 +31,12 @@ export const themeList = [
 export const ThemeIndex = atom(0)
 export const CurrentTheme = atom((get) => themeList[get(ThemeIndex)])
 export const SetScrShow = atom<ScrType>('hide')
+
+export const MessAge = atom([[], [], [], [], [], [], [], [], [], [], [], [], [], []])
+
+// export const UpdateTime = atom()
+// export const NowTime = atom((get) => {
+//     const timeDiff = new Date() - get(UpdateTime)
+//     const minutes = Math.floor(timeDiff / (1000 * 60))
+//     return `${minutes}分钟前`
+// })

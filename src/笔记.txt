@@ -48,5 +48,27 @@ classname的命名规范:xxx-xxx
 想要对某个元素下的元素排序，可以使用flex+order的组合
 
 注：当sticky的元素没有高度时，sticky定位会自动失效
+        const logoList = ['/zhihu', '/douban-movie', '/weibo', '/toutiao', '/hupu', '/bilibili', '', '/ifanr', '/ithome', '', '/csdn', '/huxiu', '', '/juejin']
+        logoList.map(async (item, index) => {
+            return await axios.get('https://my-repository-orcin-beta.vercel.app' + item).then(res => {
+                return res.data
+            }).then(data => {
+                // an[index] = data.data || []
+                setMessAge(prev => {
+                    let s = [...prev]
+                    s[index] = data.data || []
+                    return s
+                })
+            })
+        })
+        // const itemList = await axios.get('https://my-repository-orcin-beta.vercel.app/bilibili').then(res => {
+        //     return res.data
+        // }).then(data => {
+        //     return data.data
+        // }).catch(err => {
+        //     return ''
+        // })
+        // setMessAge(itemList)
 
 
+还剩前三特殊颜色和刷新

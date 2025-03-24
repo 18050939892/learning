@@ -92,14 +92,17 @@ main {
                 background-color: #18191e;
             }
 
-            > li {
+            > a {
                 float: left;
                 display: block;
                 padding-top: 10px;
                 width: 100%;
 
-                &:hover span {
-                    color: rgb(115, 115, 115);
+                &:hover >span {
+                    color: rgb(115, 115, 115) !important;
+                }
+                &:visited >span{
+                    color: rgb(115, 115, 115) !important;
                 }
 
                 > span {

@@ -4,35 +4,47 @@ import { AsideTop } from '../AsideTop'
 import { NewsItem } from '../NewsList'
 import './index.less'
 import './first.less'
-import { CurrentTheme, FirstShow } from '../../jotai/store.ts'
+import { CurrentTheme, FirstShow, MessAge } from '../../jotai/store.ts'
 import { useAtom } from 'jotai'
 import { AsideButtom } from '../AsideButtom'
 import { MySvg } from './mysvg.tsx'
+import axios from 'axios'
+import { useEffect } from 'react'
+
 export function Middle() {
     // 页面自适应
     const [firstShow] = useAtom(FirstShow)
     const [currentTheme] = useAtom(CurrentTheme)
 
-    const handleUpdate = () => {
-        // 模拟从接口里的数据
-        const NewsContent = [[
-            {
-                id: 1,
-                title: '京东的环境二的发表今晚肯定非常不健康无纺布尽快v发v为日本海军发生口角',
-                number: '385万'
-            },
-            {
-                id: 2,
-                title: '京东',
-                number: '385万'
-            },
-        ]]
-        return NewsContent.map((item, index) => {
-            return NewsContent[index].map(NewValue =>
-                <NewsItem NewValue={NewValue}></NewsItem>
+    const [messAge, setMessAge] = useAtom(MessAge)
+
+    async function sendajax() {
+        const logoList = ['/zhihu', '/douban-movie', '/weibo', '/toutiao', '/hupu', '/bilibili', '', '/ifanr', '/ithome', '', '/csdn', '/huxiu', '', '/juejin']
+        logoList.map(async (item, index) => {
+            return await axios.get('https://my-repository-orcin-beta.vercel.app' + item).then(res => {
+                return res.data
+            }).then(data => {
+                setMessAge(prev => {
+                    let s = [...prev]
+                    s[index] = data.data || []
+                    return s
+                })
+            })
+        })
+    }
+
+    useEffect(() => {
+        sendajax()
+    }, [])
+
+    function handleUpdate() {
+        return messAge.map((item, index) => {
+            return messAge[index].map((NewValue, index) =>
+                <NewsItem NewValue={NewValue} id={index + 1}></NewsItem>
             )
         })
     }
+
     // 这个不能设置成useState，不然隐藏会失效，因为它的修改需要使用到set，而没法直接改
     let NewsLists = handleUpdate()
     // 重复代码循环遍历化
