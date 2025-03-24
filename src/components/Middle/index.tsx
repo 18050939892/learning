@@ -40,9 +40,7 @@ export function Middle() {
     return (
         <div id="middle">
             <main className={`container ${firstShow ? 'layout-first' : ''}`}>
-                {firstTitleList.map((item, index) =>
-                    <Title item={item} index={index}></Title>
-                )}
+                {firstTitleList.map((item, index) => <Title item={item} index={index}></Title> )}
                 {Icons.map((item, index) =>
                     <div
                         className={`item content content-${index}`}
