@@ -60,7 +60,7 @@ export function Footer() {
                     href="https://beian.miit.gov.cn/#/Integrated/index"
                     target="_blank"
                     style={{
-                        color: currentTheme,
+                        color: currentTheme.color,
                         fontSize: fontSize + 'px'
                     }}
                     rel="noreferrer"
@@ -70,7 +70,7 @@ export function Footer() {
                     href="https://beian.mps.gov.cn/#/query/webSearch"
                     target="_blank"
                     style={{
-                        color: currentTheme,
+                        color: currentTheme.color,
                         fontSize: fontSize + 'px'
                     }}
                     rel="noreferrer"

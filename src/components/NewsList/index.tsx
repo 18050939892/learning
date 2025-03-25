@@ -38,7 +38,7 @@ export function NewsItem(props) {
             >
                 {title}</span>
             <span
-                className="span-three"
+                className="span-three a"
                 style={{
                     color: currentTheme.color,
                     fontSize: fontSize + 'px'

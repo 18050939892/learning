@@ -27,6 +27,7 @@ export function Middle() {
                 setMessAge(prev => {
                     let s = [...prev]
                     s[index] = data.data || []
+                    s[index].nowTime = new Date()
                     return s
                 })
             })
@@ -65,7 +66,8 @@ export function Middle() {
                                 {item.svg}
                             </MySvg>
                             <h4>{item.title}</h4>&nbsp;
-                            <h6>{item.nowtime}</h6>
+                            {/*<h6>{item.nowtime}</h6>*/}
+                            <h6>{(Math.floor((new Date() - messAge[index].nowTime) / (1000 * 60)) + "分钟前") || ''}</h6>
                         </a>
                         {item.svg2}
                         <ul>

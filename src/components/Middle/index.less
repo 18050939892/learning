@@ -92,19 +92,32 @@ main {
                 background-color: #18191e;
             }
 
+
             > a {
                 float: left;
                 display: block;
                 padding-top: 10px;
                 width: 100%;
 
-                &:hover >span {
+                &:nth-child(n+4):hover > span {
                     color: rgb(115, 115, 115) !important;
                 }
-                &:visited >span{
+                //这里加!important是因为在主题切换时使用了color，导致hover优先级不够
+                &:nth-child(-n+3):hover >span:nth-child(2) {
                     color: rgb(115, 115, 115) !important;
                 }
-
+                &:nth-child(-n+3):hover >span:nth-child(3) {
+                    color: rgb(115, 115, 115) !important;
+                }
+                &:nth-child(n+4):visited >span {
+                    color: rgb(115, 115, 115) !important;
+                }
+                &:nth-child(-n+3):visited >span:nth-child(2) {
+                    color: rgb(115, 115, 115) !important;
+                }
+                &:nth-child(-n+3):visited >span:nth-child(3) {
+                    color: rgb(115, 115, 115) !important;
+                }
                 > span {
                     display: inline-block;
                     color: rgb(176, 179, 181);

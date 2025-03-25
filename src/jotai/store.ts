@@ -36,7 +36,7 @@ export const MessAge = atom([[], [], [], [], [], [], [], [], [], [], [], [], [],
 
 // export const UpdateTime = atom()
 // export const NowTime = atom((get) => {
-//     const timeDiff = new Date() - get(UpdateTime)
+//     const timeDiff = new Date() - get(MessAge)
 //     const minutes = Math.floor(timeDiff / (1000 * 60))
 //     return `${minutes}分钟前`
 // })

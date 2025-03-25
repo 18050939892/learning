@@ -23,8 +23,7 @@ export function Re(props) {
                 setMessAge(prev => {
                     let s = [...prev]
                     s[props.number] = data.data || []
-                    // let a = new Date()
-                    // setUpdateTime(a)
+                    s[props.number].nowTime = new Date()
                     return s
                 })
             })
