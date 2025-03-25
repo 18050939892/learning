@@ -25,6 +25,7 @@ export function Middle() {
          是
           const res = await axios.get('https://my-repository-orcin-beta.vercel.app' +)
           const { data } = res
+          const res2 = await xxx()
          */
         const logoList = ['/zhihu', '/douban-movie', '/weibo', '/toutiao', '/hupu', '/bilibili', '', '/ifanr', '/ithome', '', '/csdn', '/huxiu', '', '/juejin']
         logoList.map(async (item, index) => {
