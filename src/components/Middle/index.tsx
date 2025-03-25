@@ -18,13 +18,21 @@ export function Middle() {
 
     const [messAge, setMessAge] = useAtom(MessAge)
 
+    // todo 你的很多命名依然不规范，是 sendAjax()，所有单词记得大小写要区分清楚
     async function sendajax() {
+        // todo 学习一下 await 的用法，你这个用得不对， 又形成了很多层嵌套， await 本身就是用来让 代码变扁平的，你这样写就没用了
+        /*
+         是
+          const res = await axios.get('https://my-repository-orcin-beta.vercel.app' +)
+          const { data } = res
+         */
         const logoList = ['/zhihu', '/douban-movie', '/weibo', '/toutiao', '/hupu', '/bilibili', '', '/ifanr', '/ithome', '', '/csdn', '/huxiu', '', '/juejin']
         logoList.map(async (item, index) => {
             return await axios.get('https://my-repository-orcin-beta.vercel.app' + item).then(res => {
                 return res.data
             }).then(data => {
                 setMessAge(prev => {
+                    // todo 再次强调，禁用 let 这个东西，全部 const
                     let s = [...prev]
                     s[index] = data.data || []
                     s[index].nowTime = new Date()
@@ -38,6 +46,7 @@ export function Middle() {
         sendajax()
     }, [])
 
+    // todo 这个函数是多余的，直接把表达式写在外面就行了，别做这种多余的函数
     function handleUpdate() {
         return messAge.map((item, index) => {
             return messAge[index].map((NewValue, index) =>

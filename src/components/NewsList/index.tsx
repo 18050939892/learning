@@ -7,6 +7,8 @@ export function NewsItem(props) {
     const [overHidden] = useAtom(OverHidden)
     const [fontSize] = useAtom(FontSize)
     const [currentTheme] = useAtom(CurrentTheme)
+
+    // todo 后续所有变量声明全部用 const，禁用 let，学习一下 数据不可变这个思想
     let {NewValue} = props
     let {title, mobileUrl} = NewValue
     let hot = NewValue.hot || ''
