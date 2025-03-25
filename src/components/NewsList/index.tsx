@@ -7,14 +7,10 @@ export function NewsItem(props) {
     const [overHidden] = useAtom(OverHidden)
     const [fontSize] = useAtom(FontSize)
     const [currentTheme] = useAtom(CurrentTheme)
-
-    // todo 后续所有变量声明全部用 const，禁用 let，学习一下 数据不可变这个思想
-    let {NewValue} = props
-    let {title, mobileUrl} = NewValue
-    let hot = NewValue.hot || ''
-    hot > 10000 ? hot = hot.toString().slice(0, -4) + '万' : hot = hot
-    let color
-    props.id < 4 ? (props.id < 3 ? (props.id < 2 ? color = 'red' : color = 'orange') : color = 'gold') : color = currentTheme.color
+    const {NewValue} = props
+    const {title, mobileUrl} = NewValue
+    const hot = NewValue.hot > 10000 ? NewValue.hot.toString().slice(0, -4) + '万' : NewValue.hot
+    const color = props.id < 4 ? (props.id < 3 ? (props.id < 2 ? 'red' : 'orange') : 'gold') : currentTheme.color
     const id = props.id + '.'
     return (
         <a href={mobileUrl} target="_blank" rel="noreferrer">

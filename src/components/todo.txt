@@ -37,3 +37,14 @@ todo 用一堆 useRef 说明思路错了，这东西不应该常用，最多只�
 todo 纯数据驱动的思路，不要直接操作 DOM
 TODO 这个数组的命名不对，只有组件和 jotai 的状态才需要大驼峰。 命名也不对，应该是 firstTitleList
 todo 你这里的 unWorkList[4]  和 workList[4]，先放到配置里然后再引用，是多此一举了，可以直接把具体的文案写这里，其他所有地方都改一下
+todo 学习一下 await 的用法，你这个用得不对， 又形成了很多层嵌套， await 本身就是用来让 代码变扁平的，你这样写就没用了
+const res = await axios.get('https://my-repository-orcin-beta.vercel.app' +)
+const { data } = res或是const { data } = res.data
+使用data进行操作
+await只能在前面标注async的函数里面使用，它可以将后面的promise对象/数组转化成正常对象/数组（一层，如果下一层还是promise就继续转）
+注：该转换只在函数中生效，async的返回值必定是promise形式的
+todo 你的很多命名依然不规范，是 sendAjax()，所有单词记得大小写要区分清楚
+注：这个sendAjax()是个函数
+todo 这个函数是多余的，直接把表达式写在外面就行了，别做这种多余的函数
+todo 后续所有变量声明全部用 const，禁用 let，学习一下 数据不可变这个思想
+todo 没理解为什么实现一个效果需要这么多行代码，永远要记得不要重复代码，重复三次就要亮红灯了，不要一直复制粘贴同样的东西

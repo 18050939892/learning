@@ -20,128 +20,38 @@
 
 /* 定义第一行 */
 
-// todo 没理解为什么实现一个效果需要这么多行代码，永远要记得不要重复代码，重复三次就要亮红灯了，不要一直复制粘贴同样的东西
-
-.layout-first .title-0 {
+.layout-first [class^="title-"],
+.layout-first [class^="content-"],
+.layout-first [class^="break-"] {
     display: block;
-    width: 25%;
-    order: 1;
-}
-.layout-first .content-0 {
-    display: block;
-    width: 75%;
-    order: 2;
-}.layout-first .content-1 {
-    display: block;
-    width: 75%;
-    order: 2;
-}.layout-first .content-2 {
-    display: block;
-    width: 75%;
-    order: 2;
-}.layout-first .content-4 {
-    display: block;
-    width: 75%;
-    order: 2;
-}
-.layout-first .break-1 {
-    display: block;
-    order: 3;
 }
 
-.layout-first .title-1 {
-    display: block;
+.layout-first [class^="title-"] {
     width: 25%;
-    order: 4;
-}
-.layout-first .content-6 {
-    display: block;
-    width: 75%;
-    order: 5;
-}
-.layout-first .content-7 {
-    display: block;
-    width: 75%;
-    order: 5;
-}
-.layout-first .content-8 {
-    display: block;
-    width: 75%;
-    order: 5;
-}
-.layout-first .break-2 {
-    display: block;
-    order: 6;
-}
-.layout-first .title-2 {
-    display: block;
-    width: 25%;
-    order: 7;
-}
-.layout-first .content-9 {
-    display: block;
-    width: 75%;
-    order: 8;
-}
-.layout-first .content-10 {
-    display: block;
-    width: 75%;
-    order: 8;
-}
-.layout-first .content-13 {
-    display: block;
-    width: 75%;
-    order: 8;
-}
-.layout-first .break-3 {
-    display: block;
-    order: 9;
-}.layout-first .title-3 {
-    display: block;
-    width: 25%;
-    order: 10;
-}
-.layout-first .content-3 {
-    display: block;
-    width: 75%;
-    order: 11;
-}
-.layout-first .content-11 {
-    display: block;
-    width: 75%;
-    order: 11;
-}
-.layout-first .break-4 {
-    display: block;
-    order: 12;
-}.layout-first .title-4 {
-    display: block;
-    width: 25%;
-    order: 13;
-}
-.layout-first .content-5 {
-    display: block;
-    width: 75%;
-    order: 14;
-}
-.layout-first .break-5 {
-    display: block;
-    order: 15;
-}.layout-first .title-5 {
-    display: block;
-    width: 25%;
-    order: 16;
-}
-.layout-first .content-12 {
-    display: block;
-    width: 75%;
-    order: 17;
-}
-.layout-first .break-6 {
-    display: block;
-    order: 18;
 }
 
+.layout-first [class^="content-"] {
+    width: 75%;
+}
 
+/* 使用规律性设置顺序 */
+.layout-first .title-0 { order: 1; }
+.layout-first .content-0, .layout-first .content-1, .layout-first .content-2, .layout-first .content-4 { order: 2; }
+.layout-first .break-1 { order: 3; }
+.layout-first .title-1 { order: 4; }
+.layout-first .content-8, .layout-first .content-6, .layout-first .content-7 { order: 5; }
+.layout-first .break-2 { order: 6; }
+.layout-first .title-2 { order: 7; }
+.layout-first .content-9, .layout-first .content-10, .layout-first .content-13 { order: 8; }
+.layout-first .break-3 { order: 9; }
+.layout-first .title-3 { order: 10; }
+.layout-first .content-3, .layout-first .content-11 { order: 11; }
+.layout-first .break-4 { order: 12; }
+.layout-first .title-4 { order: 13; }
+.layout-first .content-5 { order: 14; }
+.layout-first .break-5 { order: 15; }
+.layout-first .title-5 { order: 16; }
+.layout-first .content-12 { order: 17; }
+.layout-first .break-6 { order: 18; }
 
 

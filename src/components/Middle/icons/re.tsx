@@ -2,6 +2,7 @@ import * as React from 'react'
 import axios from 'axios'
 import { MessAge } from '../../../jotai/store'
 import { useAtom } from 'jotai/index'
+
 // import { UpdateTime } from '../../../jotai/store.ts'
 
 export function Re(props) {
@@ -17,15 +18,13 @@ export function Re(props) {
         width="200"
         height="200"
         onClick={async () => {
-            await axios.get('https://my-repository-orcin-beta.vercel.app' + props.name).then(res => {
-                return res.data
-            }).then(data => {
-                setMessAge(prev => {
-                    let s = [...prev]
-                    s[props.number] = data.data || []
-                    s[props.number].nowTime = new Date()
-                    return s
-                })
+            const res = await axios.get('https://my-repository-orcin-beta.vercel.app' + props.name)
+            const {data} = await res.data
+            setMessAge(prev => {
+                const s = [...prev]
+                s[props.number] = data || []
+                s[props.number].nowTime = new Date()
+                return s
             })
         }}
     >
