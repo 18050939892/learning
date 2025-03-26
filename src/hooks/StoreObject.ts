@@ -1,6 +1,5 @@
 export function useScreenStyle() {
-    // todo 这里没改 const
-    let setScrStyleitem = {
+    const setScrStyleitem = {
         'show': {
             display: 'block',
             height: document.documentElement.scrollHeight + 'px',
