@@ -20,6 +20,7 @@
 
 /* 定义第一行 */
 
+// todo 我说的简化不是指把他弄成简写，然后还是有这些逻辑，而是从顶层思考，把这些逻辑全部消除掉。彻底归零
 .layout-first [class^="title-"],
 .layout-first [class^="content-"],
 .layout-first [class^="break-"] {
@@ -35,6 +36,9 @@
 }
 
 /* 使用规律性设置顺序 */
+
+// todo 我说的简化不是指把他弄成简写，然后还是有这些逻辑，而是从顶层思考，把这些逻辑全部消除掉。彻底归零
+// todo 这里的思路很简单，通过数组分类，依次输出就行了，这些 CSS 要全部删掉，重新从顶层思考
 .layout-first .title-0 { order: 1; }
 .layout-first .content-0, .layout-first .content-1, .layout-first .content-2, .layout-first .content-4 { order: 2; }
 .layout-first .break-1 { order: 3; }
