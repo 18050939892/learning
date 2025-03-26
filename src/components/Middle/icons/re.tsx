@@ -5,6 +5,7 @@ import { useAtom } from 'jotai/index'
 
 // import { UpdateTime } from '../../../jotai/store.ts'
 
+// todo Refresh 别简写，语义化不行
 export function Re(props) {
     const [, setMessAge] = useAtom(MessAge)
     // const [, setUpdateTime] = useAtom(UpdateTime)
@@ -18,7 +19,11 @@ export function Re(props) {
         width="200"
         height="200"
         onClick={async () => {
+            // todo 'https://my-repository-orcin-beta.vercel.app' + props.name，这个学习一下 模板字符串的用法，  反引号 `${props.name}`
+            // 然后其他所有地方也是一样，全改一遍
             const res = await axios.get('https://my-repository-orcin-beta.vercel.app' + props.name)
+
+            // todo 这里还用 await 说明没完全理解， res.data 已经是一个普通值了，不需要再 await 了
             const {data} = await res.data
             setMessAge(prev => {
                 const s = [...prev]
