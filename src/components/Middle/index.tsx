@@ -20,6 +20,7 @@ export function Middle() {
     const [messAge, setMessAge] = useAtom(MessAge)
     const logoList = ['/zhihu', '/douban-movie', '/weibo', '/toutiao', '/hupu', '/bilibili', '', '/ifanr', '/ithome', '', '/csdn', '/huxiu', '', '/juejin']
 
+    // todo 这写法换汤不换药，还是要改
     async function sendAjax() {
         logoList.map(async (item, index) => {
             const res = await axios.get(`https://my-repository-orcin-beta.vercel.app${item}`)
