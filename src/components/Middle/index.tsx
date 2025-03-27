@@ -20,6 +20,7 @@ export function Middle() {
     const [messAge, setMessAge] = useAtom(MessAge)
     const logoList = ['/zhihu', '/douban-movie', '/weibo', '/toutiao', '/hupu', '/bilibili', '', '/ifanr', '/ithome', '', '/csdn', '/huxiu', '', '/juejin']
 
+    // todo 这写法换汤不换药，还是要改
     async function sendAjax() {
         logoList.map(async (item, index) => {
             const res = await axios.get(`https://my-repository-orcin-beta.vercel.app${item}`)
@@ -37,13 +38,22 @@ export function Middle() {
         sendAjax()
     }, [])
     // 这个不能设置成useState，不然隐藏会失效，因为它的修改需要使用到set，而没法直接改
-    const NewsLists = function handleUpdate() {
-        return messAge.map((item, index) => {
-            return messAge[index].map((NewValue, index) =>
-                <NewsItem NewValue={NewValue} id={index + 1}></NewsItem>
-            )
-        })
-    }()
+
+    // todo 不需要声明一个函数，然后再调用他返回，直接调用就行
+    // const NewsLists = function handleUpdate() {
+    //     return messAge.map((item, index) => {
+    //         return messAge[index].map((NewValue, index) =>
+    //             <NewsItem NewValue={NewValue} id={index + 1}></NewsItem>
+    //         )
+    //     })
+    // }()
+    // 正确答案 ↓↓↓↓↓
+    const NewsLists = messAge.map((item, index) => {
+        return messAge[index].map((NewValue, index) =>
+            <NewsItem NewValue={NewValue} id={index + 1}></NewsItem>
+        )
+    })
+
     // 重复代码循环遍历化
     const firstTitleList = ['热门社区', 'IT科技', '程序员聚集地', '新闻资讯', '视频平台', '购物平台']
     const firstContent = {
