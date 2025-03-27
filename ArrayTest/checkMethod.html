@@ -8,6 +8,15 @@
 </head>
 <script type="text/javascript">
     const array = [1, 2, 3]
+
+    // todo 系统学习一下 箭头函数，你这里写的 不能有 {}，理解比较片面。
+
+    // 你看到的啥也筛选不出来是因为他本质上等于这样
+    console.log(array.filter((item) => {
+        item > 1
+        return undefined
+    }))
+
     // console.log(array.filter((item) => {item > 1}))
     // console.log(array.filter((item) => item > 1))
     // console.log(array)
