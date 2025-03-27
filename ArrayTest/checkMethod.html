@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React + TS</title>
+</head>
+<script type="text/javascript">
+    const array = [1, 2, 3]
+    // console.log(array.filter((item) => {item > 1}))
+    // console.log(array.filter((item) => item > 1))
+    // console.log(array)
+    // filiter可以用于筛选数组中符合条件的元素，并将这些元素作为一个元素返回，
+    // 同时这个方法的内部函数不能有{},否则会啥也筛选不出来，返回空数组
+    // 它不会对原数组造成影响
+
+
+    // console.log(array.every((item) => {item > 0}))
+    // console.log(array.every((item) => item > 0))
+    // console.log(array.every((item) => item > 2))
+    // console.log(array)
+    // every方法可以用于判断某数组中的元素是否全部符合某个条件，全部符合就true,有不符合的就返回false，
+    // 同时这个方法的内部函数也不能有{},否则必定返回false，
+    // 它不会对原数组造成影响
+
+   // console.log(array.some((item) => {item > 2}))
+   // console.log(array.some((item) => item > 0))
+   // console.log(array.some((item) => item > 2))
+   //  console.log(array)
+    // some方法可以用于判断某数组中的元素是否有符合某个条件的元素，有就true,全部不符合才返回false，
+    // 同时这个方法的内部函数也不能有{},否则必定返回false，
+    // 它不会对原数组造成影响
+
+
+    // console.log(array.find((item) => {item > 1}))
+    // console.log(array.find((item) => item > 1))
+    // console.log(array)
+    // find可以用于筛选数组中第一个符合条件的元素，并将这个元素返回
+    // 同时这个方法的内部函数不能有{},否则会返回未定义
+    // 它不会对原数组造成影响
+
+
+    console.log(array.findIndex((item) => {item > 1}))
+    console.log(array.findIndex((item) => item > 1))
+    console.log(array)
+    // findIndex可以用于筛选数组中第一个符合条件的元素，并将这个元素的索引返回
+    // 同时这个方法的内部函数不能有{},否则会视为没有，返回-1
+    // 它不会对原数组造成影响
+
+
+</script>
+<body>
+
+
+</body>
+</html>
