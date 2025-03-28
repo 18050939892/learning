@@ -18,12 +18,14 @@
 
     let obj1 = { a: "5", d: "21", e: "31" };
     let obj2 = { ...obj, ...obj1 };
-    let obj3 = Object.assign(obj, obj1);
+    let obj3 = Object.assign({}, obj, obj1);
     console.log(obj2)
     console.log(obj3)
 //     如果想要将多个对象合并,那么可以采用两种方法
 //     1.像数组那样直接{...对象1,...对象2}
 //     2.使用assign方法
+//     注：第一种方法不会对原对象造成影响，第二种会让assign的第一个参数指向合并后的对象，因此如果不想影响原对象的话
+//     第二种方法需要在最前面多加一个{}参数
 
     for (let i in obj) {
         console.log(i)
