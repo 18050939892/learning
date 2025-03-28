@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React + TS</title>
+</head>
+<script type="text/javascript">
+    const obj = { a: "1", b: "2", c: "3" };
+    const keys = Object.keys(obj);
+    console.log(keys)
+//     Object的keys方法可以将对象中的属性名筛选出来并作为一个数组返回
+    let values = Object.values(obj);
+    console.log(values)
+//     values方法与keys类似,区别在于它筛选的是值
+
+
+    let obj1 = { a: "5", d: "21", e: "31" };
+    let obj2 = { ...obj, ...obj1 };
+    let obj3 = Object.assign(obj, obj1);
+    console.log(obj2)
+    console.log(obj3)
+//     如果想要将多个对象合并,那么可以采用两种方法
+//     1.像数组那样直接{...对象1,...对象2}
+//     2.使用assign方法
+
+    for (let i in obj) {
+        console.log(i)
+        console.log(obj[i]);
+    }
+    // 遍历对象
+//     i是指代对象的属性名
+const request=1
+  const a =  new Promise((resolve, reject) => {
+      if (false) {
+          resolve("成功")
+      //     正常运行时传值
+      }else{
+          reject("失败6")
+      //     错误时传值
+      }
+
+    })
+    // 定义promise对象
+    const b =  new Promise((resolve, reject) => {
+      if (request) {
+          resolve("成功")
+      //     正常运行时传值
+      }else{
+          reject("失败6")
+      //     错误时传值
+      }
+
+    })
+    // 定义promise对象
+
+
+    a.then(res => {
+        console.log(res)
+    })
+      // 成功时执行的回调,也就是resolve的值
+    .catch(error => console.error(error))
+      //     出问题时执行的回调,error是错误信息,也就是reject传的值
+    .finally(() => console.log('finished'));
+//     这个是在全部执行完后执行的回调函数(不论成功失败都会执行这个)
+
+   const c= Promise.all([a, b])
+    c.then(res => {
+        console.log(res)
+    }).catch(error => console.error(error))
+//     Promise的all方法可以将多个promise包装成一个,then只有全部成功时才会触发,catch则会传入触发第一个触发reject的promise的reject传的值
+
+    const promise1 = new Promise((resolve, reject) => {
+        // reject(2)
+        resolve(3)
+    });
+
+    const promise2 = new Promise((resolve, reject) => {
+        // resolve(1)
+
+        reject(4)
+    });
+
+    Promise.race([promise1, promise2]).then((value) => {
+        console.log(value);
+    }).catch(error => console.log(error));
+//     race方法与all方法类似,也是多个promise包装成一个,但不一样的是,它的状态由第一个完成的promise决定,并且传的值也是第一个promise传的
+    const promise3 = new Promise((resolve, reject) => {
+        setTimeout(()=>{
+            reject('超时')
+        },1000)
+    })
+    const promise4 = new Promise((resolve, reject) => {
+        setTimeout(()=>{
+            resolve('未超时')
+        },1500)
+    })
+    Promise.race([promise3, promise4]).then((value) => {
+        console.log(value);
+    }).catch(error => console.log(error));
+//     可以用于超时检测,设置一个定时器promise,超过一定时间就触发并且返回reject,就能实现超时控制
+//     还有可以测试哪个请求最快,在只需要快速响应的情况下也能用等等
+</script>
+<body>
+
+</body>
+</html>

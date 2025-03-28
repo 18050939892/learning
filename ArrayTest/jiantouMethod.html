@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React + TS</title>
+</head>
+<script type="text/javascript">
+    console.log((() => 1 + 2)())
+    console.log((() => {
+        const a = 1 + 2
+        return 3 + 4
+    })())
+    console.log((() => {
+       return '666'
+    })())
+    console.log((() =>
+            666
+    )())
+    console.log((() => {
+        return '666', '777'
+    })())
+
+    console.log((() => {
+        return ['666', '777']
+    })())
+    // 箭头函数在有多个独立的表达式时,要用{}+return明确返回的部分,,如果是单个表达式,则不需要
+    // 注:如果单独存在的表达式值为非数字时,也需要{}+return来返回,
+    //  return只能返回第一个独立值,如果想返回多个,那么需要一个壳包裹这些独立值,将它们变为整体返回
+    function bbb(aaa){
+        this.aaa=aaa
+        console.log(this)
+    }
+    let b=new bbb(6)
+    //     如果普通函数用作构造函数,那么this指向创建的实例
+    // let e=(a)=>{this.aaa=a}
+    // let c=new e(1)
+    //     报错,箭头函数不能作为构造函数使用
+
+    console.log(bbb.prototype)
+    console.log(bbb.prototype.constructor)
+//     普通函数有prototype原型对象(原型对象的constructor属性又指向函数本身),箭头函数没有
+
+
+</script>
+<body>
+<button onclick="((a=0)=>{
+    console.log(this)
+     console.log(arguments[0])
+     console.log(a)
+})()">点击</button>
+<!--箭头函数可以使用=设置参数默认值,这个普通函数也适用-->
+<button onclick="(function text(a=0){
+    console.log(this)
+    console.log(arguments[0])
+    console.log(a)
+})()">点击2</button>
+<!--箭头函数没有arguments(arguments的值就是参数,注意:arguments是不会识别默认值的),-->
+<button onclick="(function text(e){
+    console.log(e)
+})(this)">点击3</button>
+<!--箭头函数的this指向调用它的元素,普通函数的this指向window,如果想在
+普通函数中获取到指向调用它的元素的this,则需要通过传参的方式获取-->
+<!---->
+
+</body>
+</html>
