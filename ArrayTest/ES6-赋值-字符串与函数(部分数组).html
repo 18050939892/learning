@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React + TS</title>
+</head>
+<script type="text/javascript">
+const a=6
+let b=5
+// a=4
+b=4
+//在ES6中let代表变量,const代表常量,在实际使用中考虑到数据不可变原则,一般不使用let
+const { x } = { x: "123", y: "456" };
+
+console.log(x)
+// 解构赋值,通过对应关系使用对象中的值对常/变量进行赋值
+const { y:z } = { x: "123", y: "456" };
+console.log(z)
+// 在解构赋值中可以使用键值对的形式改名,不一定要用对象里面的名字
+const { s=1 } = { s:6};
+console.log(s)
+// 可以使用=设置没有对应属性时采用的默认值,如果有对应的值,就使用对应的值
+
+let c = "hello";
+let d = "world";
+let e = `${c}-${d}`;
+console.log(e)
+// ``类似普通单双引号,但在它里面可以使用${}识别常变量,而不是全部视为字符串
+
+console.log("1,2,3".split(","));
+// split方法可以将字符串根据传进来的分隔符转化成数组
+
+function sss(...a){
+    console.log(a)
+}
+sss(1,2,3,4)
+// 如果在形参的前面加上...,则视为这个形参代表了除了已经匹配形参的参数外其他所有传入参数组成的数组
+
+let arr = [1, 1, 21, 23, 1, 5, 6];
+console.log(arr)
+arr = [...new Set(arr)];
+console.log(arr)
+// 数组方法补充,set,这个方法可以返回一个去除了重复元素的数组
+// 该方法不会影响原数组
+</script>
+<body>
+
+</body>
+</html>
