@@ -15,6 +15,7 @@ import {
     ZhongGuan
 } from './icons/all'
 
+// todo 这里的思路不应该是 Icons 这么一个小数组，而是一个包含热榜所有数据的大数组，一个对象包含一个热榜的所有数据
 export const Icons = [
     {
         svg: <ZhiHu />,

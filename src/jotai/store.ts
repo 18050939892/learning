@@ -32,5 +32,6 @@ export const ThemeIndex = atom(0)
 export const CurrentTheme = atom((get) => themeList[get(ThemeIndex)])
 export const SetScrShow = atom<ScrType>('hide')
 
+// todo 这个没干掉
 export const MessAge = atom([[], [], [], [], [], [], [], [], [], [], [], [], [], []])
 
