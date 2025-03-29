@@ -1,28 +1,39 @@
 import { MySvg } from './mysvg.tsx'
 import * as React from 'react'
 import { useEffect, useState } from 'react'
-import { CurrentTheme } from '../../jotai/store.tsx'
+import { CurrentTheme, FirstShow } from '../../jotai/store.tsx'
 import { useAtom } from 'jotai'
 import axios from 'axios'
 import { NewsItem } from '../NewsList'
-import {FirstShow} from '../../jotai/store.tsx'
-export function Item(props) {
+
+interface Props {
+    item: {
+        title: string,
+        svg: React.ReactNode,
+        link: string,
+        weight: number,
+    }
+}
+
+export function Item(props: Props) {
     const [currentTheme] = useAtom(CurrentTheme)
     const {
         svg, title, link, weight
     } = props.item
-    const [message, setMessage] = useState([])
-    const [nowTime, setNowTime] = useState('')
+    const [message, setMessage] = useState<Array<any>>([])
+    const [nowTime, setNowTime] = useState<Date>(new Date())
     const [firstShow] = useAtom(FirstShow)
-    async function sendAjax() {
+
+    async function sendAjax(): Promise<void> {
         const res = await axios.get(`https://my-repository-orcin-beta.vercel.app${link}`)
         const {data} = res.data
         setMessage(data)
         setNowTime(new Date())
     }
+
     useEffect(() => {
-        sendAjax()
-    }, [])
+        sendAjax().then()
+    }, [])// eslint-disable-line react-hooks/exhaustive-deps
     return <div
         className={`item`}
         style={{
@@ -31,18 +42,14 @@ export function Item(props) {
         }}
     >
         <a href="#" className="title">
-            <MySvg>
-                {svg}
-            </MySvg>
+            <MySvg>{svg}</MySvg>
             <h4>{title}</h4>&nbsp;
-            <h6>{
-                (Math.floor((new Date() - nowTime) / (1000 * 60))) + '分钟前' || ''}</h6>
+            <h6>{(Math.floor((new Date().getTime() - nowTime.getTime()) / (1000 * 60))) + '分钟前' || ''}</h6>
         </a>
         <div
             onClick={sendAjax}
         >
             <svg
-                t="1741174792301"
                 className="icon"
                 viewBox="0 0 1024 1024"
                 version="1.1"
@@ -61,7 +68,7 @@ export function Item(props) {
         <ul>
             {
                 message && message.map((NewValue, index) =>
-                    <NewsItem NewValue={NewValue} id={index + 1}></NewsItem>
+                    <NewsItem NewValue={NewValue} id={index + 1} key={index}></NewsItem>
                 )
             }
         </ul>

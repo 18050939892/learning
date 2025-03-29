@@ -1,9 +1,6 @@
-import * as React from 'react'
-
 export function DouBan() {
     return (
         <svg
-            t="1741097080376"
             className="icon"
             viewBox="0 0 1024 1024"
             version="1.1"

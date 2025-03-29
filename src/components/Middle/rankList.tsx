@@ -14,7 +14,6 @@ import {
     ZhiHu,
     ZhongGuan
 } from './icons/all'
-import * as React from 'react'
 
 export const rankList = [{
     title: '热门社区',
@@ -38,8 +37,7 @@ export const rankList = [{
         title: '虎扑步行街',
         link: '/hupu',
         weight: 4,
-    }
-    ]
+    }]
 }, {
     title: 'IT科技',
     content: [{
@@ -47,22 +45,17 @@ export const rankList = [{
         title: '中关村在线',
         link: '',
         weight: 7,
-    }
-    ,
-    {
+    }, {
         svg: <AiFan />,
         title: '爱范儿',
         link: '/ifanr',
         weight: 8,
-    }
-    ,
-    {
+    }, {
         svg: <It />,
         title: 'IT之家',
         link: '/ithome',
         weight: 6,
-    }
-    ]
+    }]
 }, {
     title: '程序员聚集地',
     content: [{
@@ -70,15 +63,12 @@ export const rankList = [{
         title: '开源中国',
         link: '',
         weight: 9,
-    }
-    ,
-    {
+    }, {
         svg: <CSDN />,
         title: 'CSDN',
         link: '/csdn',
         weight: 10,
-    }
-    , {
+    }, {
         svg: <JueJin />,
         title: '掘金',
         link: '/juejin',
@@ -91,14 +81,12 @@ export const rankList = [{
         title: '今日头条',
         link: '/toutiao',
         weight: 3,
-    },
-    {
+    }, {
         svg: <HuXiou />,
         title: '虎嗅',
         link: '/huxiu',
         weight: 11,
-    }
-    ]
+    }]
 }, {
     title: '视频平台',
     content: [{
@@ -106,15 +94,13 @@ export const rankList = [{
         title: 'B站',
         link: '/bilibili',
         weight: 5,
-    }
-    ]
+    }]
 }, {
     title: '购物平台',
     content: [{
         svg: <ZhiDe />,
         title: '值得买三小时热门',
         link: '',
-        weight:12,
-    }
-    ]
+        weight: 12,
+    }]
 }]

@@ -1,8 +1,5 @@
-import * as React from 'react'
-
 export function HuPu(){
     return (<svg
-        t="1741097720989"
         className="icon"
         viewBox="0 0 3915 1024"
         version="1.1"

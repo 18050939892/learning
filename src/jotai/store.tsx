@@ -27,7 +27,6 @@ export const themeList = [
         color: 'black',
     }
 ]
-
 export const ThemeIndex = atom(0)
 export const CurrentTheme = atom((get) => themeList[get(ThemeIndex)])
 export const SetScrShow = atom<ScrType>('hide')

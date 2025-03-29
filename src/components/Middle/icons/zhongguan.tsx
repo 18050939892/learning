@@ -1,8 +1,5 @@
-import * as React from 'react'
-
 export function ZhongGuan(){
     return ( <svg
-        t="1741097934392"
         className="icon"
         viewBox="0 0 1024 1024"
         version="1.1"

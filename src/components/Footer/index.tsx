@@ -7,7 +7,6 @@ export function Footer() {
     // 零散原子实例
     const [fontSize] = useAtom(FontSize)
     const [currentTheme] = useAtom(CurrentTheme)
-
     const LiContent = [
         {
             href: 'https://momoyu.cc/',
@@ -40,8 +39,8 @@ export function Footer() {
             </div>
             <div id="footer-text" style={{color: currentTheme.color}}>
                 <ul>
-                    {LiContent.map((item) =>
-                        <li>
+                    {LiContent.map((item, index) =>
+                        <li key={index}>
                             <a
                                 href={item.href}
                                 target="_blank"

@@ -1,8 +1,5 @@
-import * as React from 'react'
-
 export function BZhan(){
     return (<svg
-        t="1741097811100"
         className="icon"
         viewBox="0 0 1076 1024"
         version="1.1"

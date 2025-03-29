@@ -3,7 +3,16 @@ import { useAtom } from 'jotai/index'
 import { CurrentTheme, FontSize, OverHidden } from '../../jotai/store.tsx'
 import './index.less'
 
-export function NewsItem(props) {
+interface Props {
+    id: number,
+    NewValue: {
+        title: string,
+        mobileUrl: string,
+        hot: number
+    }
+}
+
+export function NewsItem(props: Props) {
     const [overHidden] = useAtom(OverHidden)
     const [fontSize] = useAtom(FontSize)
     const [currentTheme] = useAtom(CurrentTheme)
@@ -21,7 +30,6 @@ export function NewsItem(props) {
                     fontSize: fontSize + 'px'
                 }}
             >{id}</span>
-
             <span
                 className="span-two"
                 style={{
@@ -32,7 +40,6 @@ export function NewsItem(props) {
                     textOverflow: overHiddenClass[overHidden].textOverflow,
                     whiteSpace: overHiddenClass[overHidden].whiteSpace
                 }}
-
             >
                 {title}</span>
             <span

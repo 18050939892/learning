@@ -25,21 +25,18 @@ export function SetScreen() {
     const [setScrShow, setSetScrShow] = useAtom(SetScrShow)
     const setScrStyleItem = useScreenStyle()
     const LiTwo = [{
-        htmlFor: 'toumo',
+        htmlFor: 'sneaky',
         title: '偷摸模式',
-    },
-    {
-        htmlFor: 'yincang',
+    }, {
+        htmlFor: 'hide',
         title: '超出隐藏',
-    },
-    {
+    }, {
         htmlFor: 'logo',
         title: 'LOGO显示',
     }, {
         htmlFor: 'first',
         title: '首页分类',
-    },
-    ]
+    },]
     return (
         <>
             <div
@@ -153,7 +150,7 @@ export function SetScreen() {
                             </div>
                         </li>
                         {LiTwo.map((item, index) =>
-                            <li>
+                            <li key={index}>
                                 <label htmlFor={item.htmlFor}>{item.title}</label>
                                 {/* 添加隐藏的复选框控制CSS状态 */}
                                 <input
@@ -169,24 +166,24 @@ export function SetScreen() {
                                 {
                                     <div
                                         className="check"
-                                        name={item.htmlFor}
                                         id={item.htmlFor}
                                         onClick={(event) => {
                                             const dom = document.getElementById(`toggle-${item.htmlFor}`) as any
                                             // 手动切换复选框状态，触发CSS效果
                                             dom.checked = !dom.checked
                                             // this.checked = !this.checked
-                                            const actionName = event.currentTarget.getAttribute('name')
+                                            const actionId: string | null = event.currentTarget.getAttribute('id')
                                             const toggleActions = {
-                                                'toumo': () => setCheckWork(prevState => !prevState),
-                                                'yincang': () => setOverHidden(prevState =>
+                                                'sneaky': () => setCheckWork(prevState => !prevState),
+                                                'hide': () => setOverHidden(prevState =>
                                                     prevState === 'hide' ? 'show' : 'hide'
                                                 ),
                                                 'logo': () => setLogoShow(prevState => !prevState),
                                                 'first': () => setFirstShow(prevState => !prevState)
                                             }
                                             // 如果存在对应的动作，则执行
-                                            toggleActions[actionName]()
+                                            // @ts-ignore
+                                            toggleActions[actionId]()
                                         }}
                                     >
                                         <a href="#" className="true left">开启</a>
@@ -206,7 +203,6 @@ export function SetScreen() {
                             />
                         </li>
                     </ul>
-
                 </div>
                 <div className="content-two">略</div>
                 <div

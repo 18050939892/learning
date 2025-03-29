@@ -1,8 +1,5 @@
-import * as React from 'react'
-
 export function AiFan(){
     return ( <svg
-        t="1741097990745"
         className="icon"
         viewBox="0 0 6238 1024"
         version="1.1"

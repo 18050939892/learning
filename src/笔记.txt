@@ -71,4 +71,17 @@ classname的命名规范:xxx-xxx
         // setMessAge(itemList)
 
 
-还剩前三特殊颜色和刷新
+const [nowTime, setNowTime] = useState<Date>(new Date())
+new Date().getTime() - nowTime.getTime()
+
+interface Props {
+    title: string
+    content: Array<ItemType>
+}
+
+interface ItemType {
+    title: string,
+    svg: React.ReactNode,
+    link: string,
+    weight: number,
+}

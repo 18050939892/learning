@@ -1,6 +1,6 @@
 export const SvgList = [
+    // eslint-disable-next-line react/jsx-key
     <svg
-        t="1741101025160"
         className="icon"
         viewBox="0 0 1024 1024"
         version="1.1"
@@ -19,8 +19,8 @@ export const SvgList = [
             p-id="30434"
             fill="#bfbfbf"
         ></path>
+        {/* eslint-disable-next-line react/jsx-key */}
     </svg>, <svg
-        t="1741099043772"
         className="icon"
         viewBox="0 0 1024 1024"
         version="1.1"
