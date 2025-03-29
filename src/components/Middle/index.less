@@ -18,7 +18,8 @@
 // 主内容区
 main {
     position: relative;
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
     width: calc(100% - 360px);
     @keyframes rotating {
         from {
@@ -28,8 +29,7 @@ main {
             transform: rotate(360deg);
         }
     }
-
-    > .item {
+   .item {
         display: inline-block;
         background-color: #1f2025;
         width: 306.8px;
@@ -39,7 +39,7 @@ main {
         padding: 20px 14px 20px 20px;
         position: relative;
 
-        >div> svg {
+        > div > svg {
             display: none;
             position: absolute;
             width: 15px;
@@ -102,22 +102,28 @@ main {
                 &:nth-child(n+4):hover > span {
                     color: rgb(115, 115, 115) !important;
                 }
+
                 //这里加!important是因为在主题切换时使用了color，导致hover优先级不够
-                &:nth-child(-n+3):hover >span:nth-child(2) {
+                &:nth-child(-n+3):hover > span:nth-child(2) {
                     color: rgb(115, 115, 115) !important;
                 }
-                &:nth-child(-n+3):hover >span:nth-child(3) {
+
+                &:nth-child(-n+3):hover > span:nth-child(3) {
                     color: rgb(115, 115, 115) !important;
                 }
-                &:nth-child(n+4):visited >span {
+
+                &:nth-child(n+4):visited > span {
                     color: rgb(115, 115, 115) !important;
                 }
-                &:nth-child(-n+3):visited >span:nth-child(2) {
+
+                &:nth-child(-n+3):visited > span:nth-child(2) {
                     color: rgb(115, 115, 115) !important;
                 }
-                &:nth-child(-n+3):visited >span:nth-child(3) {
+
+                &:nth-child(-n+3):visited > span:nth-child(3) {
                     color: rgb(115, 115, 115) !important;
                 }
+
                 > span {
                     display: inline-block;
                     color: rgb(176, 179, 181);

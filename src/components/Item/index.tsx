@@ -1,40 +1,42 @@
 import { MySvg } from './mysvg.tsx'
 import * as React from 'react'
-import { useEffect } from 'react'
-import { CurrentTheme, Icons } from '../../jotai/store.tsx'
+import { useEffect, useState } from 'react'
+import { CurrentTheme } from '../../jotai/store.tsx'
 import { useAtom } from 'jotai'
 import axios from 'axios'
 import { NewsItem } from '../NewsList'
-
+import {FirstShow} from '../../jotai/store.tsx'
 export function Item(props) {
     const [currentTheme] = useAtom(CurrentTheme)
-    const [icons, setIcons] = useAtom(Icons)
-    const item = icons.findIndex(item => item.title == props.title)
-
+    const {
+        svg, title, link, weight
+    } = props.item
+    const [message, setMessage] = useState([])
+    const [nowTime, setNowTime] = useState('')
+    const [firstShow] = useAtom(FirstShow)
     async function sendAjax() {
-        const res = await axios.get(`https://my-repository-orcin-beta.vercel.app${icons[item].link}`)
+        const res = await axios.get(`https://my-repository-orcin-beta.vercel.app${link}`)
         const {data} = res.data
-        setIcons(prev => {
-            const s = [...prev]
-            s[item].message = data || []
-            s[item].nowTime = new Date()
-            return s
-        })
+        setMessage(data)
+        setNowTime(new Date())
     }
-
     useEffect(() => {
         sendAjax()
     }, [])
     return <div
         className={`item`}
-        style={{backgroundColor: currentTheme.backgroundColor}}
+        style={{
+            backgroundColor: currentTheme.backgroundColor,
+            order: !firstShow ? weight : 0
+        }}
     >
         <a href="#" className="title">
             <MySvg>
-                {icons[item].svg}
+                {svg}
             </MySvg>
-            <h4>{icons[item].title}</h4>&nbsp;
-            <h6>{(Math.floor((new Date() - icons[item].nowTime) / (1000 * 60)) + '分钟前') || ''}</h6>
+            <h4>{title}</h4>&nbsp;
+            <h6>{
+                (Math.floor((new Date() - nowTime) / (1000 * 60))) + '分钟前' || ''}</h6>
         </a>
         <div
             onClick={sendAjax}
@@ -57,12 +59,11 @@ export function Item(props) {
             </svg>
         </div>
         <ul>
-            {icons.map((item, index) => {
-                return icons[index].message.map((NewValue, index) =>
+            {
+                message && message.map((NewValue, index) =>
                     <NewsItem NewValue={NewValue} id={index + 1}></NewsItem>
                 )
-            })[item]}
+            }
         </ul>
     </div>
-
 }
