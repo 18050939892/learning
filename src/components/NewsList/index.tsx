@@ -1,6 +1,6 @@
 import { overHiddenClass } from '../../hooks/StoreObject.ts'
 import { useAtom } from 'jotai/index'
-import { CurrentTheme, FontSize, OverHidden } from '../../jotai/store.ts'
+import { CurrentTheme, FontSize, OverHidden } from '../../jotai/store.tsx'
 import './index.less'
 
 export function NewsItem(props) {

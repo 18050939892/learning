@@ -1,27 +1,27 @@
 import { MySvg } from './mysvg.tsx'
-import { Icons } from './icons.tsx'
 import * as React from 'react'
 import { useEffect } from 'react'
-import { CurrentTheme, MessAge } from '../../jotai/store.ts'
+import { CurrentTheme, Icons } from '../../jotai/store.tsx'
 import { useAtom } from 'jotai'
 import axios from 'axios'
 import { NewsItem } from '../NewsList'
+
 export function Item(props) {
     const [currentTheme] = useAtom(CurrentTheme)
-    const [messAge] = useAtom(MessAge)
-    const item = Icons.findIndex(item => item.title == props.title)
-    const [, setMessAge] = useAtom(MessAge)
+    const [icons, setIcons] = useAtom(Icons)
+    const item = icons.findIndex(item => item.title == props.title)
 
     async function sendAjax() {
-        const res = await axios.get(`https://my-repository-orcin-beta.vercel.app${Icons[item].link}`)
+        const res = await axios.get(`https://my-repository-orcin-beta.vercel.app${icons[item].link}`)
         const {data} = res.data
-        setMessAge(prev => {
+        setIcons(prev => {
             const s = [...prev]
-            s[item] = data || []
+            s[item].message = data || []
             s[item].nowTime = new Date()
             return s
         })
     }
+
     useEffect(() => {
         sendAjax()
     }, [])
@@ -31,10 +31,10 @@ export function Item(props) {
     >
         <a href="#" className="title">
             <MySvg>
-                {Icons[item].svg}
+                {icons[item].svg}
             </MySvg>
-            <h4>{Icons[item].title}</h4>&nbsp;
-            <h6>{(Math.floor((new Date() - messAge[item].nowTime) / (1000 * 60)) + '分钟前') || ''}</h6>
+            <h4>{icons[item].title}</h4>&nbsp;
+            <h6>{(Math.floor((new Date() - icons[item].nowTime) / (1000 * 60)) + '分钟前') || ''}</h6>
         </a>
         <div
             onClick={sendAjax}
@@ -57,11 +57,12 @@ export function Item(props) {
             </svg>
         </div>
         <ul>
-            {messAge.map((item, index) => {
-                return messAge[index].map((NewValue, index) =>
+            {icons.map((item, index) => {
+                return icons[index].message.map((NewValue, index) =>
                     <NewsItem NewValue={NewValue} id={index + 1}></NewsItem>
                 )
             })[item]}
         </ul>
     </div>
+
 }

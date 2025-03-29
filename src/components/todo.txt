@@ -68,3 +68,9 @@ console.log(array.filter((item) => {
 todo 不需要声明一个函数，然后再调用他返回，直接调用就行
 直接把函数return后面的值用作赋值
 todo 这写法换汤不换药，还是要改，要把 number 直接去掉，不要再依赖 number了，每个组件都是独立的
+
+todo 这里的思路不应该是 Icons 这么一个小数组，而是一个包含热榜所有数据的大数组，一个对象包含一个热榜的所有数据
+todo 这个没干掉
+export const MessAge = atom([[], [], [], [], [], [], [], [], [], [], [], [], [], []])
+这两个todo的解决方式是直接将Icons与MessAge合并在一起
+todo 这里应该整体是一个 <RankItem> ，组件里直接包含所有东西了

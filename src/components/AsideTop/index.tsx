@@ -1,7 +1,7 @@
-import { SvgList } from '../Middle/svg.tsx'
+import { SvgList } from './svg.tsx'
 import { useAtom } from 'jotai/index'
 import './index.less'
-import { CheckWork, CurrentTheme, FontSize, SetScrShow, } from '../../jotai/store.ts'
+import { CheckWork, CurrentTheme, FontSize, SetScrShow, } from '../../jotai/store.tsx'
 
 export function AsideTop() {
     const [checkWork] = useAtom(CheckWork)

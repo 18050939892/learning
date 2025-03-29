@@ -1,6 +1,6 @@
 import './index.less'
 import { useAtom } from 'jotai'
-import { CurrentTheme, FontSize } from '../../jotai/store.ts'
+import { CurrentTheme, FontSize } from '../../jotai/store.tsx'
 import { SvgList } from './svg.tsx'
 
 export function Footer() {

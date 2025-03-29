@@ -1,4 +1,4 @@
-import { LogoShow } from '../../jotai/store.ts'
+import { LogoShow } from '../../jotai/store.tsx'
 import { useAtom } from 'jotai'
 import * as React from 'react'
 export function MySvg({children}: {children: React.ReactNode}) {

@@ -1,6 +1,6 @@
 import './index.less'
 import { useAtom } from 'jotai'
-import { CurrentTheme } from '../../jotai/store.ts'
+import { CurrentTheme } from '../../jotai/store.tsx'
 
 export function Header() {
     const [currentTheme] = useAtom(CurrentTheme)

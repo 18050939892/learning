@@ -1,12 +1,12 @@
-import { FirstShow } from '../../jotai/store.ts'
+import { FirstShow } from '../../jotai/store.tsx'
 import { useAtom } from 'jotai'
 
 export function Title(props) {
     const [firstShow] = useAtom(FirstShow)
-    const {item, index} = props
+    const {item} = props
     return (
         <div
-            className={`item title-${index}`}
+            className={`item `}
             style={{
                 paddingTop: '10px',
                 height: '15px',

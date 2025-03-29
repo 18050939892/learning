@@ -1,5 +1,5 @@
 import { useAtom } from 'jotai/index'
-import { CheckWork, FontSize } from '../../jotai/store.ts'
+import { CheckWork, FontSize } from '../../jotai/store.tsx'
 import './index.less'
 
 export function AsideButtom() {

@@ -9,7 +9,7 @@ import {
     SetScrShow,
     ThemeIndex,
     themeList
-} from '../../jotai/store.ts'
+} from '../../jotai/store.tsx'
 import { useScreenStyle } from '../../hooks/StoreObject.ts'
 import './index.less'
 
