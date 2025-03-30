@@ -112,7 +112,7 @@ interface Identity {
     id: number;
     email: string;
 }
-type Employee = BusinessPartner & Identity;
+type Employee0 = BusinessPartner & Identity;
 
 // 类型别名
 type Name = string;
