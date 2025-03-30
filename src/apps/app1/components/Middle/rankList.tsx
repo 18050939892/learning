@@ -13,7 +13,7 @@ import {
     ZhiDe,
     ZhiHu,
     ZhongGuan
-} from './icons/all'
+} from './icons/all.tsx'
 
 export const rankList = [{
     title: '热门社区',

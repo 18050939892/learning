@@ -16,7 +16,7 @@ export function Header() {
                 id="login"
                 className="submit"
                 onClick={() => {
-                    window.location.href = '../../../login.html?id=login'
+                    window.location.href = '../../../../../login.html'
                 }}
             >登陆
             </button>
@@ -24,7 +24,7 @@ export function Header() {
                 id="register"
                 className="submit"
                 onClick={() => {
-                    window.location.href = '../../../login.html'
+                    window.location.href = '../../../../../login.html'
                 }}
             >注册
             </button>
