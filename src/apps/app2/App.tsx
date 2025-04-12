@@ -36,12 +36,12 @@ export default function App() {
         <div style={{display: 'flex'}}>
             <SwiperList></SwiperList>
             <Swiper
-                direction={swiper.name == 'vertical' ? swiper.name : 'horizontal'}
+                direction={swiper.name == 'Vertical' ? 'vertical' : 'horizontal'}
                 pagination={
-                    swiper.name == 'pagination' ? true : swiper.name == 'Pagination fraction' ? {
+                    swiper.name == 'Pagination' ? true : swiper.name == 'Pagination fraction' ? {
                         type: 'fraction'
                     } : swiper.name == 'Pagination custom' ? pagination : {
-                        clickable: swiper.name == 'vertical' || swiper.name == 'Space between' || swiper.name == 'Slides per view',
+                        clickable: swiper.name == 'Vertical' || swiper.name == 'Space between' || swiper.name == 'Slides per view',
                         dynamicBullets: swiper.name == 'Pagination dynamic',
                     }
                 }
@@ -49,7 +49,7 @@ export default function App() {
                     hide: swiper.name == 'Scrollbar',
                 }}
                 navigation={
-                    swiper.name == 'navigation' || swiper.name == 'Pagination fraction' ? true : {}
+                    swiper.name == 'Navigation' || swiper.name == 'Pagination fraction' ? true : {}
                 }
                 spaceBetween={swiper.name == 'Space between' || swiper.name == 'Slides per view' ? 30 : 0}
                 slidesPerView={swiper.name == 'Slides per view' ? 3 : 1}
