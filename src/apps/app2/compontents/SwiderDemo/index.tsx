@@ -1,6 +1,6 @@
 import './index.less'
 import { useRef } from 'react'
-import { Left, State } from '../../jotal/store.tsx'
+import { Left, State } from '../../jotai/store.tsx'
 import { useAtom } from 'jotai'
 
 interface prop {

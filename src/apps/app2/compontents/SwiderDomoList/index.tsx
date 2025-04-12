@@ -1,5 +1,5 @@
 import './index.less'
-import { SwiperDomo } from '../SwiderDomo'
+import { SwiperDomo } from '../SwiderDemo'
 import { titleList } from '../../Array.tsx'
 
 export function SwiperDomoList() {
