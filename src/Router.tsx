@@ -3,8 +3,8 @@ import React, { lazy, Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 
 // 懒加载应用组件
-const App1 = lazy(() => import('./apps/app1/App'))
-const App2 = lazy(() => import('./apps/app2/App'))
+const App1 = lazy(() => import('./apps/momoyu/App'))
+const App2 = lazy(() => import('./apps/swiper/App'))
 
 // 创建加载组件
 const Loading = () => <div>Loading...</div>
