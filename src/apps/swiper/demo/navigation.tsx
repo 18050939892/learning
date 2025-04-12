@@ -1,18 +1,11 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-
-import '../styles.css';
-
-// import required modules
-import { Navigation } from 'swiper/modules';
+import { Swiper, SwiperSlide } from "../compontents/Swiper";
+import "../compontents/Swiper/swiper.css";
+import "../styles.css";
 
 export default function NavigationDemo() {
     return (
         <>
-            <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+            <Swiper navigation={true}  className="mySwiper">
                 <SwiperSlide>Slide 1</SwiperSlide>
                 <SwiperSlide>Slide 2</SwiperSlide>
                 <SwiperSlide>Slide 3</SwiperSlide>

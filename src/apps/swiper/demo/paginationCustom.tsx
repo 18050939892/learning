@@ -1,26 +1,16 @@
-import { Swiper, SwiperSlide } from 'swiper/react'
-
-// Import Swiper styles
-import 'swiper/css'
-import 'swiper/css/pagination'
-
+import { Swiper, SwiperSlide } from '../compontents/Swiper'
+import '../compontents/Swiper/swiper.css'
 import '../styles.css'
-
-// import required modules
-import { Pagination } from 'swiper/modules'
 
 export default function PaginationCustom() {
     const pagination = {
         clickable: true,
-        renderBullet: function (index, className) {
-            return '<span class="' + className + '">' + (index + 1) + '</span>'
-        },
+        custom:true
     }
     return (
         <>
             <Swiper
                 pagination={pagination}
-                modules={[Pagination]}
                 className="mySwiper"
             >
                 <SwiperSlide>Slide 1</SwiperSlide>

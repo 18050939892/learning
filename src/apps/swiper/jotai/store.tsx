@@ -5,6 +5,7 @@ import PaginationDemo from '../demo/pagination.tsx'
 import PaginationCustom from '../demo/paginationCustom.tsx'
 import PaginationDynamic from '../demo/paginationDynamic.tsx'
 import PaginationFraction from '../demo/paginationFraction.tsx'
+import PaginationProgress from '../demo/paginationProgress.tsx'
 import ScrollbarDemo from '../demo/scrollbar.tsx'
 import SlidesPerView from '../demo/slidesPerView.tsx'
 import SpaceBetween from '../demo/spaceBetween.tsx'
@@ -26,10 +27,10 @@ export const SwiperDomo = atom([{
     name: 'Pagination dynamic',
     html: <PaginationDynamic />,
 },
-//         {
-//     name: 'Pagination progress',
-//     html: <PaginationProgress />,
-// },
+{
+    name: 'Pagination progress',
+    html: <PaginationProgress />,
+},
 {
     name: 'Pagination fraction',
     html: <PaginationFraction />,
@@ -56,3 +57,6 @@ export const Swiper = atom((get) => {
     const name = get(SwiperName)
     return demos.find(demo => demo.name === name) || demos[0]
 })
+
+export const Current = atom(['check', '', '', '', '', '', '', '', '', '', ''])
+export const Circle = atom(Array(9).fill(''))

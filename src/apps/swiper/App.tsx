@@ -1,11 +1,12 @@
 import 'swiper/css'
 import './styles.css'
-import { Swiper, SwiperName } from './jotai/store.tsx'
+import { Swiper, SwiperName, Current } from './jotai/store.tsx'
 import { titleList } from './Array.tsx'
 import { useAtom } from 'jotai/index'
 export default function App() {
     const [swiper] = useAtom(Swiper)
     const [, setSwiperName] = useAtom(SwiperName)
+    const[current, setCurrent] = useAtom(Current)
     return (
         <div style={{display: 'flex'}}>
             <div className="swiper-list">
@@ -13,16 +14,15 @@ export default function App() {
                     {titleList.map((title, index) => (
                         <li key={index}><a
                             href={`#${index}`}
-                            onClick={(event) => {
+                            onClick={() => {
                                 setSwiperName(title)
-                                const a: HTMLElement = event.currentTarget.parentElement as HTMLElement
-                                const b: HTMLElement = a.parentElement as HTMLElement
-                                b.querySelectorAll('a').forEach((element: HTMLElement) => {
-                                    element.classList.remove('check')
+                                setCurrent(() => {
+                                    const a = Array(11).fill('')
+                                    a[index] = 'check'
+                                    return a
                                 })
-                                event.currentTarget.classList.toggle('check')
                             }}
-                            className={title == 'Default' ? 'check' : ''}
+                            className={current[index]}
                         >{title}</a></li>
                     ))}
                 </ul>

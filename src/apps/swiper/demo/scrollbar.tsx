@@ -1,24 +1,12 @@
-import React, { useRef, useState } from 'react';
-// Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/scrollbar';
-
-import '../styles.css';
-
-// import required modules
-import { Scrollbar } from 'swiper/modules';
+import { Swiper, SwiperSlide } from "../compontents/Swiper";
+import "../compontents/Swiper/swiper.css";
+import "../styles.css";
 
 export default function ScrollbarDemo() {
     return (
         <>
             <Swiper
-                scrollbar={{
-                    hide: true,
-                }}
-                modules={[Scrollbar]}
+                scrollbar={true}
                 className="mySwiper"
             >
                 <SwiperSlide>Slide 1</SwiperSlide>

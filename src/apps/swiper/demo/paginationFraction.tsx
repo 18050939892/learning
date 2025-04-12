@@ -1,24 +1,15 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-
-import '../styles.css';
-
-// import required modules
-import { Pagination, Navigation } from 'swiper/modules';
+import { Swiper, SwiperSlide } from "../compontents/Swiper";
+import "../compontents/Swiper/swiper.css";
+import "../styles.css";
 
 export default function PaginationFraction() {
     return (
         <>
             <Swiper
                 pagination={{
-                    type: 'fraction',
+                    fraction:true,
                 }}
                 navigation={true}
-                modules={[Pagination, Navigation]}
                 className="mySwiper"
             >
                 <SwiperSlide>Slide 1</SwiperSlide>
