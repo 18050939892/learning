@@ -1,12 +1,13 @@
 import 'swiper/css'
 import './styles.css'
-import { Swiper, SwiperName, Current } from './jotai/store.tsx'
+import { Current, Swiper, SwiperName } from './jotai/store.tsx'
 import { titleList } from './Array.tsx'
 import { useAtom } from 'jotai/index'
+
 export default function App() {
     const [swiper] = useAtom(Swiper)
     const [, setSwiperName] = useAtom(SwiperName)
-    const[current, setCurrent] = useAtom(Current)
+    const [current, setCurrent] = useAtom(Current)
     return (
         <div style={{display: 'flex'}}>
             <div className="swiper-list">

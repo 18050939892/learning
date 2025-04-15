@@ -23,6 +23,12 @@ createRoot(document.getElementById('root')!).render(
                             <span>应用2</span>
                         </Link>
                     </li>
+                    <li>
+                        <Link to="/app3">
+                            <LucideHeart size={18} />
+                            <span>应用3</span>
+                        </Link>
+                    </li>
                 </ul>
             </nav>
 
