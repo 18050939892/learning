@@ -23,7 +23,7 @@ class EventBus {
     }
 
     emit(eventName: string, ...date: any): void {
-        this.events.get(eventName)?.map((item) => {
+        this.events.get(eventName)?.forEach((item) => {
             item(...date)
         })
     }

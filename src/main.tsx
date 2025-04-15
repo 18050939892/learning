@@ -1,7 +1,8 @@
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Link } from 'react-router-dom'
 import { Router } from './Router'
-import { LucideHeart, LucideHome} from 'lucide-react'
+import { LucideHeart, LucideHome } from 'lucide-react'
+import eventBus from './apps/eventBus/eventBus/eventBus.tsx'
 
 createRoot(document.getElementById('root')!).render(
     // <StrictMode>
@@ -10,7 +11,17 @@ createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
         <div className="app-container">
             <nav className="main-nav">
-                <ul style={{display:'flex', backgroundColor:'gray'}}>
+                <ul style={{
+                    display: 'flex',
+                    backgroundColor: 'gray'
+                }}
+                >
+                    <li
+                        onClick={() => {
+                            eventBus.emit('post')
+                        }}
+                    >111
+                    </li>
                     <li>
                         <Link to="/app1">
                             <LucideHome size={18} />
@@ -32,7 +43,7 @@ createRoot(document.getElementById('root')!).render(
                 </ul>
             </nav>
 
-            <main style={{width:'100%'}}>
+            <main style={{width: '100%'}}>
                 <Router />
             </main>
         </div>
