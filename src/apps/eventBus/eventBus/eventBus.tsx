@@ -34,3 +34,25 @@ export default eventBus
 export {
     eventBus
 }
+
+// todo 再实现一个 函数式版本的 eventBus
+export function createEvent() {
+    const events = []
+    return {
+        // todo
+        on(fn: Function) {
+
+        },
+        off(fn: Function) {
+
+        },
+    }
+}
+
+const event = createEvent()
+event.on(() => {
+
+})
+event.off(() => {
+
+})

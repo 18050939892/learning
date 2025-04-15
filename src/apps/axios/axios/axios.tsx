@@ -56,6 +56,7 @@ class MyAxios {
     }): Promise<AxiosResponse> {
         // 这玩意的意思是返回值是promise，promise的返回值是AxiosResponse类型
         return new Promise((resolve, reject) => {
+            // todo 改成基于 fetch() 去实现， XML 属于比较老的方法了
             const xhr = new XMLHttpRequest()
 
             // 处理请求 URL
