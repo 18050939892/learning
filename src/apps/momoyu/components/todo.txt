@@ -74,3 +74,5 @@ todo 这个没干掉
 export const MessAge = atom([[], [], [], [], [], [], [], [], [], [], [], [], [], []])
 这两个todo的解决方式是直接将Icons与MessAge合并在一起
 todo 这里应该整体是一个 <RankItem> ，组件里直接包含所有东西了
+// todo 改成基于 fetch() 去实现， XML 属于比较老的方法了
+// todo 再实现一个 函数式版本的 eventBus
