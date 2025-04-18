@@ -1,5 +1,6 @@
 import { atom, getDefaultStore } from 'jotai'
 
+// todo 支持主题配置存储到 本地缓存里，用 localStorage 实现。 做到刷新页面后，主题仍然是设置的那个主题
 export const store = getDefaultStore()
 export const FirstShow = atom(false)
 export const LogoShow = atom(true)
